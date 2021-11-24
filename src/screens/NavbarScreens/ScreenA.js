@@ -13,7 +13,7 @@ import {
   ToastAndroid,
   Image,
 } from 'react-native';
-import GlobalStyles from '../../utils/GlobalStyles';
+import GlobalStyles from '../utils/GlobalStyles';
 
 
 

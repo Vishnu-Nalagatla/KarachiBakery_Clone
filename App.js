@@ -1,9 +1,9 @@
 import React from 'react'
 import { Text, View } from 'react-native';
-import Navbar from './src/components/common/Navbar';
+import NavBar from './src/common/navbar/NavBar';
 function App() {
   return (
-<Navbar></Navbar>
+    <NavBar></NavBar>
   );
 };
 export default App
