@@ -10,7 +10,7 @@ const CustomDrawer = (props) => {
         <>
             <DrawerContentScrollView 
             {...props}
-            contentContainerStyle={{backgroundColor:' #8600d6'}}
+            contentContainerStyle={{backgroundColor:'#8600d6'}}
             >
                 <ImageBackground
                  source={require('../../assets/NavbarImages/drawerBackground.jpeg')}

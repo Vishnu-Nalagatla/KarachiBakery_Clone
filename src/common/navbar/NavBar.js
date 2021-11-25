@@ -76,7 +76,6 @@ const NavBar = () => {
               drawerLabelStyle : {
                 fontSize : 15,
                 fontFamily: 'Roboto-Medium',
-                fontWeight: 500,
               },
               drawerActiveBackgroundColor: '#aa18ea',    // This attribute is to remove the background color Screen Name
                 drawerActiveTintColor: '#fff',
