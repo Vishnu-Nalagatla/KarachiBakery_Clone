@@ -35,10 +35,14 @@ import Specialities from '../../screens/NavbarScreens/Specialities';
 import SugarFree from '../../screens/NavbarScreens/SugarFree';
 import VeganBiscuits from '../../screens/NavbarScreens/VeganBiscuits';
 import CustomDrawer from './CustomDrawer';
+<<<<<<< HEAD
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import NewArrivals from '../../screens/NewArrivals';
 import HomeScreenContainer from '../../screens/HomeScreeen/HomeScreenContainer';
 import { ItemsList } from '../../screens/productListing';
+=======
+import Ionicons from 'react-native-vector-icons/Ionicons';
+>>>>>>> be6adf275b2689a7ba142494a3bd86ab1bdfc091
 
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
@@ -64,7 +68,6 @@ const NavBar = () => {
           screenOptions={{
             drawerStyle: {
               //    backgroundColor: '#45227A',
-
             },
             // swipeEnabled : true,       // This attribute is to give swipe to drawer
             headerTitleAlign: 'center',
@@ -75,26 +78,27 @@ const NavBar = () => {
             headerTitleStyle: {
               fontSize: 30,
             },
-              drawerLabelStyle : {
-                fontSize : 15,
-                fontFamily: 'Roboto-Medium',
-              },
-              drawerActiveBackgroundColor: '#aa18ea',    // This attribute is to remove the background color Screen Name
-                drawerActiveTintColor: '#fff',
-                drawerInactiveTintColor: '#333'
+            drawerLabelStyle: {
+              fontSize: 15,
+              fontFamily: 'Roboto-Medium',
+            },
+            drawerActiveBackgroundColor: '#aa18ea', // This attribute is to remove the background color Screen Name
+            drawerActiveTintColor: '#fff',
+            drawerInactiveTintColor: '#333',
           }}>
           <Drawer.Screen
+<<<<<<< HEAD
                 name="Home"
                 // component={HomePage}
                 component={HomeScreenContainer}
+=======
+            name="Home"
+            component={HomePage}
+>>>>>>> be6adf275b2689a7ba142494a3bd86ab1bdfc091
             options={{
               drawerIcon: ({color}) => (
-                <Ionicons
-                  name="home-outline"
-                  size={25}
-                  color={color}
-                />
-              )
+                <Ionicons name="home-outline" size={25} color={color} />
+              ),
             }}
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
