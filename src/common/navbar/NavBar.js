@@ -36,7 +36,7 @@ import Specialities from '../../screens/NavbarScreens/Specialities';
 import SugarFree from '../../screens/NavbarScreens/SugarFree';
 import VeganBiscuits from '../../screens/NavbarScreens/VeganBiscuits';
 import CustomDrawer from './CustomDrawer';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
@@ -62,7 +62,6 @@ const NavBar = () => {
           screenOptions={{
             drawerStyle: {
               //    backgroundColor: '#45227A',
-
             },
             // swipeEnabled : true,       // This attribute is to give swipe to drawer
             headerTitleAlign: 'center',
@@ -73,25 +72,21 @@ const NavBar = () => {
             headerTitleStyle: {
               fontSize: 30,
             },
-              drawerLabelStyle : {
-                fontSize : 15,
-                fontFamily: 'Roboto-Medium',
-              },
-              drawerActiveBackgroundColor: '#aa18ea',    // This attribute is to remove the background color Screen Name
-                drawerActiveTintColor: '#fff',
-                drawerInactiveTintColor: '#333'
+            drawerLabelStyle: {
+              fontSize: 15,
+              fontFamily: 'Roboto-Medium',
+            },
+            drawerActiveBackgroundColor: '#aa18ea', // This attribute is to remove the background color Screen Name
+            drawerActiveTintColor: '#fff',
+            drawerInactiveTintColor: '#333',
           }}>
           <Drawer.Screen
-                name="Home"
-                component={HomePage}
+            name="Home"
+            component={HomePage}
             options={{
               drawerIcon: ({color}) => (
-                <Ionicons
-                  name="home-outline"
-                  size={25}
-                  color={color}
-                />
-              )
+                <Ionicons name="home-outline" size={25} color={color} />
+              ),
             }}
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
