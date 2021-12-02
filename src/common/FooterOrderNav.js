@@ -29,7 +29,7 @@ const FooterOrderNav = ({ navigation }) => {
                 }}
                 > */}
                 <Link 
-                to={{screen:'plp'}}
+                to={{screen:'Delivery'}}
                 style = {{
                     color: 'gray',
                     fontSize: 14,

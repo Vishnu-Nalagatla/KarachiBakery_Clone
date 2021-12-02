@@ -26,7 +26,6 @@ import GiftPacks from '../../screens/NavbarScreens/GiftPacks';
 import HomePage from '../../screens/NavbarScreens/HomePage';
 import Macaron from '../../screens/NavbarScreens/Macaron';
 import Mithai from '../../screens/NavbarScreens/Mithai';
-import NewArrivals from '../../screens/NavbarScreens/NewArrivals';
 import Pastries from '../../screens/NavbarScreens/Pastries';
 import Rusks from '../../screens/NavbarScreens/Rusks';
 import Services from '../../screens/NavbarScreens/Services';
@@ -37,6 +36,9 @@ import SugarFree from '../../screens/NavbarScreens/SugarFree';
 import VeganBiscuits from '../../screens/NavbarScreens/VeganBiscuits';
 import CustomDrawer from './CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import NewArrivals from '../../screens/NewArrivals';
+import HomeScreenContainer from '../../screens/HomeScreeen/HomeScreenContainer';
+import { ItemsList } from '../../screens/productListing';
 
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
@@ -83,7 +85,8 @@ const NavBar = () => {
           }}>
           <Drawer.Screen
                 name="Home"
-                component={HomePage}
+                // component={HomePage}
+                component={HomeScreenContainer}
             options={{
               drawerIcon: ({color}) => (
                 <Ionicons
@@ -115,12 +118,13 @@ const NavBar = () => {
           <Drawer.Screen name="Mithai" component={Mithai} />
           <Drawer.Screen name="GiftPacks" component={GiftPacks} />
           <Drawer.Screen name="NewArrivals" component={NewArrivals} />
+          <Drawer.Screen name = "plp" component = {ItemsList} options = {{headerShown:false}}/>
+          <Drawer.Screen name = "Delivery" component = {HomePage} />
         </Drawer.Navigator>
       </NavigationContainer>
     </>
   );
 };
-
 const styles = StyleSheet.create({
   navbarContainer: {
     flexDirection: 'row',

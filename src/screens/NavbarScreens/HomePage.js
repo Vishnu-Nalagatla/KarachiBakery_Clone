@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  delivery , pickUp : {
+  pickUp : {
     fontWeight: '600',
     color: '#000',
     fontSize: 18,

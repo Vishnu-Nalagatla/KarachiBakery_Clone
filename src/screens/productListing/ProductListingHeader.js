@@ -27,7 +27,7 @@ const ProductListingHeader = ({modalOpen,setModalOpen}) => {
             }}
             >
             <Image
-                source={require('../../assets/images/karachi-bakery-logo.png')}
+                source={require('../../assets/karachi-bakery-logo.png')}
                resizeMode = "contain"
                 style = {{
                     width:45,
