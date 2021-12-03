@@ -234,11 +234,7 @@ export const newArrivalsData = [
         code: 'KBDW20-30'
     },
 ];
-
-
-
 export const productListPageData = [
-
     {
         menuImage: images.product2,
         menuName: 'Cakes',

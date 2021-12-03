@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 import MapView from 'react-native-maps';
 import { icons } from '../../constants';
-export default function MapssTrial2() {
+export default function MapsssTrial2() {
     const [region,setRegion] = React.useState({
         latitudeDelta:null,
         longitudeDelta:null,

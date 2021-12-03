@@ -15,7 +15,13 @@ const ProductListingHeader = ({modalOpen,setModalOpen}) => {
             alignItems:'center',
             paddingVertical:10,
             paddingHorizontal:18,
-            backgroundColor:'#fff'
+            backgroundColor:'#fff',
+            borderWidth: 1,
+            borderColor: '#e7eced',
+            shadowColor: '#000',
+            shadowOpacity: 0.25,
+            elevation: .8,
+            marginBottom:10
         }}
         >
             <View

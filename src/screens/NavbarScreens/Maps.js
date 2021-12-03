@@ -2,30 +2,30 @@ import React from 'react';
 import {View, Text, Dimensions, StyleSheet, Image, Button} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-const Maps = () => {
-  // const [coo, setCoords] = React.useState({
-  //   lat: null,
-  //   long: null,
-  //   latDelta : null,
-  //   longDelta:null
-  // });
+const Map = () => {
+  const [coo, setCoords] = React.useState({
+    lat: 17.4366894,
+    long: 78.3668212,
+    latDelta : 0.0122,
+    longDelta:0.0122
+  });
   const [region,setRegion] = React.useState({
     latitude: null,
     longitude: null,
     latitudeDelta: null,
     longitudeDelta: null,
   });
-  // React.useEffect(() => {
-  //   Geolocation.getCurrentPosition(position => {
-  //     setCoords({
-  //       lat: position.coords.latitude,
-  //       long: position.coords.longitude,
-  //       latDelta:0.0122,
-  //       longDelta:0.0122
-  //     });
-  //   });
-  // }, []);
-  // console.warn(coo);
+  React.useEffect(() => {
+    Geolocation.getCurrentPosition(position => {
+      setCoords({
+        lat: position.coords.latitude,
+        long: position.coords.longitude,
+        latDelta:0.0122,
+        longDelta:0.0122
+      });
+    });
+  }, []);
+  console.warn(coo);
   const onRegionChange = regionValue => {
     console.log(JSON.stringify(regionValue.latitude),'region')
     console.log(JSON.stringify(regionValue.longitude),'long region')
@@ -53,7 +53,7 @@ const Maps = () => {
           initialRegion={region}
           onRegionChangeComplete = {onRegionChange}
           >
-            {
+            {/* {
               region?(
           <Marker
             coordinate={{
@@ -71,14 +71,15 @@ const Maps = () => {
               }}
             />
           </Marker>):null
-}
+} */}
         </MapView>
       ) : null}
     </View>
+
   );
 };
 
-export default Maps;
+export default Map;
 
 // // latitude:17.4366894,
 // longitude:78.3668212,
@@ -89,7 +90,27 @@ export default Maps;
 
 
 
-
+{/* <>
+<View
+style = {{flex:1}}
+>
+<MapView 
+style = {{
+  flex:1
+}}
+region = {{
+  latitude:17.4366894,
+longitude:78.3668212,
+latitudeDelta :0.0122 ,
+longitudeDelta :
+//  Dimensions.get('window').width / Dimensions.get('window').height * 2
+0.0122
+}}
+>
+  <Text>ncuicbui</Text>
+  </MapView>
+</View>
+</> */}
 
 
 
