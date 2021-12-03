@@ -39,6 +39,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import NewArrivals from '../../screens/NewArrivals';
 import HomeScreenContainer from '../../screens/HomeScreeen/HomeScreenContainer';
 import { ItemsList } from '../../screens/productListing';
+import Cart from '../../screens/shipping/Cart';
 
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
@@ -93,6 +94,10 @@ const NavBar = () => {
             }}
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
+          <Drawer.Screen name="NewArrivals" component={NewArrivals} />
+          <Drawer.Screen name = "plp" component = {ItemsList} options = {{headerShown:false}}/>
+          <Drawer.Screen name = "Delivery" component = {HomePage} />
+          <Drawer.Screen name = "cart" component = {Cart} options = {{headerShown:false}}/>
           <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />
           <Drawer.Screen name="Careers" component={Careers} />
@@ -112,9 +117,6 @@ const NavBar = () => {
           <Drawer.Screen name="Rusks" component={Rusks} />
           <Drawer.Screen name="Mithai" component={Mithai} />
           <Drawer.Screen name="GiftPacks" component={GiftPacks} />
-          <Drawer.Screen name="NewArrivals" component={NewArrivals} />
-          <Drawer.Screen name = "plp" component = {ItemsList} options = {{headerShown:false}}/>
-          <Drawer.Screen name = "Delivery" component = {HomePage} options = {{headerShown:false}}/>
         </Drawer.Navigator>
       </NavigationContainer>
     </>

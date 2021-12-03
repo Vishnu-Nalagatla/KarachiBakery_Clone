@@ -2,21 +2,19 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import NavBar from './src/common/navbar/NavBar';
-import Map from './src/screens/NavbarScreens/Maps';
-import MapssTrial2 from './src/screens/NavbarScreens/Maps';
 import Maps from './src/screens/NavbarScreens/Maps';
-import MapsssTrial2 from './src/screens/NavbarScreens/Maps2';
+import MapsMoving from './src/screens/NavbarScreens/Maps2';
 import Test from './src/utils/Test';
 function App() {
   return (
     <>
       <NavBar></NavBar>
       {/* <Test/> */}
-      {/* <Map/> */}
-      {/* <MapsssTrial2/> */}
+      {/* <Maps/> */}
+      {/* <MapsMoving/> */}
     </>
   );
-}
+} 
 export default App;
 
 // import React, {Component} from 'react';

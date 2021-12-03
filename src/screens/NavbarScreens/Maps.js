@@ -2,19 +2,38 @@ import React from 'react';
 import {View, Text, Dimensions, StyleSheet, Image, Button} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-const Map = () => {
+// const Map = () => {
+//   const [coo, setCoords] = React.useState({
+//     lat: 17.4366894,
+//     long: 78.3668212,
+//     latDelta : 0.0122,
+//     longDelta:0.0122
+//   });
+//   const [region,setRegion] = React.useState({
+//     latitude: null,
+//     longitude: null,
+//     latitudeDelta: null,
+//     longitudeDelta: null,
+//   });
+const Maps = () => {
   const [coo, setCoords] = React.useState({
-    lat: 17.4366894,
-    long: 78.3668212,
+    lat: null,
+    long: null,
     latDelta : 0.0122,
     longDelta:0.0122
   });
-  const [region,setRegion] = React.useState({
-    latitude: null,
-    longitude: null,
-    latitudeDelta: null,
-    longitudeDelta: null,
-  });
+  // const [region,setRegion] = React.useState({
+  //   latitude: null,
+  //   longitude: null,
+  //   latitudeDelta: null,
+  //   longitudeDelta: null,
+  // });
+  const region = { 
+    latitude:coo.lat,
+    longitude:coo.long,
+    latitudeDelta:coo.latDelta,
+    longitudeDelta:coo.longDelta
+  }
   React.useEffect(() => {
     Geolocation.getCurrentPosition(position => {
       setCoords({
@@ -51,7 +70,7 @@ const Map = () => {
           provider={PROVIDER_GOOGLE}
           showsMyLocationButton={true}
           initialRegion={region}
-          onRegionChangeComplete = {onRegionChange}
+          // onRegionChangeComplete = {onRegionChange}
           >
             {/* {
               region?(

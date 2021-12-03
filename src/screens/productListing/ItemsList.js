@@ -316,7 +316,7 @@ const ItemsList = () => {
                             padding: 10
                         }}
                     >
-                        <Link to={{ screen: 'shipment', params: { cartItems: { cartItems } } }}>View Cart</Link>
+                        <Link to={{ screen: 'cart', params: { cartItems: { cartItems } } }}>View Cart</Link>
                     </View>)
             }
 
