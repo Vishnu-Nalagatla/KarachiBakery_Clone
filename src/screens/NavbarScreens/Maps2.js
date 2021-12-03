@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 import MapView from 'react-native-maps';
 import { icons } from '../../constants';
-export default function MapssTrial2() {
+export default function MapsMoving() {
     const [region,setRegion] = React.useState({
         latitudeDelta:null,
         longitudeDelta:null,
@@ -24,12 +24,12 @@ export default function MapssTrial2() {
         <>
         <View style = {{flex:1}}>
             {
-                region?(
+                (
          <MapView
          style = {{flex:1}}
-         initialRegion = {region}
+        //  initialRegion = {region}
          onRegionChangeComplete = {onRegionChangeValue}
-         />):null
+         />)
             }
          <View style = {{top:'50%',left:'50%',marginLeft:-24,marginTop:-48,position:'absolute'}}>
         <Image source = {require('../../assets/Location/Location.png')} style = {{height:48,width:48}}/>

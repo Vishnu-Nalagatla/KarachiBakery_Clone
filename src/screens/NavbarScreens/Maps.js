@@ -3,39 +3,45 @@ import {View, Text, Dimensions, StyleSheet, Image, Button} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 const Maps = () => {
-  // const [coo, setCoords] = React.useState({
-  //   lat: null,
-  //   long: null,
-  //   latDelta : null,
-  //   longDelta:null
-  // });
-  const [region,setRegion] = React.useState({
-    latitude: null,
-    longitude: null,
-    latitudeDelta: null,
-    longitudeDelta: null,
+  const [coo, setCoords] = React.useState({
+    lat: null,
+    long: null,
+    latDelta : 0.0122,
+    longDelta:0.0122
   });
-  // React.useEffect(() => {
-  //   Geolocation.getCurrentPosition(position => {
-  //     setCoords({
-  //       lat: position.coords.latitude,
-  //       long: position.coords.longitude,
-  //       latDelta:0.0122,
-  //       longDelta:0.0122
-  //     });
-  //   });
-  // }, []);
-  // console.warn(coo);
-  const onRegionChange = regionValue => {
-    console.log(JSON.stringify(regionValue.latitude),'region')
-    console.log(JSON.stringify(regionValue.longitude),'long region')
-    setRegion({
-        latitude : regionValue.latitude,
-        longitude : regionValue.longitude,
-        latitudeDelta:0.0125,
-        longitudeDelta:0.0125,
-    })
-}
+  // const [region,setRegion] = React.useState({
+  //   latitude: null,
+  //   longitude: null,
+  //   latitudeDelta: null,
+  //   longitudeDelta: null,
+  // });
+  const region = { 
+    latitude:coo.lat,
+    longitude:coo.long,
+    latitudeDelta:coo.latDelta,
+    longitudeDelta:coo.longDelta
+  }
+  React.useEffect(() => {
+    Geolocation.getCurrentPosition(position => {
+      setCoords({
+        lat: position.coords.latitude,
+        long: position.coords.longitude,
+        latDelta:0.0122,
+        longDelta:0.0122
+      });
+    });
+  }, []);
+  console.warn(coo);
+//   const onRegionChange = regionValue => {
+//     console.log(JSON.stringify(regionValue.latitude),'region')
+//     console.log(JSON.stringify(regionValue.longitude),'long region')
+//     setRegion({
+//         latitude : regionValue.latitude,
+//         longitude : regionValue.longitude,
+//         latitudeDelta:0.0125,
+//         longitudeDelta:0.0125,
+//     })
+// }
   return (
     <View
       style={{
@@ -51,7 +57,7 @@ const Maps = () => {
           provider={PROVIDER_GOOGLE}
           showsMyLocationButton={true}
           initialRegion={region}
-          onRegionChangeComplete = {onRegionChange}
+          // onRegionChangeComplete = {onRegionChange}
           >
             {
               region?(

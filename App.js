@@ -2,8 +2,8 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import NavBar from './src/common/navbar/NavBar';
-import MapssTrial2 from './src/screens/NavbarScreens/Maps';
 import Maps from './src/screens/NavbarScreens/Maps';
+import MapsMoving from './src/screens/NavbarScreens/Maps2';
 import Test from './src/utils/Test';
 function App() {
   return (
@@ -12,10 +12,10 @@ function App() {
       <NavBar></NavBar>
       {/* <Test/> */}
       {/* <Maps/> */}
-      {/* <MapssTrial2/> */}
+      {/* <MapsMoving/> */}
     </>
   );
-}
+} 
 export default App;
 
 // import React, {Component} from 'react';

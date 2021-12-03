@@ -35,14 +35,11 @@ import Specialities from '../../screens/NavbarScreens/Specialities';
 import SugarFree from '../../screens/NavbarScreens/SugarFree';
 import VeganBiscuits from '../../screens/NavbarScreens/VeganBiscuits';
 import CustomDrawer from './CustomDrawer';
-<<<<<<< HEAD
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import NewArrivals from '../../screens/NewArrivals';
 import HomeScreenContainer from '../../screens/HomeScreeen/HomeScreenContainer';
 import { ItemsList } from '../../screens/productListing';
-=======
-import Ionicons from 'react-native-vector-icons/Ionicons';
->>>>>>> be6adf275b2689a7ba142494a3bd86ab1bdfc091
+import Cart from '../../screens/shipping/Cart';
 
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
@@ -87,14 +84,9 @@ const NavBar = () => {
             drawerInactiveTintColor: '#333',
           }}>
           <Drawer.Screen
-<<<<<<< HEAD
                 name="Home"
                 // component={HomePage}
                 component={HomeScreenContainer}
-=======
-            name="Home"
-            component={HomePage}
->>>>>>> be6adf275b2689a7ba142494a3bd86ab1bdfc091
             options={{
               drawerIcon: ({color}) => (
                 <Ionicons name="home-outline" size={25} color={color} />
@@ -102,6 +94,10 @@ const NavBar = () => {
             }}
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
+          <Drawer.Screen name="NewArrivals" component={NewArrivals} />
+          <Drawer.Screen name = "plp" component = {ItemsList} options = {{headerShown:false}}/>
+          <Drawer.Screen name = "Delivery" component = {HomePage} />
+          <Drawer.Screen name = "cart" component = {Cart} options = {{headerShown:false}}/>
           <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />
           <Drawer.Screen name="Careers" component={Careers} />
@@ -121,9 +117,6 @@ const NavBar = () => {
           <Drawer.Screen name="Rusks" component={Rusks} />
           <Drawer.Screen name="Mithai" component={Mithai} />
           <Drawer.Screen name="GiftPacks" component={GiftPacks} />
-          <Drawer.Screen name="NewArrivals" component={NewArrivals} />
-          <Drawer.Screen name = "plp" component = {ItemsList} options = {{headerShown:false}}/>
-          <Drawer.Screen name = "Delivery" component = {HomePage} />
         </Drawer.Navigator>
       </NavigationContainer>
     </>
