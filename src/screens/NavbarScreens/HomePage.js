@@ -10,12 +10,15 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import StoreSelection from '../../components/StoreSelection';
 import CustomButton from '../../utils/CustomButton';
 import GlobalStyles from '../../utils/GlobalStyles';
 import Test from '../../utils/Test';
 
-const HomePage = ({navigation}) => {
+const HomePage = ({ navigation }) => {
   const [deliveryOptions, setDeliveryOptions] = useState(true);
+  const [storeSelectionModal, setStoreSelectionModal] = useState(false);
+console.log(storeSelectionModal, 'setStoreSelectionModal');
   const shopOnlineHandler = () => { };
   return (
     <>
@@ -28,6 +31,7 @@ const HomePage = ({navigation}) => {
       <View
         style={{
           flexDirection: 'row',
+          alignItems: 'center',
           paddingVertical: 15,
           paddingLeft: 10,
           backgroundColor: '#fff',
@@ -35,7 +39,7 @@ const HomePage = ({navigation}) => {
           borderColor: '#e7eced',
           shadowColor: '#000',
           shadowOpacity: 0.25,
-          elevation: .8,
+          elevation: 8,
         }}
       >
         <Image
@@ -46,7 +50,13 @@ const HomePage = ({navigation}) => {
             height: 40
           }}
         />
-        <Text>Karachi Bakery</Text>
+        <Text style={{
+          fontSize: 25,
+          marginLeft: 15,
+          color: 'black',
+          fontWeight: '700',
+
+        }}>Karachi Bakery</Text>
       </View>
       <Image
         style={[styles.pickUpPageImage]}
@@ -67,29 +77,53 @@ const HomePage = ({navigation}) => {
       <View>
       </View>
       <View
-      style = {{
-        backgroundColor:'#fff',
-        padding:10
-      }}
+        style={{
+          backgroundColor: '#fff',
+        }}
       >
-       <TouchableOpacity
-       onPress = {() => navigation.navigate('plp')}
-       style = {{
-         backgroundColor:'#CD427D',
-         borderRadius:12,
-         paddingVertical:15
-       }}
-       >
-         <Text
-         style = {{
-           textAlign:'center',
-           color:'#fff',
-           fontSize:18.3,
-           fontWeight:'bold',
-           textTransform:'uppercase'
-         }}
-         >Order Now</Text>
-       </TouchableOpacity>
+
+        <View style={styles.selectLocation}>
+          <TouchableOpacity>
+            <Text style={styles.yourLocationText}>Your location</Text>
+            <Image style={styles.locationImage} source={require('../../assets/Location/location-icon-grey.jpg')} />
+            {/* <Text style={styles.mapLocationText}></Text> */}
+            <Text style={styles.changeLocation}>Change Location ?</Text>
+          </TouchableOpacity>
+        </View>
+
+
+
+        <View style={styles.orderNowButton}>
+          <TouchableOpacity
+            onPress={() =>
+             
+              setStoreSelectionModal(true)
+            }
+            style={{
+              backgroundColor: '#CD427D',
+              borderRadius: 12,
+              paddingVertical: 15
+            }}
+          >
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#fff',
+                fontSize: 18.3,
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+              }}
+            >Order Now</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View>
+
+          <StoreSelection
+            setStoreSelectionModal={setStoreSelectionModal}
+            storeSelectionModal={storeSelectionModal}>
+          </StoreSelection>
+        </View>
       </View>
     </>
   );
@@ -131,13 +165,13 @@ const styles = StyleSheet.create({
   deliveryView: {
     borderBottomWidth: 3,
     // padding: 30,
-    paddingVertical:12.5,
+    paddingVertical: 12.5,
     width: '50%',
   },
   pickUpView: {
     width: '50%',
     // padding: 30,
-    paddingVertical:12.5,
+    paddingVertical: 12.5,
     borderBottomWidth: 3,
   },
   deliveryOpt: {
@@ -146,6 +180,34 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Roboto,sans-serif',
     textAlign: 'center'
+  },
+  selectLocation: {
+    margin: 20,
+    padding: 10,
+    borderWidth: 2,
+    borderColor: "#f2f2f2",
+    backgroundColor: 'white',
+    borderRadius: 12,
+  },
+  yourLocationText: {
+    color: '#7e7e7e',
+    marginBottom: 8,
+    fontSize: 13,
+    fontWeight: '500',
+    fontFamily: 'Roboto,sans-serif',
+  },
+  changeLocation: {
+    fontSize: 13,
+    fontWeight: '500',
+    color: '#cd427d',
+    marginTop: 16
+  },
+  orderNowButton: {
+    // marginTop: 65,
+    padding: 10,
+    elevation: 2,
+    shadowOpacity: 0.2,
+    paddingTop: 15,
   }
 });
 

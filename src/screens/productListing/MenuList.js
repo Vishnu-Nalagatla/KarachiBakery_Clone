@@ -68,7 +68,7 @@ const MenuList = ({modalOpen,setModalOpen}) => {
                                 width: 25,
                                 height: 25
                             }}
-                            onpre
+                            
                         />
                     </TouchableOpacity>
                     <View

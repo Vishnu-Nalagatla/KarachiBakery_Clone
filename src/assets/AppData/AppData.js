@@ -239,39 +239,39 @@ export const productListPageData = [
         menuImage: images.product2,
         menuName: 'Cakes',
         category: 'egg',
-        id : 1,
+        id: 1,
         menuData: [
             {
                 itemDescp: 'Cakes',
-                id : 2,
+                id: 2,
                 itemData: [
                     {
-                        id:3,
+                        id: 3,
                         name: 'Pineapple Cake(900gms)',
                         price: '570',
                     },
                     {
-                        id:4,
+                        id: 4,
                         name: 'Black Forest(900gms)',
                         price: '600',
                     },
                     {
-                        id:5,
+                        id: 5,
                         name: 'Orange Chocolate(900gms)',
                         price: '600'
                     },
                     {
-                        id : 6,
+                        id: 6,
                         name: 'Litchi (900gms)',
                         price: '670',
                     },
                     {
-                        id : 7,
+                        id: 7,
                         name: 'Strawberry(900gms)',
                         price: '600',
                     },
                     {
-                        id : 8,
+                        id: 8,
                         name: 'Belgium Butterscotch (1 Kg)',
                         price: '800'
                     },
@@ -279,55 +279,55 @@ export const productListPageData = [
             },
             {
                 itemDescp: 'Birthday Cakes',
-                id : 9,
+                id: 9,
                 itemData: [
                     {
-                        id :10,
+                        id: 10,
                         name: 'Pineapple Cake(900gms)',
                         price: '570',
                     },
                     {
-                        id:11,
+                        id: 11,
                         name: 'Black Forest(900gms)',
                         price: '600',
                     },
                     {
-                        id:12,
+                        id: 12,
                         name: 'Orange Chocolate(900gms)',
                         price: '600'
                     },
                     {
-                        id:13,
+                        id: 13,
                         name: 'Litchi (900gms)',
                         price: '670',
                     },
                     {
-                        id:14,
+                        id: 14,
                         name: 'Strawberry(900gms)',
                         price: '600',
                     },
                     {
-                        id : 15,
+                        id: 15,
                         name: 'Belgium Butterscotch (1 Kg)',
                         price: '800'
                     },
                     {
-                         id : 16,
+                        id: 16,
                         name: 'Pineapple Cake(900gms)',
                         price: '570',
                     },
                     {
-                         id : 17,
+                        id: 17,
                         name: 'Black Forest(900gms)',
                         price: '600',
                     },
                     {
-                         id : 18,
+                        id: 18,
                         name: 'Orange Chocolate(900gms)',
                         price: '600'
                     },
                     {
-                         id : 19,
+                        id: 19,
                         name: 'Litchi (900gms)',
                         price: '670',
                     },
@@ -339,24 +339,24 @@ export const productListPageData = [
         menuImage: images.product1,
         menuName: 'Combos',
         category: 'veg',
-        id : 20,
+        id: 20,
         menuData: [
             {
                 itemDescp: 'Exclusive',
-                id:21,
+                id: 21,
                 itemData: [
                     {
-                        id:22,
+                        id: 22,
                         name: 'Pasta + Garlic Bread',
                         price: '210',
                     },
                     {
-                        id:23,
+                        id: 23,
                         name: 'Waffle Shake',
                         price: '190',
                     },
                     {
-                        id:24,
+                        id: 24,
                         name: 'Veg Burger + French Fries',
                         price: '120'
                     }
@@ -364,10 +364,10 @@ export const productListPageData = [
             },
             {
                 itemDescp: 'Burger',
-                id:25,
+                id: 25,
                 itemData: [
                     {
-                        id:26,
+                        id: 26,
                         name: 'Burger Combo',
                         price: '160',
                     },
@@ -375,10 +375,10 @@ export const productListPageData = [
             },
             {
                 itemDescp: 'Pizza',
-                id:99,
+                id: 99,
                 itemData: [
                     {
-                        id:27,
+                        id: 27,
                         name: 'Pizza Combo',
                         price: '200',
                     },
@@ -386,10 +386,10 @@ export const productListPageData = [
             },
             {
                 itemDescp: 'Sandwich',
-                id:28,
+                id: 28,
                 itemData: [
                     {
-                        id:29,
+                        id: 29,
                         name: 'Sandwich Combo',
                         price: '180',
                     },
@@ -397,10 +397,10 @@ export const productListPageData = [
             },
             {
                 itemDescp: 'Wrap',
-                id:30,
+                id: 30,
                 itemData: [
                     {
-                        id:31,
+                        id: 31,
                         name: 'Wrap Combo',
                         price: '160',
                     },
@@ -408,20 +408,20 @@ export const productListPageData = [
             },
             {
                 itemDescp: 'Chinese',
-                id:32,
+                id: 32,
                 itemData: [
                     {
-                        id:33,
+                        id: 33,
                         name: 'Chinese Combo 1 ',
                         price: '210',
                     },
                     {
-                        id:34,
+                        id: 34,
                         name: 'Chinese Combo 2 ',
                         price: '190',
                     },
                     {
-                        id:35,
+                        id: 35,
                         name: 'Chinese Combo 3 ',
                         price: '120'
                     }
@@ -433,74 +433,74 @@ export const productListPageData = [
         menuImage: images.product3,
         menuName: 'Coffee',
         category: 'veg',
-        id:36,
+        id: 36,
         menuData: [
             {
                 itemDescp: 'Coffee',
-                id:37,
+                id: 37,
                 itemData: [
                     {
-                        id:38,
+                        id: 38,
                         name: 'Chinese Combo 1 ',
                         price: '210',
                     },
                     {
-                        id:39,
+                        id: 39,
                         name: 'Chinese Combo 2 ',
                         price: '190',
                     },
                     {
-                        id:40,
+                        id: 40,
                         name: 'Chinese Combo 3 ',
                         price: '120'
                     },
                     {
-                        id:41,
+                        id: 41,
                         name: 'Orange Chocolate(900gms)',
                         price: '600'
                     },
                     {
-                        id:42,
+                        id: 42,
                         name: 'Litchi (900gms)',
                         price: '670',
                     },
                     {
-                        id:43,
+                        id: 43,
                         name: 'Strawberry(900gms)',
                         price: '600',
                     },
                     {
-                        id:44,
+                        id: 44,
                         name: 'Belgium Butterscotch (1 Kg)',
                         price: '800'
                     },
                     {
-                        id:45,
+                        id: 45,
                         name: 'Chinese Combo 2 ',
                         price: '190',
                     },
                     {
-                        id:46,
+                        id: 46,
                         name: 'Chinese Combo 3 ',
                         price: '120'
                     },
                     {
-                        id:47,
+                        id: 47,
                         name: 'Orange Chocolate(900gms)',
                         price: '600'
                     },
                     {
-                        id:48,
+                        id: 48,
                         name: 'Litchi (900gms)',
                         price: '670',
                     },
                     {
-                        id:49,
+                        id: 49,
                         name: 'Strawberry(900gms)',
                         price: '600',
                     },
                     {
-                        id:50,
+                        id: 50,
                         name: 'Belgium Butterscotch (1 Kg)',
                         price: '800'
                     },
@@ -512,39 +512,39 @@ export const productListPageData = [
         menuImage: images.product4,
         menuName: 'Mojitos',
         category: 'veg',
-        id:51,
+        id: 51,
         menuData: [
             {
                 itemDescp: 'Mojitos',
-                id:52,
+                id: 52,
                 itemData: [
                     {
-                        id:53,
+                        id: 53,
                         name: 'Chinese Combo 2 ',
                         price: '190',
                     },
                     {
-                        id:54,
+                        id: 54,
                         name: 'Chinese Combo 3 ',
                         price: '120'
                     },
                     {
-                        id:55,
+                        id: 55,
                         name: 'Orange Chocolate(900gms)',
                         price: '600'
                     },
                     {
-                        id:56,
+                        id: 56,
                         name: 'Litchi (900gms)',
                         price: '670',
                     },
                     {
-                        id:57,
+                        id: 57,
                         name: 'Strawberry(900gms)',
                         price: '600',
                     },
                     {
-                        id:58,
+                        id: 58,
                         name: 'Belgium Butterscotch (1 Kg)',
                         price: '800'
                     },
@@ -552,92 +552,92 @@ export const productListPageData = [
             },
         ]
     },
+    {
+        menuImage: images.product5,
+        menuName: 'Breads',
+        category: 'veg',
+        id: 59,
+        menuData: [
             {
-                menuImage: images.product5,
-                menuName: 'Breads',
-                category: 'veg',
-                id:59,
-                menuData: [
+                itemDescp: 'Breads',
+                id: 60,
+                itemData: [
                     {
-                        itemDescp: 'Breads',
-                        id:60,
-                        itemData: [
-                            {
-                                id:61,
-                                name: 'Wrap Combo',
-                                price: '160',
-                            },
-                            {
-                                id:62,
-                                name: 'Chinese Combo 1 ',
-                                price: '210',
-                            },
-                            {
-                                id:63,
-                                name: 'Chinese Combo 2 ',
-                                price: '190',
-                            },
-                            {
-                                id:64,
-                                name: 'Chinese Combo 3 ',
-                                price: '120'
-                            },
-                            {
-                                id:65,
-                                name: 'Orange Chocolate(900gms)',
-                                price: '600'
-                            },
-                            {
-                                id:66,
-                                name: 'Litchi (900gms)',
-                                price: '670',
-                            },
-                            {
-                                id:67,
-                                name: 'Strawberry(900gms)',
-                                price: '600',
-                            },
-                        ]
-                    }
-                ]
-            },
-            {
-                menuImage: images.product6,
-                menuName: 'Wraps',
-                category: 'non-veg',
-                id:68,
-                menuData: [
+                        id: 61,
+                        name: 'Wrap Combo',
+                        price: '160',
+                    },
                     {
-                        itemDescp: 'Wraps',
-                        id:69,
-                        itemData: [
-                            {
-                                id:70,
-                                name: 'Chinese Combo 2 ',
-                                price: '190',
-                            },
-                            {
-                                id:71,
-                                name: 'Chinese Combo 3 ',
-                                price: '120'
-                            },
-                            {
-                                id:72,
-                                name: 'Orange Chocolate(900gms)',
-                                price: '600'
-                            },
-                            {
-                                id:73,
-                                name: 'Litchi (900gms)',
-                                price: '670',
-                            },
-                            {
-                                id:74,
-                                name: 'Strawberry(900gms)',
-                                price: '600',
-                            },
-                        ]
-                    }
+                        id: 62,
+                        name: 'Chinese Combo 1 ',
+                        price: '210',
+                    },
+                    {
+                        id: 63,
+                        name: 'Chinese Combo 2 ',
+                        price: '190',
+                    },
+                    {
+                        id: 64,
+                        name: 'Chinese Combo 3 ',
+                        price: '120'
+                    },
+                    {
+                        id: 65,
+                        name: 'Orange Chocolate(900gms)',
+                        price: '600'
+                    },
+                    {
+                        id: 66,
+                        name: 'Litchi (900gms)',
+                        price: '670',
+                    },
+                    {
+                        id: 67,
+                        name: 'Strawberry(900gms)',
+                        price: '600',
+                    },
                 ]
             }
         ]
+    },
+    {
+        menuImage: images.product6,
+        menuName: 'Wraps',
+        category: 'non-veg',
+        id: 68,
+        menuData: [
+            {
+                itemDescp: 'Wraps',
+                id: 69,
+                itemData: [
+                    {
+                        id: 70,
+                        name: 'Chinese Combo 2 ',
+                        price: '190',
+                    },
+                    {
+                        id: 71,
+                        name: 'Chinese Combo 3 ',
+                        price: '120'
+                    },
+                    {
+                        id: 72,
+                        name: 'Orange Chocolate(900gms)',
+                        price: '600'
+                    },
+                    {
+                        id: 73,
+                        name: 'Litchi (900gms)',
+                        price: '670',
+                    },
+                    {
+                        id: 74,
+                        name: 'Strawberry(900gms)',
+                        price: '600',
+                    },
+                ]
+            }
+        ]
+    }
+]
