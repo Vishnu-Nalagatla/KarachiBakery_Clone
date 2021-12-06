@@ -3,7 +3,7 @@ import { View, Text, Image, ImageBackground, ScrollView, Modal, Alert, Button, P
 import { newArrivalsData } from '../assets/AppData/AppData'
 import FooterOrderNav from '../common/FooterOrderNav';
 import images from '../constants/images'
-const NewArrivals = () => {
+const NewArrivals = ({navigation}) => {
     const [visible, setVisible] = React.useState(false);
     const [previewImage,setPreviewImage] = React.useState(null);
     const [updating,setUpdating] = React.useState('');

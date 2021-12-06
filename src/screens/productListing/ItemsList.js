@@ -3,13 +3,16 @@ import { Button, Image, ImageBackground, ScrollView, Text, TouchableOpacity, Tou
 import { ProductListingHeader } from '.';
 import { productListPageData } from '../../assets/AppData/AppData';
 import { Link } from '@react-navigation/native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MenuList from './MenuList';
 const ItemsList = () => {
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
     const [itemsToShow, setItemsToShow] = React.useState(5);
     const [cartItems, setCartItems] = React.useState([]);
+    const [count, setCount] = React.useState(0);
     const addItemToCart = (product) => {
+        setCount(count + 1);
         let itemsInCart = cartItems.slice();
         let isExist = false;
         itemsInCart.forEach(item => {
@@ -272,7 +275,7 @@ const ItemsList = () => {
                                                                             }}
                                                                         >
                                                                             <TouchableWithoutFeedback
-                                                                                onPress={() => setItemsToShow(itemsToShow + 5)}
+                                                                                onPress={() => itemsToDisplay(item)}
                                                                                 style={{
                                                                                     // textAlign:'center'
                                                                                     flex: 1,
@@ -307,19 +310,87 @@ const ItemsList = () => {
                     modalOpen={modalOpen}
                     setModalOpen={setModalOpen} />
             </View>
-            {console.log(cartItems, 'cartItems')}
+            {/* {console.log(cartItems, 'cartItems')} */}
             {
                 cartItems.length > 0 && (
                     <View
                         style={{
                             backgroundColor: '#CD427D',
-                            padding: 10
+                            padding: 10,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
                         }}
                     >
-                        <Link to={{ screen: 'cart', params: { cartItems: { cartItems } } }}>View Cart</Link>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <View>
+                                <FontAwesome5
+                                    name="shopping-bag"
+                                    size={30}
+                                    color="#fff"
+                                />
+                                <View
+                                    style={{
+                                        position: 'absolute',
+                                        left: 15,
+                                        backgroundColor: 'red',
+                                        width: 25,
+                                        height: 25,
+                                        borderRadius: 50
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            color: '#fff',
+                                            textAlign: 'center',
+                                            fontWeight: 'bold'
+                                        }}
+                                    >{count}</Text>
+                                </View>
+                            </View>
+                            <Text
+                                style={{
+                                    color: '#fff',
+                                    fontSize: 16,
+                                    marginLeft: 20,
+                                    fontWeight: 'bold'
+                                }}
+                            >
+                                Rs--
+                                {
+                                    cartItems.reduce((a, v) => a + v.quantity * v.price, 0)
+                                }.00
+                            </Text>
+                        </View>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Link
+                                to={{ screen: 'cart', params: { cartItems: { cartItems }, addItemInCart : {addItemToCart} } }}
+                                style={{
+                                    color: '#fff',
+                                    textTransform: 'uppercase',
+                                    fontSize: 14,
+                                    fontWeight: 'bold',
+                                    marginRight: 10,
+                                }}
+                            >View Cart</Link>
+                            <FontAwesome5
+                                name="arrow-right"
+                                size={15}
+                                color='#fff'
+                            />
+                        </View>
                     </View>)
             }
-
         </>
     );
 };

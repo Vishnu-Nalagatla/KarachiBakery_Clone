@@ -96,7 +96,7 @@ const NavBar = () => {
           <Drawer.Screen name="AboutUs" component={AboutUs} />
           <Drawer.Screen name="NewArrivals" component={NewArrivals} />
           <Drawer.Screen name = "plp" component = {ItemsList} options = {{headerShown:false}}/>
-          <Drawer.Screen name = "Delivery" component = {HomePage} />
+          <Drawer.Screen name = "Delivery" component = {HomePage} options = {{headerShown:false}} />
           <Drawer.Screen name = "cart" component = {Cart} options = {{headerShown:false}}/>
           <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />

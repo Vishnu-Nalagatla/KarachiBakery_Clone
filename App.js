@@ -2,6 +2,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import NavBar from './src/common/navbar/NavBar';
+import Container from './src/haldiram\'s client/Container';
 import Maps from './src/screens/NavbarScreens/Maps';
 import MapsMoving from './src/screens/NavbarScreens/Maps2';
 import Test from './src/utils/Test';
@@ -12,6 +13,7 @@ function App() {
       {/* <Test/> */}
       {/* <Maps/> */}
       {/* <MapsMoving/> */}
+      {/* <Container/> */}
     </>
   );
 } 
