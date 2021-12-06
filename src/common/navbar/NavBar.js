@@ -3,7 +3,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {
   View,
@@ -59,17 +59,17 @@ const NavBar = () => {
           </View> */}
       <NavigationContainer>
         <Drawer.Navigator
+          initialRouteName="Home"
           drawerContent={props => <CustomDrawer {...props} />}
           drawerPosition="right"
           overlayColor="#000000"
           screenOptions={{
-            drawerStyle: {
-              //    backgroundColor: '#45227A',
-            },
-            // swipeEnabled : true,       // This attribute is to give swipe to drawer
             headerTitleAlign: 'center',
             headerStyle: {
-              backgroundColor: 'aqua',
+              backgroundColor: 'white',
+              shadowColor: 'black',
+              shadowOpacity: 0.8,
+              elevation: 10
             },
             headerTintColor: '#000000',
             headerTitleStyle: {
@@ -82,22 +82,31 @@ const NavBar = () => {
             drawerActiveBackgroundColor: '#aa18ea', // This attribute is to remove the background color Screen Name
             drawerActiveTintColor: '#fff',
             drawerInactiveTintColor: '#333',
+            
           }}>
           <Drawer.Screen
-                name="Home"
-                // component={HomePage}
-                component={HomeScreenContainer}
+            name="Home"
+            // component={HomePage}
+            component={HomeScreenContainer}
+            
             options={{
-              drawerIcon: ({color}) => (
+              headerTitle: 'Karachi Bakery',
+              headerTitleStyle: {
+                fontSize: 28,
+              },
+              drawerIcon: ({ color }) => (
                 <Ionicons name="home-outline" size={25} color={color} />
               ),
             }}
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
           <Drawer.Screen name="NewArrivals" component={NewArrivals} />
-          <Drawer.Screen name = "plp" component = {ItemsList} options = {{headerShown:false}}/>
-          <Drawer.Screen name = "Delivery" component = {HomePage} options = {{headerShown:false}} />
-          <Drawer.Screen name = "cart" component = {Cart} options = {{headerShown:false}}/>
+          <Drawer.Screen name="plp" component={ItemsList} options={{ headerShown: false }} />
+          <Drawer.Screen name="Delivery" component={HomePage} options={{
+            headerTitle: 'Karachi Bakery' , swipeEnabled: false, headerShown: false
+          }}
+           />
+          <Drawer.Screen name="cart" component={Cart} />
           <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />
           <Drawer.Screen name="Careers" component={Careers} />
