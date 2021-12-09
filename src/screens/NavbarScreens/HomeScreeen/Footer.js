@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import FooterOrderNav from '../../common/FooterOrderNav';
+import FooterOrderNav from '../../../common/FooterOrderNav';
 
 const Footer = () => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { contentData } from '../../assets/AppData/AppData';
+import { contentData } from '../../../assets/AppData/AppData';
 
 const ContentDisplay = () => {
     return (

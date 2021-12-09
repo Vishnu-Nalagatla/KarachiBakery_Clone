@@ -1,70 +1,34 @@
 import React from 'react';
-import { Button, Image, Modal, Pressable, Text, View } from 'react-native';
+import { Button, Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import CustomButton from '../../common/custom/CustomButton';
 
-const ProductListingHeader = ({modalOpen,setModalOpen}) => {
+const ProductListingHeader = ({ modalOpen, setModalOpen }) => {
     const [delivery, setDelivery] = React.useState(true);
     const onModalOpenHandler = () => {
         setModalOpen(!modalOpen)
     }
     return (
-        <View
-        style = {{
-            flexDirection:'row',
-            justifyContent:'space-between',
-            alignItems:'center',
-            paddingVertical:10,
-            paddingHorizontal:18,
-            backgroundColor:'#fff',
-            borderWidth: 1,
-            borderColor: '#e7eced',
-            shadowColor: '#000',
-            shadowOpacity: 0.25,
-            elevation: .8,
-            marginBottom:10
-        }}
-        >
-            <View
-            style = {{
-                borderWidth:1,
-                borderColor:'#999',
-                padding:4,
-                borderRadius:4
-            }}
-            >
-            <Image
-                source={require('../../assets/karachi-bakery-logo.png')}
-               resizeMode = "contain"
-                style = {{
-                    width:45,
-                    height:40,
-                    
-                }}
-            />
+        <View style={styles.plpHeaderContainer}>
+            <View style={styles.logoContainer}>
+                <Image
+                    source={require('../../assets/karachi-bakery-logo.png')}
+                    resizeMode="contain"
+                    style={styles.karachiLogo} />
             </View>
             <Text>Karachi Bakery</Text>
             <Button
-                title={delivery?'Delivery':'Pickup'}
+                title={delivery ? 'Delivery' : 'Pickup'}
                 onPress={onModalOpenHandler}
             />
             <Modal
                 visible={modalOpen}
                 transparent
-                onRequestClose = {() =>{
-                    setModalOpen(!modalOpen)
-                }}
+                onRequestClose={() => setModalOpen(!modalOpen)}
                 // if you use on request close then whenever you click on
                 //back icon in android it closes
-                animationType = "fade"
+                animationType="fade"
             >
-                <View
-                    style={{
-                        backgroundColor: '#fff',
-                        padding: 20,
-                        borderBottomLeftRadius: 30,
-                        borderBottomRightRadius: 30,
-                    }}
-                >
+                <View style={styles.orderOption}>
                     <View
                         style={{
                             flexDirection: 'row',
@@ -74,25 +38,18 @@ const ProductListingHeader = ({modalOpen,setModalOpen}) => {
                     >
                         <CustomButton
                             textName="Delivery"
-                            onPress = {()=>{
-                                setDelivery(true),setModalOpen(false)
-                            }
-                            }
+                            onPress={() => setDelivery(true), setModalOpen(false)}
                             // delivery = {delivery}
-                            style = {{
-                                backgroundColor:delivery ? '#Cd427D' : 'transparent'
-                            }}
-                            color = {delivery?'#fff':'#000'}
-                            radius = {delivery ? 7:0}
+                            style={{ backgroundColor: delivery ? '#Cd427D' : 'transparent' }}
+                            color={delivery ? '#fff' : '#000'}
+                            radius={delivery ? 7 : 0}
                         />
                         <CustomButton
                             textName="Pickup"
-                            onPress = {()=>{setDelivery(false),setModalOpen(false)}}
-                            style = {{
-                                backgroundColor:!delivery ? '#Cd427D' :'transparent',
-                            }}
-                            color = {!delivery ? '#fff' : '#000'}
-                            radius = {!delivery ? 7:0}
+                            onPress={() => { setDelivery(false), setModalOpen(false) }}
+                            style={{ backgroundColor: !delivery ? '#Cd427D' : 'transparent', }}
+                            color={!delivery ? '#fff' : '#000'}
+                            radius={!delivery ? 7 : 0}
                         />
                     </View>
                 </View>
@@ -100,5 +57,36 @@ const ProductListingHeader = ({modalOpen,setModalOpen}) => {
         </View>
     );
 };
-
+const styles = StyleSheet.create({
+    plpHeaderContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 18,
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#e7eced',
+        shadowColor: '#000',
+        shadowOpacity: 0.25,
+        elevation: .8,
+        marginBottom: 10
+    },
+    logoContainer: {
+        borderWidth: 1,
+        borderColor: '#999',
+        padding: 4,
+        borderRadius: 4
+    },
+    karachiLogo: {
+        width: 45,
+        height: 40,
+    },
+    orderOption: {
+        backgroundColor: '#fff',
+        padding: 20,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+    }
+})
 export default ProductListingHeader

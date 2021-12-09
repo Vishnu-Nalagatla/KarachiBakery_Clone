@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import StoreSelection from '../../components/StoreSelection';
+// import StoreSelection from '../../components/StoreSelection';
 import CustomButton from '../../utils/CustomButton';
 import GlobalStyles from '../../utils/GlobalStyles';
 import Test from '../../utils/Test';
@@ -116,9 +117,7 @@ console.log(storeSelectionModal, 'setStoreSelectionModal');
             >Order Now</Text>
           </TouchableOpacity>
         </View>
-
         <View>
-
           <StoreSelection
             setStoreSelectionModal={setStoreSelectionModal}
             storeSelectionModal={storeSelectionModal}>

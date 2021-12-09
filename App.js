@@ -1,19 +1,20 @@
 
 import React from 'react';
-import {Text, View} from 'react-native';
-import NavBar from './src/common/navbar/NavBar';
-import Container from './src/haldiram\'s client/Container';
-import Maps from './src/screens/NavbarScreens/Maps';
-import MapsMoving from './src/screens/NavbarScreens/Maps2';
-import Test from './src/utils/Test';
+import FoodDeliveryMap from './Practice/mapsByFoodDelivery/FoodDeliveryMap';
+import CurrentLocationContainer from './src/screens/maps/CurrentLocationContainer';
+import MapsMoving from './src/screens/maps/GoogleMaps';
+import NavigationContainers from './src/screens/NavigationContainers';
+import SearchFilter from './src/screens/productListing/SearchFilter';
+import VegOnly from './src/screens/productListing/VegOnly';
 function App() {
   return (
     <>
-      <NavBar></NavBar>
-      {/* <Test/> */}
-      {/* <Maps/> */}
+      <NavigationContainers/>
       {/* <MapsMoving/> */}
-      {/* <Container/> */}
+      {/* <FoodDeliveryMap/> */}
+      {/* <SearchFilter/> */}
+      {/* <VegOnly/> */}
+      {/* <CurrentLocationContainer/> */}
     </>
   );
 } 

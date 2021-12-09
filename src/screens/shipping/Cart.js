@@ -33,7 +33,7 @@ const Cart = ({ route, navigation }) => {
     const totalAmount = cartItems.reduce((a, v) => a + v.quantity * v.price, 0);
     return (
         <>
-            <View
+            {/* <View
                 style={{
                     flexDirection: 'row',
                     backgroundColor: '#fff',
@@ -56,7 +56,7 @@ const Cart = ({ route, navigation }) => {
                         fontWeight: 'bold'
                     }}
                 >Your Order</Text>
-            </View>
+            </View> */}
             <ScrollView
                 style={{
                     backgroundColor: '#fff',
@@ -103,7 +103,12 @@ const Cart = ({ route, navigation }) => {
                                             marginBottom: 10
                                         }}
                                     >{item.name}</Text>
-
+                                    <View
+                                    style = {{
+                                        flexDirection:'row',
+                                        alignItems:'center'
+                                    }}
+                                    >
                                     <FontAwesome5
                                         name="rupee-sign"
                                         color="#000"
@@ -116,6 +121,7 @@ const Cart = ({ route, navigation }) => {
                                             fontWeight: '600',
                                         }}
                                     >{item.price}</Text>
+                                    </View>
                                     <View
                                         style={{
                                             flexDirection: 'row',

@@ -17,7 +17,6 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
 
     return (
         <>
-            <Text>njfbnjfd</Text>
             <Modal
                 visible={storeSelectionModal}
                 transparent

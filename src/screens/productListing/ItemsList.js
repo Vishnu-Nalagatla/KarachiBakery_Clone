@@ -4,6 +4,7 @@ import {
     Image,
     ImageBackground,
     ScrollView,
+    StyleSheet,
     Text,
     TouchableOpacity,
     TouchableWithoutFeedback,
@@ -14,12 +15,16 @@ import { productListPageData } from '../../assets/AppData/AppData';
 import { Link } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MenuList from './MenuList';
+import Items from './Items';
+import VegOnly from './VegOnly';
 const ItemsList = () => {
+    let listViewRef;
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
     const [itemsToShow, setItemsToShow] = React.useState(5);
     const [cartItems, setCartItems] = React.useState([]);
     const [count, setCount] = React.useState(0);
+    const [vegOnly,setVegOnly] = React.useState(false);
     const addItemToCart = (product) => {
         setCount(count + 1);
         let itemsInCart = cartItems.slice();
@@ -37,40 +42,26 @@ const ItemsList = () => {
     };
     return (
         <>
-            <ScrollView>
+            <ScrollView
+            ref = {(ref) => {
+                listViewRef = ref;
+            }}
+            >
                 <ProductListingHeader
                     modalOpen={headerModal}
                     setModalOpen={setHeaderModal} />
-                <View
-                    style={{
-                        backgroundColor: (modalOpen || headerModal) ? '#000' : null,
-                        opacity: (modalOpen || headerModal) ? .5 : null,
-                    }}
-                >
-                    <View
-                        style={{
-                            backgroundColor: '#fff',
-                            padding: 10,
-                        }}>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                color: '#33373D',
-                                fontWeight: 'bold',
-                                opacity: 0.8,
-                                paddingTop: 30,
-                            }}>
+                <View style={{
+                    backgroundColor: (modalOpen || headerModal) ? '#000' : null,
+                    opacity: (modalOpen || headerModal) ? .5 : null,
+                }}>
+                    <View>
+                        <VegOnly vegOnly = {vegOnly} setVegOnly = {setVegOnly}/>
+                    </View>
+                    <View style={styles.headerContainer}>
+                        <Text style={styles.exploreMenuTxt}>
                             Explore Menu
                         </Text>
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                flexWrap: 'wrap',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                width: '100%',
-                                paddingTop: 10,
-                            }}>
+                        <View style={styles.productsContainer}>
                             {productListPageData?.map(data => (
                                 <TouchableOpacity
                                     key={data.id}
@@ -90,17 +81,7 @@ const ItemsList = () => {
                                             width: '100%',
                                             height: '100%',
                                         }}>
-                                        <Text
-                                            style={{
-                                                textAlign: 'center',
-                                                position: 'absolute',
-                                                bottom: 10,
-                                                left: '-50%',
-                                                right: '-50%',
-                                                color: '#fff',
-                                                fontSize: 16,
-                                                fontWeight: 'bold',
-                                            }}>
+                                        <Text style={styles.menuNameTxt}>
                                             {data.menuName}
                                         </Text>
                                     </ImageBackground>
@@ -108,16 +89,18 @@ const ItemsList = () => {
                             ))}
                         </View>
                     </View>
-                    <View
-                        style={{
-                            paddingHorizontal: 12.5,
-                            marginTop: 20,
-                            paddingTop: 25,
-                            backgroundColor: '#fff',
-                        }}>
-                        {productListPageData?.map(data => {
+                    <View style={styles.menuDataContainer}>
+                        {productListPageData?.
+                        filter(filteredData =>{
+                            if(vegOnly){
+                              return  filteredData.category === 'veg'
+                            } else{
+                               return filteredData
+                            }
+                        })
+                        .map(data => {
                             return (
-                                <View key={data.id} style={{}}>
+                                <View key={data.id}>
                                     <View
                                         style={{
                                             width: '100%',
@@ -126,148 +109,42 @@ const ItemsList = () => {
                                         <Image
                                             source={data.menuImage}
                                             resizeMode="cover"
-                                            style={{
-                                                width: '100%',
-                                                height: '100%',
-                                                borderTopLeftRadius: 11,
-                                                borderTopRightRadius: 11,
-                                            }}
+                                            style={styles.menuDataImg}
                                         />
-                                        <Text
-                                            style={{
-                                                position: 'absolute',
-                                                bottom: 20,
-                                                left: 5,
-                                                fontSize: 26,
-                                                color: 'red',
-                                                fontWeight: 'bold',
-                                            }}>
+                                        <Text style={styles.menuText}>
                                             {data.menuName}
                                         </Text>
                                     </View>
-                                    <View
-                                        style={{
-                                            padding: 15,
-                                            borderWidth: 1,
-                                            borderTopWidth: 0,
-                                            borderColor: '#e7eced',
-                                            shadowColor: 'gray',
-                                            shadowOpacity: 0.25,
-                                            // shadowRadius: 3.84,
-                                            elevation: 0.4,
-                                        }}>
+                                    <View style={styles.itemsContainer}>
                                         {data.menuData?.map(item => {
                                             return (
-                                                <View style={{}} key={item.id}>
-                                                    <Text
-                                                        style={{
-                                                            color: '#CD427D',
-                                                            fontSize: 20,
-                                                            fontWeight: 'bold',
-                                                        }}>
+                                                <View key={item.id}>
+                                                    <Text style={styles.itemDescription}>
                                                         {item.itemDescp}
                                                     </Text>
                                                     <View
                                                         style={{
                                                             marginTop: 50,
                                                         }}>
-                                                        {item.itemData &&
-                                                            item.itemData
-                                                                .filter((items, index) => index < itemsToShow)
-                                                                .map(items => (
-                                                                    <View
-                                                                        key={items.id}
-                                                                        style={{
-                                                                            borderBottomWidth: 0.8,
-                                                                            borderBottomColor: 'lightgray',
-                                                                            marginBottom: 20,
-                                                                        }}>
-                                                                        <Image
-                                                                            source={
-                                                                                data.category == 'veg'
-                                                                                    ? require('../../assets/images/veg-icon.jpg')
-                                                                                    : require('../../assets/images/non-veg.jpg')
-                                                                            }
-                                                                            style={{
-                                                                                width: 20,
-                                                                                height: 20,
-                                                                            }}
-                                                                            resizeMode="contain"
-                                                                        />
-                                                                        <View
-                                                                            style={{
-                                                                                flexDirection: 'row',
-                                                                                justifyContent: 'space-between',
-                                                                                alignItems: 'center',
-                                                                            }}>
-                                                                            <View>
-                                                                                <Text
-                                                                                    style={{
-                                                                                        fontSize: 18,
-                                                                                        fontWeight: '500',
-                                                                                        color: '#020202',
-                                                                                        letterSpacing: 0.5,
-                                                                                        marginTop: 10,
-                                                                                    }}>
-                                                                                    {items.name}
-                                                                                </Text>
-                                                                                <Text
-                                                                                    style={{
-                                                                                        color: '#585858',
-                                                                                        fontSize: 16,
-                                                                                        fontWeight: '700',
-                                                                                        marginVertical: 10,
-                                                                                    }}>{` Rs ${items.price}`}</Text>
-                                                                            </View>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => addItemToCart(items)}
-                                                                                style={{
-                                                                                    width: 90,
-                                                                                    height: 35,
-                                                                                    alignItems: 'center',
-                                                                                    justifyContent: 'center',
-                                                                                    // borderRadius:7,
-                                                                                    borderWidth: 1,
-                                                                                    borderColor: '#e7eced',
-                                                                                    shadowColor: '#000',
-                                                                                    shadowOpacity: 0.25,
-                                                                                    // shadowRadius: 3.84,
-                                                                                    elevation: 0.8,
-                                                                                }}>
-                                                                                <Text
-                                                                                    style={{
-                                                                                        textTransform: 'uppercase',
-                                                                                        color: '#CD427D',
-                                                                                        fontWeight: 'bold',
-                                                                                    }}>
-                                                                                    add
-                                                                                </Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                    </View>
-                                                                ))}
+                                                        {item.itemData && item.itemData
+                                                            .filter((items, index) => index < itemsToShow)
+                                                            .map(items => (
+                                                                <Items
+                                                                    items={items}
+                                                                    key={items.id}
+                                                                    data={data}
+                                                                    addItemToCart={addItemToCart}
+                                                                />
+                                                            )
+                                                            )}
                                                     </View>
                                                     {item.itemData.length > 5 &&
                                                         itemsToShow <= item.itemData.length ? (
-                                                        <View
-                                                            style={{
-                                                                flex: 1,
-                                                                justifyContent: 'center',
-                                                                alignItems: 'center',
-                                                            }}>
+                                                        <View style={styles.seeMoreBtn}>
                                                             <TouchableWithoutFeedback
-                                                                onPress={() => setItemsToShow(itemsToShow + 5)}
-                                                                style={{
-                                                                    // textAlign:'center'
-                                                                    flex: 1,
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center',
-                                                                    height: 0,
-                                                                }}>
-                                                                <Text
-                                                                    style={{
-                                                                        textAlign: 'center',
-                                                                    }}>
+                                                                // onPress={() => showMoreFun(item)}
+                                                                style={[styles.seeMoreBtn, { height: 0 }]}>
+                                                                <Text style={{ textAlign: 'center', }}>
                                                                     see More
                                                                 </Text>
                                                             </TouchableWithoutFeedback>
@@ -277,297 +154,174 @@ const ItemsList = () => {
                                             );
                                         })}
                                     </View>
-                                    <View
-                                        style={{
-                                            paddingHorizontal: 12.5,
-                                            marginTop: 20,
-                                            paddingTop: 25,
-                                            backgroundColor: '#fff',
-                                        }}
-                                    >
-                                        {
-                                            productListPageData?.
-                                                map(data => {
-                                                    return (
-                                                        <View
-                                                            key={data.id}
-                                                            style={{
-                                                            }}
-                                                        >
-                                                            <View
-                                                                style={{
-                                                                    width: '100%',
-                                                                    height: 160,
-                                                                }}
-                                                            >
-                                                                <Image
-                                                                    source={data.menuImage}
-                                                                    resizeMode="cover"
-                                                                    style={{
-                                                                        width: '100%',
-                                                                        height: '100%',
-                                                                        borderTopLeftRadius: 11,
-                                                                        borderTopRightRadius: 11
-                                                                    }}
-                                                                />
-                                                                <Text
-                                                                    style={{
-                                                                        position: 'absolute',
-                                                                        bottom: 20,
-                                                                        left: 5,
-                                                                        fontSize: 26,
-                                                                        color: 'red',
-                                                                        fontWeight: 'bold',
-                                                                    }}
-                                                                >
-                                                                    {data.menuName}
-                                                                </Text>
-                                                            </View>
-                                                            <View
-                                                                style={{
-                                                                    padding: 15,
-                                                                    borderWidth: 1,
-                                                                    borderTopWidth: 0,
-                                                                    borderColor: '#e7eced',
-                                                                    shadowColor: 'gray',
-                                                                    shadowOpacity: .25,
-                                                                    // shadowRadius: 3.84,
-                                                                    elevation: .4,
-                                                                }}
-                                                            >
-                                                                {
-                                                                    data.menuData?.map(item => {
-                                                                        return (
-                                                                            <View
-                                                                                style={{
-                                                                                }}
-                                                                                key={item.id}
-                                                                            >
-                                                                                <Text
-                                                                                    style={{
-                                                                                        color: '#CD427D',
-                                                                                        fontSize: 20,
-                                                                                        fontWeight: 'bold'
-                                                                                    }}
-                                                                                >{item.itemDescp}</Text>
-                                                                                <View
-                                                                                    style={{
-                                                                                        marginTop: 50
-                                                                                    }}
-                                                                                >
-                                                                                    {
-                                                                                        item.itemData && item.itemData
-                                                                                            .filter((items, index) => index < itemsToShow)
-                                                                                            .map(items => (
-                                                                                                <View
-                                                                                                    key={items.id}
-                                                                                                    style={{
-                                                                                                        borderBottomWidth: .8,
-                                                                                                        borderBottomColor: 'lightgray',
-                                                                                                        marginBottom: 20,
-                                                                                                    }}
-                                                                                                >
-                                                                                                    <Image
-                                                                                                        source={data.category == 'veg' ?
-                                                                                                            require('../../assets/images/veg-icon.jpg') :
-                                                                                                            require('../../assets/images/non-veg.jpg')
-                                                                                                        }
-                                                                                                        style={{
-                                                                                                            width: 20,
-                                                                                                            height: 20,
-                                                                                                        }}
-                                                                                                        resizeMode="contain"
-                                                                                                    />
-                                                                                                    <View
-                                                                                                        style={{
-                                                                                                            flexDirection: 'row',
-                                                                                                            justifyContent: 'space-between',
-                                                                                                            alignItems: 'center'
-                                                                                                        }}
-                                                                                                    >
-                                                                                                        <View>
-                                                                                                            <Text
-                                                                                                                style={{
-                                                                                                                    fontSize: 18,
-                                                                                                                    fontWeight: '500',
-                                                                                                                    color: '#020202',
-                                                                                                                    letterSpacing: 0.5,
-                                                                                                                    marginTop: 10
-                                                                                                                }}
-                                                                                                            >{items.name}</Text>
-                                                                                                            <Text
-                                                                                                                style={{
-                                                                                                                    color: '#585858',
-                                                                                                                    fontSize: 16,
-                                                                                                                    fontWeight: '700',
-                                                                                                                    marginVertical: 10
-                                                                                                                }}
-                                                                                                            >{` Rs ${items.price}`}</Text>
-                                                                                                        </View>
-                                                                                                        <TouchableOpacity
-                                                                                                            onPress={() => addItemToCart(items)}
-                                                                                                            style={{
-                                                                                                                width: 90,
-                                                                                                                height: 35,
-                                                                                                                alignItems: 'center',
-                                                                                                                justifyContent: 'center',
-                                                                                                                // borderRadius:7,
-                                                                                                                borderWidth: 1,
-                                                                                                                borderColor: '#e7eced',
-                                                                                                                shadowColor: '#000',
-                                                                                                                shadowOpacity: 0.25,
-                                                                                                                // shadowRadius: 3.84,
-                                                                                                                elevation: .8,
-                                                                                                            }}
-                                                                                                        >
-                                                                                                            <Text
-                                                                                                                style={{
-                                                                                                                    textTransform: 'uppercase',
-                                                                                                                    color: '#CD427D',
-                                                                                                                    fontWeight: 'bold'
-                                                                                                                }}
-                                                                                                            >
-                                                                                                                add
-                                                                                                            </Text>
-                                                                                                        </TouchableOpacity>
-                                                                                                    </View>
-                                                                                                </View>
-                                                                                            ))
-                                                                                    }
-
-                                                                                </View>
-                                                                                {
-                                                                                    (item.itemData.length > 5 && itemsToShow <= item.itemData.length) ? (
-                                                                                        <View
-                                                                                            style={{
-                                                                                                flex: 1,
-                                                                                                justifyContent: 'center',
-                                                                                                alignItems: 'center',
-                                                                                            }}
-                                                                                        >
-                                                                                            <TouchableWithoutFeedback
-                                                                                                onPress={() => itemsToDisplay(item)}
-                                                                                                style={{
-                                                                                                    // textAlign:'center'
-                                                                                                    flex: 1,
-                                                                                                    justifyContent: 'center',
-                                                                                                    alignItems: 'center',
-                                                                                                    height: 0
-                                                                                                }}
-                                                                                            >
-                                                                                                <Text
-                                                                                                    style={{
-                                                                                                        textAlign: 'center'
-                                                                                                    }}
-                                                                                                >see More</Text>
-                                                                                            </TouchableWithoutFeedback>
-                                                                                        </View>
-                                                                                    ) : null
-                                                                                }
-                                                                            </View>
-                                                                        )
-                                                                    })
-                                                                }
-                                                            </View>
-                                                        </View>
-                                                    )
-                                                })
-                                        }
-                                    </View>
                                 </View>
-                            );
-                                    })}
-                                    </View>
-                                    </View>
-            </ScrollView>
-                    <View>
-                        <MenuList
-                            modalOpen={modalOpen}
-                            setModalOpen={setModalOpen} />
+                            )
+                        })
+                        }
                     </View>
-                    {/* {console.log(cartItems, 'cartItems')} */}
-                    {
-                        cartItems.length > 0 && (
-                            <View
-                                style={{
-                                    backgroundColor: '#CD427D',
-                                    padding: 10,
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                }}
-                            >
-                                <View
-                                    style={{
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center'
-                                    }}
-                                >
-                                    <View>
-                                        <FontAwesome5
-                                            name="shopping-bag"
-                                            size={30}
-                                            color="#fff"
-                                        />
-                                        <View
-                                            style={{
-                                                position: 'absolute',
-                                                left: 15,
-                                                backgroundColor: 'red',
-                                                width: 25,
-                                                height: 25,
-                                                borderRadius: 50
-                                            }}
-                                        >
-                                            <Text
-                                                style={{
-                                                    color: '#fff',
-                                                    textAlign: 'center',
-                                                    fontWeight: 'bold'
-                                                }}
-                                            >{count}</Text>
-                                        </View>
-                                    </View>
-                                    <Text
-                                        style={{
-                                            color: '#fff',
-                                            fontSize: 16,
-                                            marginLeft: 20,
-                                            fontWeight: 'bold'
-                                        }}
-                                    >
-                                        Rs--
-                                        {
-                                            cartItems.reduce((a, v) => a + v.quantity * v.price, 0)
-                                        }.00
+                </View>
+            </ScrollView>
+            <View>
+                <MenuList
+                    modalOpen={modalOpen}
+                    setModalOpen={setModalOpen} />
+            </View>
+            {
+                cartItems.length > 0 && (
+                    <View style={styles.itemsListCartContainer}>
+                        <View style={styles.itemsListCartContent}>
+                            <View>
+                                <FontAwesome5
+                                    name="shopping-bag"
+                                    size={30}
+                                    color="#fff"
+                                />
+                                <View style={styles.countContainer}>
+                                    <Text style={styles.countText}>
+                                        {count}
                                     </Text>
                                 </View>
-                                <View
-                                    style={{
-                                        flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }}
-                                >
-                                    <Link
-                                        to={{ screen: 'cart', params: { cartItems: { cartItems }, addItemInCart: { addItemToCart } } }}
-                                        style={{
-                                            color: '#fff',
-                                            textTransform: 'uppercase',
-                                            fontSize: 14,
-                                            fontWeight: 'bold',
-                                            marginRight: 10,
-                                        }}
-                                    >View Cart</Link>
-                                    <FontAwesome5
-                                        name="arrow-right"
-                                        size={15}
-                                        color='#fff'
-                                    />
-                                </View>
-                            </View>)
-                    }
-                </>
-                );
+                            </View>
+                            <Text style={styles.totalPrice}>
+                                Rs--
+                                {
+                                    cartItems.reduce((a, v) => a + v.quantity * v.price, 0)
+                                }.00
+                            </Text>
+                        </View>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Link
+                                to={{
+                                    screen: 'cart',
+                                    params: { cartItems: { cartItems }, addItemInCart: { addItemToCart } }
+                                }}
+                                style={styles.cartLink}
+                            >View Cart</Link>
+
+
+                            <FontAwesome5
+                                name="arrow-right"
+                                size={15}
+                                color='#fff'
+                            />
+                        </View>
+                    </View>)
+            }
+        </>
+    );
 };
 
-                export default ItemsList;
+const styles = StyleSheet.create({
+    headerContainer: {
+        backgroundColor: '#fff',
+        padding: 10,
+    },
+    exploreMenuTxt: {
+        fontSize: 18,
+        color: '#33373D',
+        fontWeight: 'bold',
+        opacity: 0.8,
+        paddingTop: 30,
+    },
+    productsContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+        paddingTop: 10,
+    },
+    menuNameTxt: {
+        textAlign: 'center',
+        position: 'absolute',
+        bottom: 10,
+        left: '-50%',
+        right: '-50%',
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    menuDataContainer: {
+        paddingHorizontal: 12.5,
+        marginTop: 20,
+        paddingTop: 25,
+        backgroundColor: '#fff',
+    },
+    menuDataImg: {
+        width: '100%',
+        height: '100%',
+        borderTopLeftRadius: 11,
+        borderTopRightRadius: 11,
+    },
+    menuText: {
+        position: 'absolute',
+        bottom: 20,
+        left: 5,
+        fontSize: 26,
+        color: 'red',
+        fontWeight: 'bold',
+    },
+    itemsContainer: {
+        padding: 15,
+        borderWidth: 1,
+        borderTopWidth: 0,
+        borderColor: '#e7eced',
+        shadowColor: 'gray',
+        shadowOpacity: 0.25,
+        // shadowRadius: 3.84,
+        elevation: 0.4,
+    },
+    itemDescription: {
+        color: '#CD427D',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    seeMoreBtn: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    itemsListCartContainer: {
+        backgroundColor: '#CD427D',
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    itemsListCartContent: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    countContainer: {
+        position: 'absolute',
+        left: 15,
+        backgroundColor: 'red',
+        width: 25,
+        height: 25,
+        borderRadius: 50
+    },
+    countText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    totalPrice: {
+        color: '#fff',
+        fontSize: 16,
+        marginLeft: 20,
+        fontWeight: 'bold'
+    },
+    cartLink: {
+        color: '#fff',
+        textTransform: 'uppercase',
+        fontSize: 14,
+        fontWeight: 'bold',
+        marginRight: 10,
+    }
+})
+export default ItemsList;

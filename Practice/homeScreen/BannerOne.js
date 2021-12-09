@@ -1,6 +1,6 @@
 import React from 'react';
 import { Animated, Dimensions, Image, SafeAreaView, Text, View } from 'react-native';
-import { paginationOne } from '../../assets/AppData/AppData';
+import { paginationOne } from '../../src/assets/AppData/AppData';
 const SIZES = {
     base : 8,
     primary: "#FC6D3F", 

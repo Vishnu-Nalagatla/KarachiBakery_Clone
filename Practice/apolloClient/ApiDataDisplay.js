@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, FlatList } from 'react-native'
 import { useQuery,gql } from '@apollo/client';
-import CustomQuery from '../quries/CustomQuery';
+import CustomQuery from '../../src/quries/CustomQuery';
 
 
 

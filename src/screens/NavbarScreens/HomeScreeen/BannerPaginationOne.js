@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Animated, Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { paginationOneDataObj } from '../../assets/AppData/AppData';
-import { COLORS, SIZES } from '../../constants/colors';
+import { paginationOneDataObj } from '../../../assets/AppData/AppData';
+import { COLORS, SIZES } from '../../../constants/colors';
 const Resturant = () => {
     const scrollX = new Animated.Value(0);
     const scrollRef = React.createRef();

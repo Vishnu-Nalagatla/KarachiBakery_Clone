@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { QueryVariable } from '../quries/QueryVariables'
+import { QueryVariable } from '../../src/quries/QueryVariables'
 
 const ApiDataVariables = () => {
     const {data,error,loading} = QueryVariable(2);

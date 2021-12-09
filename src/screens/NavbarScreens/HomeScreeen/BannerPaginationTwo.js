@@ -86,7 +86,7 @@
 import { useNavigation } from "@react-navigation/core";
 import * as React from "react";
 import { StyleSheet, View, ScrollView, Dimensions, Image,Text, ImageBackground, TouchableOpacity } from "react-native";
-import { secondBannerData } from "../../assets/AppData/AppData";
+import { secondBannerData } from "../../../assets/AppData/AppData";
 import { withNavigation } from 'react-navigation';
 import { Link } from "@react-navigation/native";
 const DEVICE_WIDTH = Dimensions.get("window").width;

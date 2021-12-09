@@ -37,13 +37,9 @@ import VeganBiscuits from '../../screens/NavbarScreens/VeganBiscuits';
 import CustomDrawer from './CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import NewArrivals from '../../screens/NewArrivals';
-import HomeScreenContainer from '../../screens/HomeScreeen/HomeScreenContainer';
-import { ItemsList } from '../../screens/productListing';
-import Cart from '../../screens/shipping/Cart';
-
+import HomeScreenContainer from '../../screens/NavbarScreens/HomeScreeen/HomeScreenContainer';
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
-
   return (
     <>
       {/* <View style={styles.navbarContainer}>
@@ -57,7 +53,6 @@ const NavBar = () => {
           </View>
         </TouchableOpacity>
           </View> */}
-      <NavigationContainer>
         <Drawer.Navigator
           initialRouteName="Home"
           drawerContent={props => <CustomDrawer {...props} />}
@@ -82,13 +77,13 @@ const NavBar = () => {
             drawerActiveBackgroundColor: '#aa18ea', // This attribute is to remove the background color Screen Name
             drawerActiveTintColor: '#fff',
             drawerInactiveTintColor: '#333',
-            
+
           }}>
           <Drawer.Screen
             name="Home"
             // component={HomePage}
             component={HomeScreenContainer}
-            
+
             options={{
               headerTitle: 'Karachi Bakery',
               headerTitleStyle: {
@@ -101,12 +96,6 @@ const NavBar = () => {
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
           <Drawer.Screen name="NewArrivals" component={NewArrivals} />
-          <Drawer.Screen name="plp" component={ItemsList} options={{ headerShown: false }} />
-          <Drawer.Screen name="Delivery" component={HomePage} options={{
-            headerTitle: 'Karachi Bakery' , swipeEnabled: false, headerShown: false
-          }}
-           />
-          <Drawer.Screen name="cart" component={Cart} />
           <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />
           <Drawer.Screen name="Careers" component={Careers} />
@@ -127,7 +116,6 @@ const NavBar = () => {
           <Drawer.Screen name="Mithai" component={Mithai} />
           <Drawer.Screen name="GiftPacks" component={GiftPacks} />
         </Drawer.Navigator>
-      </NavigationContainer>
     </>
   );
 };
