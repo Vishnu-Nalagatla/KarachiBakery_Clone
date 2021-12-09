@@ -10,12 +10,9 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import StoreSelection from '../../components/StoreSelection';
-// import StoreSelection from '../../components/StoreSelection';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomButton from '../../utils/CustomButton';
 import GlobalStyles from '../../utils/GlobalStyles';
-import Test from '../../utils/Test';
 import StoreSelection from '../../components/deliveryComponents/StoreSelection';
 
 
@@ -108,10 +105,13 @@ const HomePage = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View>
+          { storeSelectionModal &&
           <StoreSelection
-            setStoreSelectionModal={setStoreSelectionModal}
-            storeSelectionModal={storeSelectionModal}>
+            // setStoreSelectionModal={setStoreSelectionModal}
+            // storeSelectionModal={storeSelectionModal}
+            >
           </StoreSelection>
+}
         </View>
       </View>
     </>

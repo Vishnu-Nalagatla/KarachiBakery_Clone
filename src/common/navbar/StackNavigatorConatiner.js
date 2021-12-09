@@ -3,6 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from '../../screens/NavbarScreens/HomePage';
 import { ItemsList } from '../../screens/productListing';
 import Cart from '../../screens/shipping/Cart';
+import DeliveryAddressSearch from '../../components/deliveryComponents/DeliveryAddressSearch';
+import CurrentLocationMap from '../../screens/maps/GoogleMaps';
+import SearchFilter from '../../screens/productListing/SearchFilter';
 const Stack = createStackNavigator();
 const StackNavigatorContainer = () => {
     return (
@@ -23,6 +26,11 @@ const StackNavigatorContainer = () => {
                     headerTitle: 'Your Order'
                 }}
             />
+            <Stack.Screen name='DeliveryAddressStack' component={DeliveryAddressSearch}
+                options={{ title: 'Delivery To' ,headerShown: true }}
+            />
+            <Stack.Screen name = "map" component={CurrentLocationMap} />
+            <Stack.Screen name="SearchFilter" component={SearchFilter} />
         </Stack.Navigator>
     );
 };

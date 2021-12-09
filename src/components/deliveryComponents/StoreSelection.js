@@ -20,7 +20,7 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
     return (
         <>
             <Modal
-                visible={storeSelectionModal}
+                visible={true}
                 transparent
                 // onRequestClose={() => { setModalOpen(!modalOpen) }}
                 animationType="slide"

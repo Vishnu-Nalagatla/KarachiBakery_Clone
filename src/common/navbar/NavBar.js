@@ -37,7 +37,7 @@ import CustomDrawer from './CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import NewArrivals from '../../screens/NewArrivals';
 import HomeScreenContainer from '../../screens/NavbarScreens/HomeScreeen/HomeScreenContainer';
-import DeliveryStackNavigation from '../../components/deliveryComponents/DeliveryStackNavigation';
+import DeliveryStackNavigation from '../../../Practice/DeliveryNavigation/DeliveryStackNavigation';
 
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
@@ -97,11 +97,6 @@ const NavBar = () => {
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
           <Drawer.Screen name="NewArrivals" component={NewArrivals} />
-         
-          <Drawer.Screen name="Delivery" component={DeliveryStackNavigation} options={{
-            headerTitle: 'Karachi Bakery' , swipeEnabled: false, headerShown: false
-          }}
-           />
           <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />
           <Drawer.Screen name="Careers" component={Careers} />

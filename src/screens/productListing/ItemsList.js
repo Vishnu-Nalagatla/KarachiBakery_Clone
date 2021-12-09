@@ -17,14 +17,15 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MenuList from './MenuList';
 import Items from './Items';
 import VegOnly from './VegOnly';
-const ItemsList = () => {
+import PlpOffers from '../../components/PlpOffers';
+const ItemsList = ({navigation}) => {
     let listViewRef;
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
     const [itemsToShow, setItemsToShow] = React.useState(5);
     const [cartItems, setCartItems] = React.useState([]);
     const [count, setCount] = React.useState(0);
-    const [vegOnly,setVegOnly] = React.useState(false);
+    const [vegOnly, setVegOnly] = React.useState(false);
     const addItemToCart = (product) => {
         setCount(count + 1);
         let itemsInCart = cartItems.slice();
@@ -43,9 +44,9 @@ const ItemsList = () => {
     return (
         <>
             <ScrollView
-            ref = {(ref) => {
-                listViewRef = ref;
-            }}
+                ref={(ref) => {
+                    listViewRef = ref;
+                }}
             >
                 <ProductListingHeader
                     modalOpen={headerModal}
@@ -54,8 +55,13 @@ const ItemsList = () => {
                     backgroundColor: (modalOpen || headerModal) ? '#000' : null,
                     opacity: (modalOpen || headerModal) ? .5 : null,
                 }}>
+                    <PlpOffers></PlpOffers>
                     <View>
-                        <VegOnly vegOnly = {vegOnly} setVegOnly = {setVegOnly}/>
+                        <VegOnly
+                            vegOnly={vegOnly}
+                            setVegOnly={setVegOnly}
+                            navigation={navigation}
+                        />
                     </View>
                     <View style={styles.headerContainer}>
                         <Text style={styles.exploreMenuTxt}>
@@ -91,72 +97,72 @@ const ItemsList = () => {
                     </View>
                     <View style={styles.menuDataContainer}>
                         {productListPageData?.
-                        filter(filteredData =>{
-                            if(vegOnly){
-                              return  filteredData.category === 'veg'
-                            } else{
-                               return filteredData
-                            }
-                        })
-                        .map(data => {
-                            return (
-                                <View key={data.id}>
-                                    <View
-                                        style={{
-                                            width: '100%',
-                                            height: 160,
-                                        }}>
-                                        <Image
-                                            source={data.menuImage}
-                                            resizeMode="cover"
-                                            style={styles.menuDataImg}
-                                        />
-                                        <Text style={styles.menuText}>
-                                            {data.menuName}
-                                        </Text>
-                                    </View>
-                                    <View style={styles.itemsContainer}>
-                                        {data.menuData?.map(item => {
-                                            return (
-                                                <View key={item.id}>
-                                                    <Text style={styles.itemDescription}>
-                                                        {item.itemDescp}
-                                                    </Text>
-                                                    <View
-                                                        style={{
-                                                            marginTop: 50,
-                                                        }}>
-                                                        {item.itemData && item.itemData
-                                                            .filter((items, index) => index < itemsToShow)
-                                                            .map(items => (
-                                                                <Items
-                                                                    items={items}
-                                                                    key={items.id}
-                                                                    data={data}
-                                                                    addItemToCart={addItemToCart}
-                                                                />
-                                                            )
-                                                            )}
-                                                    </View>
-                                                    {item.itemData.length > 5 &&
-                                                        itemsToShow <= item.itemData.length ? (
-                                                        <View style={styles.seeMoreBtn}>
-                                                            <TouchableWithoutFeedback
-                                                                // onPress={() => showMoreFun(item)}
-                                                                style={[styles.seeMoreBtn, { height: 0 }]}>
-                                                                <Text style={{ textAlign: 'center', }}>
-                                                                    see More
-                                                                </Text>
-                                                            </TouchableWithoutFeedback>
+                            filter(filteredData => {
+                                if (vegOnly) {
+                                    return filteredData.category === 'veg'
+                                } else {
+                                    return filteredData
+                                }
+                            })
+                            .map(data => {
+                                return (
+                                    <View key={data.id}>
+                                        <View
+                                            style={{
+                                                width: '100%',
+                                                height: 160,
+                                            }}>
+                                            <Image
+                                                source={data.menuImage}
+                                                resizeMode="cover"
+                                                style={styles.menuDataImg}
+                                            />
+                                            <Text style={styles.menuText}>
+                                                {data.menuName}
+                                            </Text>
+                                        </View>
+                                        <View style={styles.itemsContainer}>
+                                            {data.menuData?.map(item => {
+                                                return (
+                                                    <View key={item.id}>
+                                                        <Text style={styles.itemDescription}>
+                                                            {item.itemDescp}
+                                                        </Text>
+                                                        <View
+                                                            style={{
+                                                                marginTop: 50,
+                                                            }}>
+                                                            {item.itemData && item.itemData
+                                                                .filter((items, index) => index < itemsToShow)
+                                                                .map(items => (
+                                                                    <Items
+                                                                        items={items}
+                                                                        key={items.id}
+                                                                        data={data}
+                                                                        addItemToCart={addItemToCart}
+                                                                    />
+                                                                )
+                                                                )}
                                                         </View>
-                                                    ) : null}
-                                                </View>
-                                            );
-                                        })}
+                                                        {item.itemData.length > 5 &&
+                                                            itemsToShow <= item.itemData.length ? (
+                                                            <View style={styles.seeMoreBtn}>
+                                                                <TouchableWithoutFeedback
+                                                                    // onPress={() => showMoreFun(item)}
+                                                                    style={[styles.seeMoreBtn, { height: 0 }]}>
+                                                                    <Text style={{ textAlign: 'center', }}>
+                                                                        see More
+                                                                    </Text>
+                                                                </TouchableWithoutFeedback>
+                                                            </View>
+                                                        ) : null}
+                                                    </View>
+                                                );
+                                            })}
+                                        </View>
                                     </View>
-                                </View>
-                            )
-                        })
+                                )
+                            })
                         }
                     </View>
                 </View>

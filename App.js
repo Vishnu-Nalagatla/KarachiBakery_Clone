@@ -19,7 +19,7 @@ function App() {
       {/* <VegOnly/> */}
       {/* <CurrentLocationContainer/> */}
       {/* <PlpOffers></PlpOffers> */}
-      <LoginPopUp></LoginPopUp>
+      {/* <LoginPopUp></LoginPopUp> */}
       {/* <GetStarted></GetStarted> */}
     </>
   );

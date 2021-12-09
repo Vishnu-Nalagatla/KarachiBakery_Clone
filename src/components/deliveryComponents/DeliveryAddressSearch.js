@@ -3,7 +3,7 @@ import { Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import { Text, View } from 'react-native'
 import GlobalStyles from '../../utils/GlobalStyles';
 
-const DeliveryAddressSearch = () => {
+const DeliveryAddressSearch = ({navigation}) => {
 
     const [addressText, setAddressText] = useState('');
     return (
@@ -29,7 +29,9 @@ const DeliveryAddressSearch = () => {
                 </View>
                 {
                     addressText.length == 0 &&
-                    <TouchableOpacity style={[styles.addressCurrentLocation, GlobalStyles.flexDirection]}>
+                    <TouchableOpacity style={[styles.addressCurrentLocation, GlobalStyles.flexDirection]}
+                    onPress={() => navigation.navigate('map')}
+                    >
                         <View style={[styles.currentLocationImgView]} >
                             <Image style={styles.currentLocationImg} source={require('../../assets/PickUP/current-location.png')} />
                         </View>
