@@ -9,7 +9,7 @@ const CustomButton = (props) => {
     return (
         <Pressable
             onPress={props.onPress}
-            hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
+            hitSlop={{ top: 6, bottom: 6, right: 6, left: 6 }}
             android_ripple={{ color: '#00000050' }}
             style={({ pressed }) => [
                 { backgroundColor: pressed ? '#dddddd' : props.color },

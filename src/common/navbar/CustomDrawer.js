@@ -14,10 +14,13 @@ const CustomDrawer = (props) => {
             >
                 <ImageBackground
                  source={require('../../assets/NavbarImages/drawerBackground.jpeg')}
+                // source={{uri : 'http://www.dev.hprac.com/media/catalog/product/k/a/kaju-katli-500g-front_1.jpg'}}
+
                 style={{padding: 20 , marginTop: -4}}
                  >
                 <Image
                  source={require('../../assets/NavbarImages/user-profile.jpg')}
+                // source={{uri : 'http://static.hugedomains.com/images/logo_huge_domains.gif'}}
                 style={{height: 80, width: 80 , borderRadius: 40 , marginBottom: 10}}
                 />
                 <Text style={styles.usernameText}>Vishnu Nalagatla</Text>

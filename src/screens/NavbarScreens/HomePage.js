@@ -1,4 +1,4 @@
-import { Link } from '@react-navigation/native';
+import { Link, NavigationContainer } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
   Dimensions,
@@ -12,23 +12,21 @@ import {
 } from 'react-native';
 import StoreSelection from '../../components/StoreSelection';
 // import StoreSelection from '../../components/StoreSelection';
+import { createStackNavigator } from '@react-navigation/stack';
 import CustomButton from '../../utils/CustomButton';
 import GlobalStyles from '../../utils/GlobalStyles';
 import Test from '../../utils/Test';
+import StoreSelection from '../../components/deliveryComponents/StoreSelection';
+
 
 const HomePage = ({ navigation }) => {
   const [deliveryOptions, setDeliveryOptions] = useState(true);
   const [storeSelectionModal, setStoreSelectionModal] = useState(false);
-console.log(storeSelectionModal, 'setStoreSelectionModal');
-  const shopOnlineHandler = () => { };
+  console.log(storeSelectionModal, 'setStoreSelectionModal');
+
   return (
     <>
-      {/* <View style={[styles.buttonOnline, GlobalStyles.flex]}>
-        <CustomButton
-          title="ShopOnline"
-          color="#1eb900"
-          onPress={() => shopOnlineHandler()}></CustomButton>
-      </View> */}
+
       <View
         style={{
           flexDirection: 'row',
@@ -84,10 +82,13 @@ console.log(storeSelectionModal, 'setStoreSelectionModal');
       >
 
         <View style={styles.selectLocation}>
-          <TouchableOpacity>
+          <TouchableOpacity
+          onPress={() => navigation.push('DeliveryAddressStack')}>
             <Text style={styles.yourLocationText}>Your location</Text>
+            <View style={[GlobalStyles.flexDirection, styles.yourLocation]}>
             <Image style={styles.locationImage} source={require('../../assets/Location/location-icon-grey.jpg')} />
-            {/* <Text style={styles.mapLocationText}></Text> */}
+            <Text style={styles.mapLocationText}>Hitech City Main Road, Gachibowli, Hyderabad</Text>
+            </View>
             <Text style={styles.changeLocation}>Change Location ?</Text>
           </TouchableOpacity>
         </View>
@@ -97,23 +98,12 @@ console.log(storeSelectionModal, 'setStoreSelectionModal');
         <View style={styles.orderNowButton}>
           <TouchableOpacity
             onPress={() =>
-             
               setStoreSelectionModal(true)
             }
-            style={{
-              backgroundColor: '#CD427D',
-              borderRadius: 12,
-              paddingVertical: 15
-            }}
+            style={styles.orderNowTouchable}
           >
             <Text
-              style={{
-                textAlign: 'center',
-                color: '#fff',
-                fontSize: 18.3,
-                fontWeight: 'bold',
-                textTransform: 'uppercase',
-              }}
+              style={styles.orderNowText}
             >Order Now</Text>
           </TouchableOpacity>
         </View>
@@ -135,7 +125,6 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     top: 20,
   },
-  buttonOnline: {},
   pickUpPageImage: {
     width: Dimensions.get('window').width,
     height: 250,
@@ -195,6 +184,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontFamily: 'Roboto,sans-serif',
   },
+  yourLocation : {
+    justifyContent: 'space-around',
+  },
   changeLocation: {
     fontSize: 13,
     fontWeight: '500',
@@ -202,11 +194,23 @@ const styles = StyleSheet.create({
     marginTop: 16
   },
   orderNowButton: {
-    // marginTop: 65,
+    marginTop: 65,
     padding: 10,
     elevation: 2,
     shadowOpacity: 0.2,
     paddingTop: 15,
+  },
+  orderNowText :{
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 18.3,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+  },
+  orderNowTouchable: {
+    backgroundColor: '#CD427D',
+    borderRadius: 12,
+    paddingVertical: 15
   }
 });
 

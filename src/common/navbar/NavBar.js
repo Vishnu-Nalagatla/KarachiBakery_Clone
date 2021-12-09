@@ -23,7 +23,6 @@ import ContactUs from '../../screens/NavbarScreens/ContactUs';
 import CupCakes from '../../screens/NavbarScreens/CupCakes';
 import Enquiry from '../../screens/NavbarScreens/Enquiry';
 import GiftPacks from '../../screens/NavbarScreens/GiftPacks';
-import HomePage from '../../screens/NavbarScreens/HomePage';
 import Macaron from '../../screens/NavbarScreens/Macaron';
 import Mithai from '../../screens/NavbarScreens/Mithai';
 import Pastries from '../../screens/NavbarScreens/Pastries';
@@ -38,6 +37,8 @@ import CustomDrawer from './CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import NewArrivals from '../../screens/NewArrivals';
 import HomeScreenContainer from '../../screens/NavbarScreens/HomeScreeen/HomeScreenContainer';
+import DeliveryStackNavigation from '../../components/deliveryComponents/DeliveryStackNavigation';
+
 const NavBar = () => {
   const Drawer = createDrawerNavigator();
   return (
@@ -74,7 +75,7 @@ const NavBar = () => {
               fontSize: 15,
               fontFamily: 'Roboto-Medium',
             },
-            drawerActiveBackgroundColor: '#aa18ea', // This attribute is to remove the background color Screen Name
+            drawerActiveBackgroundColor: '#aa18ea', // This attribute is to add the background color to Screen Name
             drawerActiveTintColor: '#fff',
             drawerInactiveTintColor: '#333',
 
@@ -96,6 +97,11 @@ const NavBar = () => {
           />
           <Drawer.Screen name="AboutUs" component={AboutUs} />
           <Drawer.Screen name="NewArrivals" component={NewArrivals} />
+         
+          <Drawer.Screen name="Delivery" component={DeliveryStackNavigation} options={{
+            headerTitle: 'Karachi Bakery' , swipeEnabled: false, headerShown: false
+          }}
+           />
           <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />
           <Drawer.Screen name="Careers" component={Careers} />

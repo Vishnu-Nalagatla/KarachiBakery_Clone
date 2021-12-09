@@ -6,6 +6,9 @@ import MapsMoving from './src/screens/maps/GoogleMaps';
 import NavigationContainers from './src/screens/NavigationContainers';
 import SearchFilter from './src/screens/productListing/SearchFilter';
 import VegOnly from './src/screens/productListing/VegOnly';
+import LoginPopUp from './src/components/LoginPopUp';
+import PlpOffers from './src/components/PlpOffers';
+import GetStarted from './src/components/GetStarted';
 function App() {
   return (
     <>
@@ -15,6 +18,9 @@ function App() {
       {/* <SearchFilter/> */}
       {/* <VegOnly/> */}
       {/* <CurrentLocationContainer/> */}
+      {/* <PlpOffers></PlpOffers> */}
+      <LoginPopUp></LoginPopUp>
+      {/* <GetStarted></GetStarted> */}
     </>
   );
 } 

@@ -641,3 +641,121 @@ export const productListPageData = [
         ]
     }
 ]
+
+
+export const StoreData = [
+    {
+        streetName: 'Karachi Bakery & Cafe Hitech City',
+        storeAddress: 'metro station, Shop no.2 & 3, Nearby IKEA 1-140/2 & 3, Hitech City Road Opp. Mindspace, Raidurgam, Hyderabad, Telangana 500081',
+        storeDistance: {
+            distance: '2.3',
+            distanceType: 'Kms'
+        },
+        location: {
+            latitude: '17.398155',
+            longitude: '78.445472',
+        },
+    },
+    {
+        streetName: 'Karachi Bakery - Satyanarayana Arcade',
+        storeAddress: 'Satyanarayana Arcade Plot Number 138 And, 139, Gachibowli Rd, Vinayak Nagar, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032',
+        storeDistance: {
+            distance: '3.4',
+            distanceType: 'Kms'
+        },
+        location: {
+            latitude: '17.446015',
+            longitude: '78.357754',
+        },
+    }, {
+        streetName: 'Karachi Bakery - Madhapur',
+        storeAddress: 'C.V. Towers, Ground Floor, SBR, Hitech City Rd, opp. Pizza Hut, Madhapur, Telangana 500081',
+        storeDistance: {
+            distance: '4.0',
+            distanceType: 'Kms'
+        },
+        location: {
+            latitude: '	17.45406',
+            longitude: '78.39747',
+        },
+    }, {
+        streetName: 'Karachi Bakery - Shaikpet',
+        storeAddress: ' 8-1-301, 302/303, Shaikpet Rd, Sabza Colony, AP Animal Husbandry Employees Colony, Toli Chowki, Hyderabad, Telangana 500008',
+        storeDistance: {
+            distance: '5.1',
+            distanceType: 'Kms'
+        },
+        location: {
+            latitude: '	17.40507',
+            longitude: '78.40548',
+        },
+    }, {
+        streetName: 'Karachi Bakery - Kondapur',
+        storeAddress: 'G-2, Ground Floor, Prime Legend Apartment, Kondapur, Serilingampalle (M), Telangana 500084',
+        storeDistance: {
+            distance: '7.4',
+            distanceType: 'Kms'
+        },
+        location: {
+            latitude: '	17.398155',
+            longitude: '78.445472',
+        },
+    },
+];
+
+
+export const OffersData = [
+    {
+        companyName: 'lazyPay',
+        companyImage: require('../Offers/lazyPay.png'),
+        companyOffered: 'Get upto Rs.1000 Cashback'
+    },
+    {
+        companyName: 'paytm',
+        companyImage: require('../Offers/paytmOffer.png'),
+        companyOffered: 'Flat 1500 cashback points'
+    },
+    {
+        companyName: 'mobikwik',
+        companyImage: require('../Offers/mobikwik.png'),
+        companyOffered: 'Get up to Rs.500 cashback'
+    },
+    {
+        companyName: 'slicePay',
+        companyImage: require('../Offers/sliceOffer.png'),
+        companyOffered: '40% Instant Off'
+    },
+    {
+        companyName: 'amazonPay',
+        companyImage: require('../Offers/amazonPay.png'),
+        companyOffered: 'Cashback upto Rs 1000'
+    },
+    {
+        companyName: 'bob',
+        companyImage: require('../Offers/bob.png'),
+        companyOffered: 'Get 10% instant discount'
+    },
+    {
+        companyName: 'credOffer',
+        companyImage: require('../Offers/credOffer.png'),
+        companyOffered: 'Get 10% off'
+    },
+    {
+        companyName: 'indusIndBank',
+        companyImage: require('../Offers/indusIndBank.png'),
+        companyOffered: '15% Instant Discount'
+    },
+    {
+        companyName: 'airtelPay',
+        companyImage: require('../Offers/airtelPay.png'),
+        companyOffered: 'Flat 15% cashback up to Rs 250/-'
+    },
+    {
+        companyName: 'payzapp',
+        companyImage: require('../Offers/payzapp.png'),
+        companyOffered: 'Get 10% CashBack'
+    },
+
+
+];
+

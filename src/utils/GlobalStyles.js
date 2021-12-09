@@ -19,5 +19,9 @@ export default StyleSheet.create({
     flexJust : {
         flex: 1,
         justifyContent: 'center',
+    },
+    flexDirection : {
+        flexDirection: 'row',
+        alignItems: 'center',
     }
 })
