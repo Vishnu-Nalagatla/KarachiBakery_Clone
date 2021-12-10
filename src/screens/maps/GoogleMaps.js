@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, Image, StyleSheet, Modal, TextInput, TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-function MapsMoving() {
+import StoreSelection from '../../components/deliveryComponents/StoreSelection';
+function CurrentLocationMap({ navigation }) {
     const [region, setRegion] = React.useState({
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
         latitude: 17.43660599395029,
         longitude: 78.36690293624997,
     });
-    const [modalShow,setModalShow] = React.useState(true);
+    const [modalShow, setModalShow] = React.useState(true);
+    const [storeSelectionModal, setStoreSelectionModal] = useState(false);
     // const onRegionChangeValue = regionValue => {
     //     console.warn(JSON.stringify(regionValue))
     //     setRegion(regionValue)
@@ -54,33 +56,40 @@ function MapsMoving() {
                     name="arrow-left"
                     color="#000"
                     size={20}
+                    onPress={() => navigation.goBack()}
                 />
             </View>
             <View style={[styles.expandIconContainer, styles.shadowBorder]}>
                 <FontAwesome5
-                    name={modalShow?'expand':'chevron-down'}
+                    name={modalShow ? 'expand' : 'chevron-down'}
                     color="#000"
                     size={25}
-                    onPress = {()=>setModalShow(!modalShow)}
+                    onPress={() => setModalShow(!modalShow)}
                 />
             </View>
-          {
-              modalShow&&
-                <View style = {[styles.modalContainer,styles.shadowBorder]}>
-                    <Text style = {styles.deliveryLocationText}>Set delivery location</Text>
-                    <View style = {styles.inputTextContainer}>
+            {
+                modalShow &&
+                <View style={[styles.modalContainer, styles.shadowBorder]}>
+                    <Text style={styles.deliveryLocationText}>Set delivery location</Text>
+                    <View style={styles.inputTextContainer}>
                         <TextInput
-                        placeholder = "Gachibowli,Hyderabad"
+                            placeholder="Gachibowli,Hyderabad"
                         />
                         <TouchableWithoutFeedback>
-                            <Text style = {styles.locationChangeTxt}>Change</Text>
+                            <Text style={styles.locationChangeTxt}>Change</Text>
                         </TouchableWithoutFeedback>
                     </View>
-                    <TouchableOpacity style={styles.btnContainer} onPress = {()=>alert('vusdbvyu')}>
-                        <Text style = {styles.btnText}>Confirm Location & Proceed</Text>
+                    <TouchableOpacity style={styles.btnContainer} onPress={() => setStoreSelectionModal(true)}>
+                        <Text style={styles.btnText}>Confirm Location & Proceed</Text>
                     </TouchableOpacity>
+                    {storeSelectionModal &&
+                        <StoreSelection
+                            setStoreSelectionModal={setStoreSelectionModal}
+                            storeSelectionModal={storeSelectionModal}>
+                        </StoreSelection>
+                    }
                 </View>
-}
+            }
         </View>
     );
 };
@@ -112,45 +121,45 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         elevation: 10,
     },
-    modalContainer : {
-        position:'absolute',
-        bottom:0,
-        backgroundColor:'#fff',
-        width:'100%',
-        padding:20,
-        borderTopEndRadius:20,
-        borderTopLeftRadius:20,
+    modalContainer: {
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: '#fff',
+        width: '100%',
+        padding: 20,
+        borderTopEndRadius: 20,
+        borderTopLeftRadius: 20,
     },
-    deliveryLocationText : {
-        color:'#000',
-        opacity:.8,
-        fontSize:21,
-        fontWeight:'bold'
+    deliveryLocationText: {
+        color: '#000',
+        opacity: .8,
+        fontSize: 21,
+        fontWeight: 'bold'
     },
-    inputTextContainer : {
-        flexDirection:'row',
-        justifyContent:'space-between',
-        alignItems:'center',
-        padding:6,
-        backgroundColor:'#f6f6f6',
-        borderRadius:8,
-        marginVertical:15
+    inputTextContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 6,
+        backgroundColor: '#f6f6f6',
+        borderRadius: 8,
+        marginVertical: 15
     },
-    locationChangeTxt : {
-        color:'#CD427D',
-        textTransform:'uppercase',
-        fontWeight:'bold'
+    locationChangeTxt: {
+        color: '#CD427D',
+        textTransform: 'uppercase',
+        fontWeight: 'bold'
     },
-    btnContainer : {
-        backgroundColor:'#Cd427D',
-        paddingVertical:15,
-        alignItems:'center',
-        borderRadius:7.5
+    btnContainer: {
+        backgroundColor: '#Cd427D',
+        paddingVertical: 15,
+        alignItems: 'center',
+        borderRadius: 7.5
     },
-    btnText : {
-        color:'#fff',
-        fontSize:18,
-        fontWeight:'700'
+    btnText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '700'
     }
 });
-export default MapsMoving
+export default CurrentLocationMap

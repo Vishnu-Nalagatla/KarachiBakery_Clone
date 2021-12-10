@@ -18,14 +18,15 @@ import MenuList from './MenuList';
 import Items from './Items';
 import VegOnly from './VegOnly';
 import MenuListContainer from './MenuListContainer';
-const ItemsList = () => {
+import PlpOffers from '../../components/PlpOffers';
+const ItemsList = ({navigation}) => {
     let listViewRef;
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
     const [itemsToShow, setItemsToShow] = React.useState(5);
     const [cartItems, setCartItems] = React.useState([]);
     const [count, setCount] = React.useState(0);
-    const [vegOnly,setVegOnly] = React.useState(false);
+    const [vegOnly, setVegOnly] = React.useState(false);
     const addItemToCart = (product) => {
         setCount(count + 1);
         let itemsInCart = cartItems.slice();
@@ -44,9 +45,9 @@ const ItemsList = () => {
     return (
         <>
             <ScrollView
-            ref = {(ref) => {
-                listViewRef = ref;
-            }}
+                ref={(ref) => {
+                    listViewRef = ref;
+                }}
             >
                 <ProductListingHeader
                     modalOpen={headerModal}
@@ -55,8 +56,13 @@ const ItemsList = () => {
                     backgroundColor: (modalOpen || headerModal) ? '#000' : null,
                     opacity: (modalOpen || headerModal) ? .5 : null,
                 }}>
+                    <PlpOffers></PlpOffers>
                     <View>
-                        <VegOnly vegOnly = {vegOnly} setVegOnly = {setVegOnly}/>
+                        <VegOnly
+                            vegOnly={vegOnly}
+                            setVegOnly={setVegOnly}
+                            navigation={navigation}
+                        />
                     </View>
                     <View style={styles.headerContainer}>
                         <Text style={styles.exploreMenuTxt}>
@@ -121,11 +127,10 @@ const ItemsList = () => {
                                                 <MenuListContainer key={item.id} data = {data} item={item}/>
                                         ))}
                                     </View>
-                                </View>
-                            )
-                        })
-                        }
                     </View>
+                                )
+                            })
+                        }
                 </View>
             </ScrollView>
             <View>

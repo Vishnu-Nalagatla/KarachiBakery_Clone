@@ -10,13 +10,10 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import StoreSelection from '../../components/StoreSelection';
-// import StoreSelection from '../../components/StoreSelection';
 import { createStackNavigator } from '@react-navigation/stack';
-import CustomButton from '../../utils/CustomButton';
-import GlobalStyles from '../../utils/GlobalStyles';
-import Test from '../../utils/Test';
-import StoreSelection from '../../components/deliveryComponents/StoreSelection';
+import CustomButton from '../../src/utils/CustomButton';
+import GlobalStyles from '../../src/utils/GlobalStyles';
+import StoreSelection from '../../src/components/deliveryComponents/StoreSelection';
 
 
 const HomePage = ({ navigation }) => {
@@ -42,7 +39,7 @@ const HomePage = ({ navigation }) => {
         }}
       >
         <Image
-          source={require('../../assets/karachi-bakery-logo.png')}
+          // source={require('../../assets/karachi-bakery-logo.png')}
           resizeMode="contain"
           style={{
             width: 70,
@@ -60,7 +57,9 @@ const HomePage = ({ navigation }) => {
       <Image
         style={[styles.pickUpPageImage]}
         resizeMode="cover"
-        source={require('../../assets/PickUP/DeliveryPromotion.jpg')}></Image>
+        // source={require('../../assets/PickUP/DeliveryPromotion.jpg')}
+        >
+        </Image>
       <View style={[styles.DeliveryOptionsView]}>
         <TouchableOpacity
           onPress={() => setDeliveryOptions(true)}
@@ -86,7 +85,9 @@ const HomePage = ({ navigation }) => {
           onPress={() => navigation.push('DeliveryAddressStack')}>
             <Text style={styles.yourLocationText}>Your location</Text>
             <View style={[GlobalStyles.flexDirection, styles.yourLocation]}>
-            <Image style={styles.locationImage} source={require('../../assets/Location/location-icon-grey.jpg')} />
+            <Image style={styles.locationImage}
+            //  source={require('../../assets/Location/location-icon-grey.jpg')}
+              />
             <Text style={styles.mapLocationText}>Hitech City Main Road, Gachibowli, Hyderabad</Text>
             </View>
             <Text style={styles.changeLocation}>Change Location ?</Text>
@@ -108,10 +109,13 @@ const HomePage = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View>
+          { storeSelectionModal &&
           <StoreSelection
-            setStoreSelectionModal={setStoreSelectionModal}
-            storeSelectionModal={storeSelectionModal}>
+            // setStoreSelectionModal={setStoreSelectionModal}
+            // storeSelectionModal={storeSelectionModal}
+            >
           </StoreSelection>
+}
         </View>
       </View>
     </>

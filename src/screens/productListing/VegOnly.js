@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text,TouchableOpacity, Alert, StyleSheet } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-const VegOnly = ({vegOnly,setVegOnly}) => {
+const VegOnly = ({vegOnly,setVegOnly, navigation}) => {
     return (
         <View style= {styles.actionContainer}>
             <View style={{flexDirection:'row'}}>
@@ -26,6 +26,7 @@ const VegOnly = ({vegOnly,setVegOnly}) => {
         name= "search"
         color = "#CD427D"
         size = {20}
+        onPress = {() => navigation.push('SearchFilter') }
         />
         </View>
     );
