@@ -9,18 +9,20 @@ import VegOnly from './src/screens/productListing/VegOnly';
 import LoginPopUp from './src/components/LoginPopUp';
 import PlpOffers from './src/components/PlpOffers';
 import GetStarted from './src/components/GetStarted';
+import { ItemsList } from './src/screens/productListing';
 function App() {
   return (
     <>
-      <NavigationContainers/>
+      {/* <NavigationContainers/> */}
       {/* <MapsMoving/> */}
       {/* <FoodDeliveryMap/> */}
       {/* <SearchFilter/> */}
       {/* <VegOnly/> */}
       {/* <CurrentLocationContainer/> */}
       {/* <PlpOffers></PlpOffers> */}
-      <LoginPopUp></LoginPopUp>
+      {/* <LoginPopUp></LoginPopUp> */}
       {/* <GetStarted></GetStarted> */}
+      <ItemsList/>
     </>
   );
 } 
