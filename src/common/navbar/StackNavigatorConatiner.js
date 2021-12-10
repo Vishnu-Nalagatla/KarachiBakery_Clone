@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomePage from '../../screens/NavbarScreens/HomePage';
 import { ItemsList } from '../../screens/productListing';
 import Cart from '../../screens/shipping/Cart';
 import DeliveryAddressSearch from '../../components/deliveryComponents/DeliveryAddressSearch';
 import CurrentLocationMap from '../../screens/maps/GoogleMaps';
 import SearchFilter from '../../screens/productListing/SearchFilter';
+import DeliverySelection from '../../components/deliveryComponents/DeliverySelection';
 const Stack = createStackNavigator();
 const StackNavigatorContainer = () => {
     return (
@@ -13,7 +13,7 @@ const StackNavigatorContainer = () => {
             screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name="delivery"
-                component={HomePage}
+                component={DeliverySelection}
             />
             <Stack.Screen
                 name="plp"

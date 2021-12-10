@@ -15,10 +15,10 @@ const ProductListingHeader = ({ modalOpen, setModalOpen }) => {
                     resizeMode="contain"
                     style={styles.karachiLogo} />
             </View>
-            <Text>Karachi Bakery</Text>
+            <Text style={styles.productListingHeading}>Karachi Bakery</Text>
             <Button
                 title={delivery ? 'Delivery' : 'Pickup'}
-                onPress={onModalOpenHandler}
+                onPress={()=>onModalOpenHandler()}
             />
             <Modal
                 visible={modalOpen}

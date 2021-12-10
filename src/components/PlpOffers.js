@@ -29,7 +29,6 @@ const PlpOffers = () => {
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={(item, index) => {
-                        console.log(item.item);
                         return (
                             <TouchableOpacity style={styles.offersContentContainer}>
                                 <View style={[styles.offersContent, GlobalStyles.flexDirection]}>

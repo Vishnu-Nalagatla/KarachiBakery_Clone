@@ -25,7 +25,7 @@ const SearchFilter = ({navigation}) => {
                     <TextInput
                         placeholder="Search items"
                         style={styles.inputText}
-                        keyboardType="numbers-and-punctuation"
+                        // keyboardType="numbers-and-punctuation"
                         keyboardAppearance="light"
                         value={searchValue}
                         onChangeText={onInputChange}

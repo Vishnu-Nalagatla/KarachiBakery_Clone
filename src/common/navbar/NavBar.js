@@ -82,7 +82,6 @@ const NavBar = () => {
           }}>
           <Drawer.Screen
             name="Home"
-            // component={HomePage}
             component={HomeScreenContainer}
 
             options={{

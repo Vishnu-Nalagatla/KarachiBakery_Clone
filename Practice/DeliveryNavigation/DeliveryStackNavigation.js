@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import DeliveryAddressSearch from '../../src/components/deliveryComponents/DeliveryAddressSearch';
-import HomePage from '../../src/screens/NavbarScreens/HomePage';
+import HomePage from './HomePage';
 
 
 
