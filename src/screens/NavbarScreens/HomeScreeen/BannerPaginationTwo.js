@@ -85,7 +85,7 @@
 
 import { useNavigation } from "@react-navigation/core";
 import * as React from "react";
-import { StyleSheet, View, ScrollView, Dimensions, Image,Text, ImageBackground, TouchableOpacity } from "react-native";
+import { StyleSheet, View, ScrollView, Dimensions, Image, Text, ImageBackground, TouchableOpacity } from "react-native";
 import { secondBannerData } from "../../../assets/AppData/AppData";
 import { withNavigation } from 'react-navigation';
 import { Link } from "@react-navigation/native";
@@ -135,58 +135,59 @@ class BannerPaginationTwo extends React.Component {
     const { images } = this.props;
     const { selectedIndex } = this.state;
     return (
-      <TouchableOpacity 
-      style={{ 
-        height:500, 
-        width: "100%",
-        borderWidth:1,
-        backgroundColor:'#1a1a1a'
-        }}
+      <>
+        <TouchableOpacity
+          style={{
+            height: 500,
+            width: "100%",
+            borderWidth: 1,
+            backgroundColor: '#1a1a1a'
+          }}
         // onPress = {()=>this.props.navigation.navigate('NEW ARRIVALS')}
         >
-        <ScrollView
-          horizontal
-          pagingEnabled
-          onMomentumScrollEnd={this.setSelectedIndex}
-          ref={this.scrollRef}
-        >
-          {secondBannerData?.map(image => (
-            <View  key={image}>
-            <ImageBackground
-              style={styles.backgroundImage}
-              source={image}
-            >
-              </ImageBackground>
-            </View>
-          ))}
-        </ScrollView>
-         <Text
-            style = {{
-              position:'absolute',
-              top:'50%',
-              backgroundColor:'#EC286F',
-              paddingVertical:8,
-              paddingHorizontal : 12,
-              color:'#ffffff',
-              fontSize:17,
-              borderTopRightRadius:40,
-              borderBottomRightRadius:40
+          <ScrollView
+            horizontal
+            pagingEnabled
+            onMomentumScrollEnd={this.setSelectedIndex}
+            ref={this.scrollRef}
+          >
+            {secondBannerData?.map(image => (
+              <View key={image}>
+                <ImageBackground
+                  style={styles.backgroundImage}
+                  source={image}>
+                </ImageBackground>
+              </View>
+            ))}
+          </ScrollView>
+          <Text
+            style={{
+              position: 'absolute',
+              top: '50%',
+              backgroundColor: '#EC286F',
+              paddingVertical: 8,
+              paddingHorizontal: 12,
+              color: '#ffffff',
+              fontSize: 17,
+              borderTopRightRadius: 40,
+              borderBottomRightRadius: 40
             }}
-            > NEW ARRIVALS</Text>
-        <View style={styles.circleDiv}>
-          {secondBannerData?.map((image, i) => (
-            <View
-              style={[
-                styles.whiteCircle,
-                // { opacity: i === selectedIndex ? 0.5 : 1 },
-                {backgroundColor : i===selectedIndex?'#EC286F':'#fff'}
-              ]}
-              key={image}
-              active={i === selectedIndex}
-            />
-          ))}
-        </View>
-      </TouchableOpacity>
+          > NEW ARRIVALS</Text>
+          <View style={styles.circleDiv}>
+            {secondBannerData?.map((image, i) => (
+              <View
+                style={[
+                  styles.whiteCircle,
+                  // { opacity: i === selectedIndex ? 0.5 : 1 },
+                  { backgroundColor: i === selectedIndex ? '#EC286F' : '#fff' }
+                ]}
+                key={image}
+                active={i === selectedIndex}
+              />
+            ))}
+          </View>
+        </TouchableOpacity>
+      </>
     );
   }
 }
@@ -204,13 +205,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     width: "100%",
-    paddingRight:50,
+    paddingRight: 50,
     height: 10
   },
   whiteCircle: {
     width: 10,
     height: 10,
-    borderRadius:50,
+    borderRadius: 50,
     margin: 5,
     // backgroundColor: "#fff"
   }

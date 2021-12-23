@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Modal, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import { productListPageData } from '../../assets/AppData/AppData';
 
 const MenuList = ({ modalOpen, setModalOpen }) => {
@@ -8,6 +9,7 @@ const MenuList = ({ modalOpen, setModalOpen }) => {
             <TouchableOpacity
                 onPress={() => setModalOpen(!modalOpen)}
                 style={styles.menuModalContainer}>
+                <FontAwesome5Icon size={15} color='white' name="bars" />
                 <Text style={styles.menuText}>
                     Menu
                 </Text>
@@ -53,14 +55,20 @@ const styles = StyleSheet.create({
         position: "absolute",
         bottom: 40,
         right: 10,
-        height: 60,
-        width: 60,
+        height: 65,
+        width: 65,
         borderRadius: 50,
-        borderWidth: 5,
+        borderWidth: 3,
         borderColor: '#fff',
         backgroundColor: '#CD427D',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    menuImg: {
+        width: 23,
+        height: 23,
+        // borderRadius:70
+        backgroundColor: 'transparent'
     },
     menuText: {
         color: '#fff',

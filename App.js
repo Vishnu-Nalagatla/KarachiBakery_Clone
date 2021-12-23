@@ -8,11 +8,18 @@ import SearchFilter from './src/screens/productListing/SearchFilter';
 import VegOnly from './src/screens/productListing/VegOnly';
 import LoginPopUp from './src/components/LoginPopUp';
 import PlpOffers from './src/components/PlpOffers';
-import GetStarted from './src/components/GetStarted';
+import Test from './src/utils/Test';
+import DeliverySelection from './src/components/deliveryComponents/DeliverySelection';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+import Responsive from './src/utils/Test'
+import Login from './src/utils/Test';
+import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocationPlp';
 function App() {
   return (
     <>
-      <NavigationContainers/>
+    <Provider store={store}>
+      <NavigationContainers />
       {/* <MapsMoving/> */}
       {/* <FoodDeliveryMap/> */}
       {/* <SearchFilter/> */}
@@ -20,9 +27,15 @@ function App() {
       {/* <CurrentLocationContainer/> */}
       {/* <PlpOffers></PlpOffers> */}
       {/* <LoginPopUp></LoginPopUp> */}
-      {/* <GetStarted></GetStarted> */}
+      {/* <Test></Test> */}
+      {/* <DeliverySelection></DeliverySelection> */}
+      {/* <Responsive></Responsive> */}
+      {/* <Login/> */}
+      {/* <CurrentLocationPlp/> */}
+      </Provider>
     </>
   );
+  
 } 
 export default App;
 

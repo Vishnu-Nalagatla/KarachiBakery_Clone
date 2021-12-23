@@ -35,9 +35,9 @@ import SugarFree from '../../screens/NavbarScreens/SugarFree';
 import VeganBiscuits from '../../screens/NavbarScreens/VeganBiscuits';
 import CustomDrawer from './CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import NewArrivals from '../../screens/NewArrivals';
 import HomeScreenContainer from '../../screens/NavbarScreens/HomeScreeen/HomeScreenContainer';
 import DeliveryStackNavigation from '../../../Practice/DeliveryNavigation/DeliveryStackNavigation';
+import NewArrivals from '../../screens/NavbarScreens/NewArrivals';
 
 const NavBar = () => {
   const Drawer = createDrawerNavigator();

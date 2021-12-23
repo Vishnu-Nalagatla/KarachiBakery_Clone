@@ -18,7 +18,9 @@ import MenuList from './MenuList';
 import Items from './Items';
 import VegOnly from './VegOnly';
 import PlpOffers from '../../components/PlpOffers';
-const ItemsList = ({navigation}) => {
+import GlobalStyles from '../../utils/GlobalStyles';
+import CurrentLocationPlp from '../../components/deliveryComponents/CurrentLocationPlp';
+const ItemsList = ({ navigation }) => {
     let listViewRef;
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
@@ -48,9 +50,10 @@ const ItemsList = ({navigation}) => {
                     listViewRef = ref;
                 }}
             >
+                <CurrentLocationPlp navigation={navigation} />
                 <ProductListingHeader
-                    modalOpen={headerModal}
-                    setModalOpen={setHeaderModal} />
+                    headerModal={headerModal}
+                    setHeaderModal={setHeaderModal} />
                 <View style={{
                     backgroundColor: (modalOpen || headerModal) ? '#000' : null,
                     opacity: (modalOpen || headerModal) ? .5 : null,
@@ -64,9 +67,12 @@ const ItemsList = ({navigation}) => {
                         />
                     </View>
                     <View style={styles.headerContainer}>
-                        <Text style={styles.exploreMenuTxt}>
-                            Explore Menu
-                        </Text>
+                        <View style={[styles.exploreMenu, GlobalStyles.flexDirection]}>
+                            <Image style={[styles.exploreMenuImg]} source={require('../../assets/itemsList/menu-icon.png')} />
+                            <Text style={styles.exploreMenuTxt}>
+                                Explore Menu
+                            </Text>
+                        </View>
                         <View style={styles.productsContainer}>
                             {productListPageData?.map(data => (
                                 <TouchableOpacity
@@ -227,12 +233,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         padding: 10,
     },
+    exploreMenu: {
+        paddingTop: 20,
+    },
+    exploreMenuImg: {
+        backgroundColor: '#cd427d',
+        width: 22,
+        height: 22,
+    },
     exploreMenuTxt: {
         fontSize: 18,
         color: '#33373D',
         fontWeight: 'bold',
         opacity: 0.8,
-        paddingTop: 30,
+        paddingLeft: 5,
     },
     productsContainer: {
         flexDirection: 'row',
