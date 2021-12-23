@@ -31,7 +31,7 @@ import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocat
 function App() {
   return (
     <>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
       <NavigationContainers/>
       {/* <MapsMoving/> */}
       {/* <FoodDeliveryMap/> */}
@@ -58,7 +58,7 @@ function App() {
       {/* <Responsive></Responsive> */}
       {/* <Login/> */}
       {/* <CurrentLocationPlp/> */}
-      </Provider>
+      {/* </Provider> */}
     </>
   );
   
