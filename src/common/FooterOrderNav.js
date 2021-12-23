@@ -16,19 +16,12 @@ const FooterOrderNav = ({ navigation }) => {
                 <Text
                     style={{
                         color: '#fff',
-                        fontSize: 22,
+                        fontSize: 23,
+                        // textAlign:'center',
                         lineHeight: 30,
                         scaleY:1.4,
                     }}
                 >Karachi Bakery, It's Refreshing, It's Ravishing & It's Rollicking...
-                    {/* <TouchableOpacity
-                style = {{
-                    backgroundColor:'#fff',
-                    borderRadius:6,
-                    // paddingHorizontal:16,
-                    // paddingVertical:10,
-                }}
-                > */}
                 </Text>
                 <Link 
                 to={{screen:'stackNav'}}
@@ -52,7 +45,6 @@ const FooterOrderNav = ({ navigation }) => {
                     elevation: 0.8,
                 }}
                 >Shop Online</Link>
-                    {/* </TouchableOpacity> */}
             </View>
             <View
                 style={{

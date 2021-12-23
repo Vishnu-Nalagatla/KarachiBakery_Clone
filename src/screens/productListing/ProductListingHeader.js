@@ -1,30 +1,44 @@
-import React from 'react';
-import { Button, Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 import CustomButton from '../../common/custom/CustomButton';
+import StoreSelection from '../../components/deliveryComponents/StoreSelection';
+import GlobalStyles from '../../utils/GlobalStyles';
+import Entypo from 'react-native-vector-icons/Entypo';
 
-const ProductListingHeader = ({ modalOpen, setModalOpen }) => {
-    const [delivery, setDelivery] = React.useState(true);
+const ProductListingHeader = ({ headerModal, setHeaderModal, storeTitle }) => {
+    const [delivery, setDelivery] = useState(true);
+    const [storeSelectionPlp, setStoreSelectionPlp] = useState(false);
     const onModalOpenHandler = () => {
-        setModalOpen(!modalOpen)
+        setHeaderModal(!headerModal);
     }
     return (
         <View style={styles.plpHeaderContainer}>
-            <View style={styles.logoContainer}>
-                <Image
-                    source={require('../../assets/karachi-bakery-logo.png')}
-                    resizeMode="contain"
-                    style={styles.karachiLogo} />
+            <View style={GlobalStyles.flexDirection}>
+                <View style={styles.logoContainer}>
+                    <Image
+                        style={styles.karachiLogo}
+                        resizeMode="contain"
+                        source={require('../../assets/karachi-bakery-logo.png')}
+                    />
+                </View>
+                <TouchableOpacity style={styles.plpHeaderTitle}
+                    onPress={() => setStoreSelectionPlp(true)}>
+                    <Text style={styles.productListingHeading}>Karachi Bakery</Text>
+                    <Text style={styles.selectedStore}>{storeTitle.storeTitle}
+                    <Entypo name='chevron-small-down' />
+                     </Text>
+                </TouchableOpacity>
             </View>
-            <Text style={styles.productListingHeading}>Karachi Bakery</Text>
             <Button
                 title={delivery ? 'Delivery' : 'Pickup'}
-                onPress={()=>onModalOpenHandler()}
+                onPress={() => onModalOpenHandler()}
             />
             <Modal
-                visible={modalOpen}
+                visible={headerModal}
                 transparent
-                onRequestClose={() => setModalOpen(!modalOpen)}
                 // if you use on request close then whenever you click on
+                onRequestClose={() => setHeaderModal(!headerModal)}
                 //back icon in android it closes
                 animationType="fade"
             >
@@ -38,7 +52,7 @@ const ProductListingHeader = ({ modalOpen, setModalOpen }) => {
                     >
                         <CustomButton
                             textName="Delivery"
-                            onPress={() => setDelivery(true), setModalOpen(false)}
+                            onPress={() => setDelivery(true), setHeaderModal(false)}
                             // delivery = {delivery}
                             style={{ backgroundColor: delivery ? '#Cd427D' : 'transparent' }}
                             color={delivery ? '#fff' : '#000'}
@@ -46,7 +60,7 @@ const ProductListingHeader = ({ modalOpen, setModalOpen }) => {
                         />
                         <CustomButton
                             textName="Pickup"
-                            onPress={() => { setDelivery(false), setModalOpen(false) }}
+                            onPress={() => { setDelivery(false), setHeaderModal(false) }}
                             style={{ backgroundColor: !delivery ? '#Cd427D' : 'transparent', }}
                             color={!delivery ? '#fff' : '#000'}
                             radius={!delivery ? 7 : 0}
@@ -54,9 +68,18 @@ const ProductListingHeader = ({ modalOpen, setModalOpen }) => {
                     </View>
                 </View>
             </Modal>
+            <StoreSelection
+                storeSelectionModal={storeSelectionPlp}
+                setStoreSelectionModal={setStoreSelectionPlp}
+            />
         </View>
     );
 };
+
+const mapStateToProps = state => ({
+    storeTitle: state
+});
+
 const styles = StyleSheet.create({
     plpHeaderContainer: {
         flexDirection: 'row',
@@ -78,6 +101,9 @@ const styles = StyleSheet.create({
         padding: 4,
         borderRadius: 4
     },
+    plpHeaderTitle: {
+        marginLeft: 15,
+    },
     karachiLogo: {
         width: 45,
         height: 40,
@@ -87,6 +113,16 @@ const styles = StyleSheet.create({
         padding: 20,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
+    },
+    productListingHeading: {
+        fontWeight: '700',
+        color: '#33373d',
+        fontSize: 14
+
+
+    },
+    selectedStore: {
+        fontSize: 10,
     }
-})
-export default ProductListingHeader
+});
+export default connect(mapStateToProps)(ProductListingHeader);

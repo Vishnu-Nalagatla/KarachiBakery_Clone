@@ -639,7 +639,8 @@ export const productListPageData = [
                 ]
             }
         ]
-    }
+    },
+    
 ]
 
 

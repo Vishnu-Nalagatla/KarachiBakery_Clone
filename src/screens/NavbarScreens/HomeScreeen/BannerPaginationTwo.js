@@ -84,7 +84,7 @@
 
 import { useNavigation } from "@react-navigation/core";
 import * as React from "react";
-import { StyleSheet, View, ScrollView, Dimensions, Image,Text, ImageBackground, TouchableOpacity } from "react-native";
+import { StyleSheet, View, ScrollView, Dimensions, Image, Text, ImageBackground, TouchableOpacity } from "react-native";
 import { secondBannerData } from "../../../assets/AppData/AppData";
 import { withNavigation } from 'react-navigation';
 import { Link } from "@react-navigation/native";
@@ -202,13 +202,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     width: "100%",
-    paddingRight:50,
+    paddingRight: 50,
     height: 10
   },
   whiteCircle: {
     width: 10,
     height: 10,
-    borderRadius:50,
+    borderRadius: 50,
     margin: 5,
     // backgroundColor: "#fff"
   }

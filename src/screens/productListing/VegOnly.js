@@ -10,13 +10,13 @@ const VegOnly = ({vegOnly,setVegOnly, navigation}) => {
             {backgroundColor:vegOnly?'rgba(50,186,50,.26)':'#cfd4d5',}]}>
             <View style = {styles.btnsContainer}>
             <TouchableOpacity
-            onPress = {() =>setVegOnly()}
+            onPress = {() =>setVegOnly(!vegOnly)}
             style  = {[styles.btn,{ backgroundColor:!vegOnly?'#33373d':'transparent'}]}>
             </TouchableOpacity>
             </View>
             <View style = {styles.btnsContainer}>
             <TouchableOpacity
-            onPress = {() =>setVegOnly(true)}
+            onPress = {() =>setVegOnly(!vegOnly)}
             style = {[styles.btn,{backgroundColor:vegOnly ? '#099e44':'transparent'}]}>
             </TouchableOpacity>
             </View>
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
         height:'100%',
     }
 })
-export default VegOnly
+export default VegOnly;

@@ -12,10 +12,13 @@ import {
     TouchableWithoutFeedback,
     View,
 } from 'react-native';
+import { connect } from 'react-redux';
+import { loginUserName } from '../redux/action';
 import CustomButton from '../utils/CustomButton';
-import GlobalStyles from '../utils/GlobalStyles';
 
-const LoginPopUp = () => {
+import GlobalStyles from '../utils/GlobalStyles';
+const LoginPopUp = ({ loginUserName, userName }) => {
+    console.log(userName)
     const [modalLoginPopUp, setModalLoginPopUp] = useState(false);
     const [userData, setUserData] = useState({
         email: '',
@@ -81,7 +84,6 @@ const LoginPopUp = () => {
             })
         }
     }
-
     return (
         <>
 
@@ -106,7 +108,7 @@ const LoginPopUp = () => {
                         <Text style={styles.modalLoginId}>Email</Text>
                         <TextInput
                             placeholder='Enter your Email'
-                            onChangeText={(value) => emailInputChange(value)}
+                            onChangeText={(value) => loginUserName(value)}
                             onEndEditing={(e) => handleValidUser(e.nativeEvent.text)}
                             style={styles.modalLoginInput}></TextInput>
                         {
@@ -142,12 +144,27 @@ const LoginPopUp = () => {
             </Modal>
             <TouchableOpacity
             >
-            <View style={styles.modalPopUpContainer}>
-            </View>
+                <View style={styles.modalPopUpContainer}>
+                </View>
             </TouchableOpacity>
         </>
     )
 };
+
+
+
+const mapStateToProps = (state) => {
+    return {
+        userName: state
+    }
+}
+const mapDispatchtoProps = (dispatch) => {
+    return {
+        loginUserName: (value) => dispatch(loginUserName(value))
+    }
+}
+
+
 const styles = StyleSheet.create({
     modalPopUpContainer: {
         backgroundColor: '#000',
@@ -197,4 +214,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginPopUp
+export default connect(mapStateToProps, mapDispatchtoProps)(LoginPopUp)

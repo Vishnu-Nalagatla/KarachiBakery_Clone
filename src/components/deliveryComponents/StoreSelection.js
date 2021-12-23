@@ -12,17 +12,25 @@ import {
     TouchableWithoutFeedback,
     View,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { StoreData } from '../../assets/AppData/AppData';
+import { storeTitle } from '../../redux/action';
 import GlobalStyles from '../../utils/GlobalStyles';
 
-const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigation }) => {
+const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigation, storeSelectedTitle }) => {
     // const [storeData, setStoreData] = useState([]);
+    const storeHandler = (itemTitle) => {
+        setStoreSelectionModal(false);
+        storeSelectedTitle(itemTitle);
+    }
+    console.log('storeSelectionModal', storeSelectionModal);
     return (
         <>
             <Modal
                 visible={storeSelectionModal}
                 transparent
-                onRequestClose={() => { setStoreSelectionModal(false) }}
+                onBackdropPress={()=> console.log('Close')}
+                onRequestClose={() => { setStoreSelectionModal(!storeSelectionModal) }}
                 animationType="slide"
                 hardwareAccelerated
             // statusBarTranslucent
@@ -30,7 +38,7 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
                 <View
                     style={styles.modalPopUp}>
                     <View style={styles.selectHeader}>
-                        <Text style={styles.selectStoreText}> Select Store</Text>
+                        <Text style={styles.selectStoreText}>Select Store</Text>
                         <TouchableOpacity
                             onPress={() => setStoreSelectionModal(false)}
                         >
@@ -42,17 +50,20 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
                     </View>
                     <FlatList
                         data={StoreData}
+                        showsVerticalScrollIndicator={false}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={(item, index) => {
                             // console.log(item.item);
                             return (
-                                <TouchableOpacity
-                                    style={styles.linkStyles}
-                                    onPress={() => setStoreSelectionModal(false)}>
-                                    <Link to={{ screen: 'plp' }}>
+                                <View style={styles.storeData} >
+                                    <Link to={{ screen: 'plp' }}
+                                        onPress={() => storeHandler(item.item.streetName)}
+                                    >
                                         <View style={styles.storesList}>
                                             <Text style={styles.storeName}>{item.item.streetName}</Text>
-                                            <Text style={styles.storeAddress}>{item.item.storeAddress}</Text>
+                                            <View style={{ paddingLeft: 20 }}>
+                                                <Text style={styles.storeAddress}>{item.item.storeAddress}</Text>
+                                            </View>
                                             <View style={styles.storeOptions}>
                                                 <View style={styles.distance}>
                                                     <Text style={styles.storeDistance}> {item.item.storeDistance.distance}</Text>
@@ -62,7 +73,7 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
                                             </View>
                                         </View>
                                     </Link>
-                                </TouchableOpacity>
+                                </View>
                             );
                         }}
                     />
@@ -93,8 +104,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
     },
+    storeData: {
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+    },
     storesList: {
-        padding: 15,
+        padding: 10,
         borderWidth: 2,
         borderColor: "#f2f2f2",
         backgroundColor: 'white',
@@ -110,11 +125,9 @@ const styles = StyleSheet.create({
     storeName: {
         fontWeight: 'bold',
         fontSize: 13,
-        marginTop: 10,
         marginBottom: 10,
     },
     storeAddress: {
-        // fontWeight: 'bold',
         fontSize: 12,
     },
     distance: {
@@ -131,5 +144,9 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
 });
-
-export default StoreSelection;
+const mapDispatchtoProps = (dispatch) => {
+    return {
+        storeSelectedTitle: (title) => dispatch(storeTitle(title))
+    }
+}
+export default connect(null, mapDispatchtoProps)(StoreSelection);

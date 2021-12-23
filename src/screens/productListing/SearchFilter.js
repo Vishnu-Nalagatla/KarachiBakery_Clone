@@ -4,7 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { productListPageData } from '../../assets/AppData/AppData';
 import Items from './Items';
-const SearchFilter = ({navigation}) => {
+const SearchFilter = ({ navigation }) => {
     const [searchValue, setSearchValue] = React.useState('');
     const onInputChange = value => {
         if (value === " ") {
@@ -19,13 +19,12 @@ const SearchFilter = ({navigation}) => {
                     name="arrow-left"
                     color="#000"
                     size={20}
-                    onPress = {() => navigation.goBack()}
+                    onPress={() => navigation.goBack()}
                 />
                 <View style={styles.inputTextContainer}>
                     <TextInput
                         placeholder="Search items"
                         style={styles.inputText}
-                        // keyboardType="numbers-and-punctuation"
                         keyboardAppearance="light"
                         value={searchValue}
                         onChangeText={onInputChange}
@@ -135,7 +134,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 8,
         opacity: .7,
-
+        width: '80%',
     }
 })
-export default SearchFilter
+export default SearchFilter;

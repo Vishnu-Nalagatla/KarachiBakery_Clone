@@ -23,6 +23,13 @@ import ScrollPractice from './Practice/layout/ScrollPractice';
 import { Provider } from 'react-redux';
 import store from './src/Redux/store';
 import Carousel from './Practice/banners/Carousel';
+import Test from './src/utils/Test';
+import DeliverySelection from './src/components/deliveryComponents/DeliverySelection';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+import Responsive from './src/utils/Test'
+import Login from './src/utils/Test';
+import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocationPlp';
 function App() {
   return (
     <>
@@ -48,9 +55,15 @@ function App() {
       {/* <ScrollTo/> */}
       {/* <ScrollPractice/> */}
       {/* <Carousel/> */}
+      {/* <Test></Test> */}
+      {/* <DeliverySelection></DeliverySelection> */}
+      {/* <Responsive></Responsive> */}
+      {/* <Login/> */}
+      {/* <CurrentLocationPlp/> */}
       </Provider>
     </>
   );
+  
 } 
 export default App;
 
