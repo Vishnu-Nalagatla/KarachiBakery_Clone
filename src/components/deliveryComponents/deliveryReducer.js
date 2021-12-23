@@ -1,24 +1,28 @@
 
-
 const initialState = {
-    itemCount : 0,
+    userName: '',
+    password: '',
+    storeTitle: ''
 }
 
-const deliveryReducer = (state = initialState , action) => {
-switch (action.type) {
-    case ITEM_COUNT:
-        return {
-            ...state,
-            itemCount : action.payload
-        }
-        break;
-        case ITEM_COUNT_INCREASE : 
-        return {
-
-        }
-
-    default:
-        break;
-}
-}
+const deliveryReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOGIN_USERNAME:
+            return {
+                ...state,
+                userName: action.payload
+            }
+        case LOGIN_PASSWORD:
+            return {
+                ...state,
+                password: action.payload
+            }
+            case STORE_TITLE: return {
+                ...state,
+                storeTitle: action.payload
+            }
+        default:
+            break;
+    };
+};
 export default deliveryReducer;
