@@ -138,6 +138,7 @@ const ItemsList = ({ navigation }) => {
                             })
                         }
                 </View>
+                </View>
             </ScrollView>
             <View>
                 <MenuList
