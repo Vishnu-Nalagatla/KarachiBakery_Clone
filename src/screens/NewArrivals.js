@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Image, ImageBackground, ScrollView, Modal, Alert, Button, Pressable,TouchableOpacity } from 'react-native'
 import { newArrivalsData } from '../assets/AppData/AppData'
 import FooterOrderNav from '../common/FooterOrderNav';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import images from '../constants/images'
 const NewArrivals = ({navigation}) => {
     const [visible, setVisible] = React.useState(false);
@@ -191,24 +192,51 @@ const NewArrivals = ({navigation}) => {
                     backgroundColor: '#fff',
                     width: '90%',
                     height: 300,
-                    padding: 10
+                    padding: 15,
+                    borderRadius:7
                 }}
             >
-                    <Text
+                <View
+                style = {{
+                    position:'absolute',
+                    right:-12,
+                    top:-12,
+                    zIndex:1,
+                    width:30,
+                    height:30,
+                    borderRadius:50,
+                    backgroundColor:'#FFF',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderWidth: 1,
+                    borderColor: '#e7eced',
+                }}
+                >
+                    <View
                     style = {{
-                        position:'absolute',
-                        right:0,
-                        zIndex:1,
-                        fontSize:25
+                        width:25,
+                        height:25,
+                        borderRadius:50,
+                        backgroundColor:'#000',
+                        justifyContent:'center',
+                        alignItems:'center'
                     }}
+                    >
+                    <FontAwesome
+                    name='close'
+                    color= "#fff"
+                    size={15}
                     onPress = {onModalCloseButton}
-                    >close</Text>
+                    />
+                    </View>
+                    </View>
                 <Image
                     resizeMode="cover"
                     source={previewImage}
                     style={{
                         width: '100%',
-                        height: '100%'
+                        height: '100%',
+                        borderRadius:7
                     }}
                 />
             </View>

@@ -7,7 +7,7 @@ const ContentDisplay = () => {
         <View
             style={{
                 marginBottom: 20,
-                paddingHorizontal: 15,
+                // paddingHorizontal: 15,
                 width: '100%'
             }}
         >

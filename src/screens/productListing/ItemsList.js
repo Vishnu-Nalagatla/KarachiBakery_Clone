@@ -1,35 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-    Button,
     Image,
     ImageBackground,
     ScrollView,
     StyleSheet,
     Text,
     TouchableOpacity,
-    TouchableWithoutFeedback,
     View
 } from 'react-native';
 import { ProductListingHeader } from '.';
 import { productListPageData } from '../../assets/AppData/AppData';
-import { Link } from '@react-navigation/native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MenuList from './MenuList';
-import Items from './Items';
 import VegOnly from './VegOnly';
 import MenuListContainer from './MenuListContainer';
 import PlpOffers from '../../components/PlpOffers';
-const ItemsList = ({navigation}) => {
-    let listViewRef;
+import PLPFooterCart from './PLPFooterCart';
+import Cart from '../shipping/Cart';
+const ItemsList = ({ navigation }) => {
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
-    const [itemsToShow, setItemsToShow] = React.useState(5);
-    const [cartItems, setCartItems] = React.useState([]);
-    const [count, setCount] = React.useState(0);
     const [vegOnly, setVegOnly] = React.useState(false);
+    const [cartItems, setCartItems] = React.useState([]);
+    const [itemsInCart, setItemsInCart] = React.useState(0);
+    const [flatList, setFlatList] = React.useState(null);
+    const [dataCords, setDataCords] = useState([]);
+    const [yValue, setYValue] = React.useState(null);
+
+
+
+
     const addItemToCart = (product) => {
-        setCount(count + 1);
         let itemsInCart = cartItems.slice();
+        console.log(`cartItems`, cartItems)
         let isExist = false;
         itemsInCart.forEach(item => {
             if (item.id === product.id) {
@@ -42,12 +44,44 @@ const ItemsList = ({navigation}) => {
         }
         setCartItems(itemsInCart)
     };
+    
+    const removeItemFromCart = product => {
+        const isExist = cartItems.find(item => item.id === product.id);
+        if (isExist.quantity === 1) {
+            let filteredCart = cartItems.filter(data => data.id !== product.id);
+            setCartItems(filteredCart);
+        } else {
+            setCartItems(cartItems.map(data =>
+                data.id === product.id ?
+                    { ...data, quantity: data.quantity - 1 } : data
+            ))
+        }
+    };
+
+
+
+
+
+
+    const totalAmount = cartItems.reduce((a, v) => a + v.quantity * v.price, 0);
+    const totalCount = cartItems.reduce((a, v) => a + v.quantity, 0)
+    //   setItemsInCart(cartItems.reduce((a,v) => a+v.quantity,0))
+
+    const scrollHandler = (index) => {
+        console.log(index, 'handindex')
+        if (dataCords.length > index) {
+            flatList.scrollTo({
+                x: 0,
+                y: dataCords[index] + yValue,
+                animated: true
+            })
+        }
+
+    };
     return (
         <>
             <ScrollView
-                ref={(ref) => {
-                    listViewRef = ref;
-                }}
+                ref={ref => setFlatList(ref)}
             >
                 <ProductListingHeader
                     modalOpen={headerModal}
@@ -69,7 +103,7 @@ const ItemsList = ({navigation}) => {
                             Explore Menu
                         </Text>
                         <View style={styles.productsContainer}>
-                            {productListPageData?.map(data => (
+                            {productListPageData?.map((data, index) => (
                                 <TouchableOpacity
                                     key={data.id}
                                     style={{
@@ -77,7 +111,9 @@ const ItemsList = ({navigation}) => {
                                         height: 90,
                                         marginTop: 10,
                                     }}
-                                    activeOpacity={0.3}>
+                                    activeOpacity={0.3}
+                                    onPress={() => scrollHandler(index)}
+                                >
                                     <ImageBackground
                                         source={data.menuImage}
                                         resizeMode="cover"
@@ -96,98 +132,82 @@ const ItemsList = ({navigation}) => {
                             ))}
                         </View>
                     </View>
-                    <View style={styles.menuDataContainer}>
+                    <View
+                        style={styles.menuDataContainer}
+                        onLayout={event => setYValue(event.nativeEvent.layout.y)}
+                    >
                         {productListPageData?.
-                        filter(filteredData =>{
-                            if(vegOnly){
-                              return  filteredData.category === 'veg'
-                            } else{
-                               return filteredData
-                            }
-                        })
-                        .map(data => {
-                            return (
-                                <View key={data.id}>
+                            filter(filteredData => {
+                                if (vegOnly) {
+                                    return filteredData.category === 'veg'
+                                } else {
+                                    return filteredData
+                                }
+                            })
+                            .map((data, index) => {
+                                return (
                                     <View
-                                        style={{
-                                            width: '100%',
-                                            height: 160,
-                                        }}>
-                                        <Image
-                                            source={data.menuImage}
-                                            resizeMode="cover"
-                                            style={styles.menuDataImg}
-                                        />
-                                        <Text style={styles.menuText}>
-                                            {data.menuName}
-                                        </Text>
+                                        key={data.id}
+                                        onLayout={event => {
+                                            const layout = event.nativeEvent.layout;
+                                            dataCords[index] = layout.y;
+                                            setDataCords(dataCords)
+                                        }}
+                                    >
+                                        <View
+                                            style={{
+                                                width: '100%',
+                                                height: 160,
+                                            }}>
+                                            <Image
+                                                source={data.menuImage}
+                                                resizeMode="cover"
+                                                style={styles.menuDataImg}
+                                            />
+                                            <Text style={styles.menuText}>
+                                                {data.menuName}
+                                            </Text>
+                                        </View>
+                                        <View style={styles.itemsContainer}>
+                                            {data.menuData?.map(item => (
+                                                <MenuListContainer
+                                                    key={item.id}
+                                                    data={data}
+                                                    item={item}
+                                                    addItemToCart={addItemToCart}
+                                                    removeItemFromCart={removeItemFromCart}
+                                                    totalAmount={totalAmount}
+                                                />
+                                            ))}
+                                        </View>
                                     </View>
-                                    <View style={styles.itemsContainer}>
-                                        {data.menuData?.map(item => (
-                                                <MenuListContainer key={item.id} data = {data} item={item}/>
-                                        ))}
-                                    </View>
-                    </View>
                                 )
                             })
                         }
+                    </View>
                 </View>
             </ScrollView>
             <View>
                 <MenuList
                     modalOpen={modalOpen}
-                    setModalOpen={setModalOpen} />
+                    setModalOpen={setModalOpen}
+                    scrollHandler={scrollHandler} />
             </View>
             {
                 cartItems.length > 0 && (
-                    <View style={styles.itemsListCartContainer}>
-                        <View style={styles.itemsListCartContent}>
-                            <View>
-                                <FontAwesome5
-                                    name="shopping-bag"
-                                    size={30}
-                                    color="#fff"
-                                />
-                                <View style={styles.countContainer}>
-                                    <Text style={styles.countText}>
-                                        {count}
-                                    </Text>
-                                </View>
-                            </View>
-                            <Text style={styles.totalPrice}>
-                                Rs--
-                                {
-                                    cartItems.reduce((a, v) => a + v.quantity * v.price, 0)
-                                }.00
-                            </Text>
-                        </View>
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <Link
-                                to={{
-                                    screen: 'cart',
-                                    params: { cartItems: { cartItems }, addItemInCart: { addItemToCart } }
-                                }}
-                                style={styles.cartLink}
-                            >View Cart</Link>
-
-
-                            <FontAwesome5
-                                name="arrow-right"
-                                size={15}
-                                color='#fff'
-                            />
-                        </View>
-                    </View>)
+                    <PLPFooterCart
+                        totalAmount={totalAmount}
+                        totalCount={totalCount}
+                        itemsInCart={itemsInCart}
+                        cartItems={cartItems}
+                        addItemToCart={addItemToCart}
+                        removeItemFromCart={removeItemFromCart}
+                    />
+                )
             }
         </>
     );
 };
-
 const styles = StyleSheet.create({
     headerContainer: {
         backgroundColor: '#fff',
@@ -258,42 +278,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    itemsListCartContainer: {
-        backgroundColor: '#CD427D',
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    itemsListCartContent: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    },
-    countContainer: {
-        position: 'absolute',
-        left: 15,
-        backgroundColor: 'red',
-        width: 25,
-        height: 25,
-        borderRadius: 50
-    },
-    countText: {
-        color: '#fff',
-        textAlign: 'center',
-        fontWeight: 'bold'
-    },
-    totalPrice: {
-        color: '#fff',
-        fontSize: 16,
-        marginLeft: 20,
-        fontWeight: 'bold'
-    },
-    cartLink: {
-        color: '#fff',
-        textTransform: 'uppercase',
-        fontSize: 14,
-        fontWeight: 'bold',
-        marginRight: 10,
-    }
+
 })
 export default ItemsList;

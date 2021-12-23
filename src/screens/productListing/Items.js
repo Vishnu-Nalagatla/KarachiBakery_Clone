@@ -1,8 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet,Image,TouchableOpacity, ScrollView } from 'react-native'
+import CartManipulation from './CartManipulation'
+import PLPFooterCart from './PLPFooterCart';
 
 const Items = ({items,data,addItemToCart}) => {
     return (
+        <>
                 <View
                     style={styles.itemContainer}
                 >
@@ -32,16 +35,22 @@ const Items = ({items,data,addItemToCart}) => {
                             </Text>
                         </View>
                         <TouchableOpacity
-                            // onPress={() => addItemToCart(items)}
+                            onPress={() => addItemToCart(items)}
                             style={styles.addToCartBtn}
                         >
                             <Text
                                 style={styles.addToCartBtnText}>
                                 add
-                            </Text>
+                            </Text> 
+
                         </TouchableOpacity>
+                        {/* <View>
+                        <CartManipulation/>
+                        </View> */}
                     </View>
                 </View>
+              
+                </>
     )
 }
 const styles = StyleSheet.create({

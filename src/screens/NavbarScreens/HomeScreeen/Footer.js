@@ -7,7 +7,7 @@ const Footer = () => {
         <>
         <View
         style = {{
-            paddingHorizontal:15
+            // paddingHorizontal:15
         }}
         >
             <View

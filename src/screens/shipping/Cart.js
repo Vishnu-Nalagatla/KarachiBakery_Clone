@@ -1,36 +1,36 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-const Cart = ({ route, navigation }) => {
-    const [cartItems, setCartItems] = React.useState(route.params.cartItems.cartItems)
-
-    const removeItemFromCart = product => {
-        const isExist = cartItems.find(item => item.id === product.id);
-        if (isExist.quantity === 1) {
-            let filteredCart = cartItems.filter(data => data.id !== product.id);
-            setCartItems(filteredCart);
-        } else {
-            setCartItems(cartItems.map(data =>
-                data.id === product.id ?
-                    { ...data, quantity: data.quantity - 1 } : data
-            ))
-        }
-    };
-    const addItemInCart = (product) => {
-        let itemsInCart = cartItems.slice();
-        let isExist = false;
-        itemsInCart.forEach(item => {
-            if (item.id === product.id) {
-                item.quantity++;
-                isExist = true;
-            }
-        });
-        if (!isExist) {
-            itemsInCart.push({ ...product, quantity: 1 })
-        }
-        setCartItems(itemsInCart)
-    };
-    const totalAmount = cartItems.reduce((a, v) => a + v.quantity * v.price, 0);
+const Cart = ({route}) => {
+    const [cartItems, setCartItems] = React.useState(route.params.cartItems);
+    // useEffect(() => {
+    // }, [cartItems])
+    // const removeItemFromCart = product => {
+    //     const isExist = cartItems.find(item => item.id === product.id);
+    //     if (isExist.quantity === 1) {
+    //         let filteredCart = cartItems.filter(data => data.id !== product.id);
+    //         setCartItems(filteredCart);
+    //     } else {
+    //         setCartItems(cartItems.map(data =>
+    //             data.id === product.id ?
+    //                 { ...data, quantity: data.quantity - 1 } : data
+    //         ))
+    //     }
+    // };
+    // const addItemInCart = (product) => {
+    //     let itemsInCart = cartItems.slice();
+    //     let isExist = false;
+    //     itemsInCart.forEach(item => {
+    //         if (item.id === product.id) {
+    //             item.quantity++;
+    //             isExist = true;
+    //         }
+    //     });
+    //     if (!isExist) {
+    //         itemsInCart.push({ ...product, quantity: 1 })
+    //     }
+    //     setCartItems(itemsInCart)
+    // };
     return (
         <>
             {/* <View
@@ -83,7 +83,7 @@ const Cart = ({ route, navigation }) => {
                 <View>
                     {
                         cartItems &&
-                        cartItems.map(item => (
+                         cartItems.map(item => (
                             <View
                                 key={item.id}
                                 style={{
@@ -157,7 +157,7 @@ const Cart = ({ route, navigation }) => {
                                         style={{
                                             fontWeight: 'bold'
                                         }}
-                                        onPress={() => removeItemFromCart(item)}
+                                        onPress={() => route.params.removeItemFromCart(item)}
                                     />
                                     <Text
                                         style={{
@@ -172,7 +172,7 @@ const Cart = ({ route, navigation }) => {
                                             fontWeight: 'bold'
                                         }}
                                         onPress={
-                                            () => addItemInCart(item)
+                                            () => route.params.addItemToCart(item)
                                         }
                                     />
                                 </View>
@@ -216,7 +216,7 @@ const Cart = ({ route, navigation }) => {
                                 marginRight: 2
                             }}
                         />
-                        {totalAmount}
+                        {route.params.totalAmount}
                     </Text>
                     <Text
                         style={{

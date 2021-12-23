@@ -1,11 +1,13 @@
 import React from 'react';
-import { Alert, Animated, Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView,Animated, Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { paginationOneDataObj } from '../../../assets/AppData/AppData';
 import { COLORS, SIZES } from '../../../constants/colors';
 const Resturant = () => {
     const scrollX = new Animated.Value(0);
     const scrollRef = React.createRef();
     const [selectedIndex,setSelectedIndex] = React.useState(0);
+    const [dataCords,setDataCords] = React.useState([]);
+    const [flatList,setFlatList] = React.useState(null);
 //   React.useEffect(() => {
 //     setInterval(() => {
 //        setSelectedIndex(
@@ -19,17 +21,26 @@ const Resturant = () => {
 //            }
 //        )
 //     }, 3000);
-//   },[])
+//   },[]);
     const setSelectedIndexFun = event => {
         const viewSize = event.nativeEvent.layoutMeasurement.width;
         const contentOffset = event.nativeEvent.contentOffset.x;
         const selectedIndex1 = Math.floor(contentOffset/viewSize);
         setSelectedIndex(selectedIndex1)
     }
+    const scrollHandler = (index) =>{
+        if(dataCords.length>index){
+            flatList.scrollTo({
+                x:dataCords[index],
+                y:0,
+                animated:true
+            })
+        }
+    }
     const resturantMenu = () => {
         return (
-            <Animated.ScrollView
-            ref = {scrollRef}
+            <ScrollView
+            ref={ref => setFlatList(ref)}
                 horizontal
                 pagingEnabled
                 // scrollEventThrottle={1600000000000}
@@ -50,6 +61,11 @@ const Resturant = () => {
                             <View
                                 key={`menu-${index}`}
                                 style={{ alignItems: 'center' }}
+                                onLayout={event =>{
+                                    const layout = event.nativeEvent.layout;
+                                   dataCords[index] = layout.x;
+                                   setDataCords(dataCords)
+                                }}
                             >
                                 <View style={{
                                     height: SIZES.height * 0.35
@@ -68,7 +84,7 @@ const Resturant = () => {
                     })
                 }
                 {/* {console.warn(restaurant.menu)} */}
-            </Animated.ScrollView>
+            </ScrollView>
         );
     };
     const dotsPagination = () => {
@@ -109,6 +125,7 @@ const Resturant = () => {
                                         height: dotSize,
                                         backgroundColor: dotColor
                                     }}
+                                    onStartShouldSetResponder={()=>scrollHandler(index)}
                                 />
                             )
                         })

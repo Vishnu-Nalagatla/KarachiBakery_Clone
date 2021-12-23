@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ItemsList } from '../../screens/productListing';
-import Cart from '../../screens/shipping/Cart';
 import DeliveryAddressSearch from '../../components/deliveryComponents/DeliveryAddressSearch';
 import CurrentLocationMap from '../../screens/maps/GoogleMaps';
 import SearchFilter from '../../screens/productListing/SearchFilter';
 import DeliverySelection from '../../components/deliveryComponents/DeliverySelection';
+import Cart from '../../screens/shipping/Cart';
 const Stack = createStackNavigator();
 const StackNavigatorContainer = () => {
     return (

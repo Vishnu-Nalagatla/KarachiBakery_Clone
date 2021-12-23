@@ -1,39 +1,9 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-const CartManipulation = ({cartItems,setCartItems}) => {
-    const [cartData,setCartData] = React.useState([cartItems]);
-    console.warn(cartItems)
-    const addItemToCart = (product) => {
-        let itemsInCart = cartItems.slice();
-        let isExist = false;
-        itemsInCart.forEach(item => {
-            if (item.id === product.id) {
-                item.quantity++;
-                isExist = true;
-            }
-        });
-        if (!isExist) {
-            itemsInCart.push({ ...product, quantity: 1 })
-        }
-        setCartItems(itemsInCart)
-    };
-    const removeItemFromCart = product => {
-        const isExist = cartItems.find(item => item.id === product.id);
-        if (isExist.quantity === 1) {
-            let filteredCart = cartItems.filter(data => data.id !== product.id);
-            setCartItems(filteredCart);
-        } else {
-            setCartItems(cartItems.map(data =>
-                data.id === product.id ?
-                    { ...data, quantity: data.quantity - 1 } : data
-            ))
-        }
-    };
+const CartManipulation = () => {
     return (
- <View>
-        {
-            cartData && cartData.map(item => {
+            
                 <View
                 style={{
                     flexDirection: 'row',
@@ -69,13 +39,10 @@ const CartManipulation = ({cartItems,setCartItems}) => {
                         fontWeight: 'bold'
                     }}
                     onPress={
-                        () => addItemInCart(item)
+                        () => addItemToCart(item)
                     }
                 />
             </View>
-            })
-        }
-    </View>
     )
 }
 

@@ -20,9 +20,9 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
     return (
         <>
             <Modal
-                visible={true}
+                visible={storeSelectionModal}
                 transparent
-                // onRequestClose={() => { setModalOpen(!modalOpen) }}
+                onRequestClose={() => { setStoreSelectionModal(false) }}
                 animationType="slide"
                 hardwareAccelerated
             // statusBarTranslucent
@@ -71,7 +71,6 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
         </>
     )
 };
-
 const styles = StyleSheet.create({
     selectStoreText: {
         margin: 20,
@@ -84,10 +83,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginRight: 20,
-
     },
     modalPopUp: {
-        width: '100%',
+        width: Dimensions.get('window').width,
         height: 500,
         backgroundColor: '#fff',
         borderTopRightRadius: 30,
@@ -104,11 +102,10 @@ const styles = StyleSheet.create({
         elevation: 3,
         shadowOpacity: 0.8,
         shadowColor: 'black',
-        width: 370,
+        width: Dimensions.get('window').width-50,
     },
     linkStyles: {
-        margin: 20,
-        width: '80%',
+        padding:20,
     },
     storeName: {
         fontWeight: 'bold',

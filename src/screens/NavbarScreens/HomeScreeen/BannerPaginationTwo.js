@@ -1,83 +1,82 @@
 // import React from 'react';
 // import { Dimensions, Image, ScrollView, View } from 'react-native';
-// import { secondBannerData } from '../../assets/AppData/AppData';
+// import { secondBannerData } from '../../../assets/AppData/AppData';
 
 // const BannerPaginationTwo = () => {
-//     const [selectedIndex,setSelectedIndex] = React.useState(0);
-//     const scrollRef = React.createRef();
-//     React.useEffect(() => {
-//          setInterval(() => {
-//              setSelectedIndex(prev =>{
-//                 prev.selectedIndex === secondBannerData.length-1 ? 0 : prev.selectedIndex+1
-//              },
-//              () => {
-//                  scrollRef.current.scrollTo({
-//                      animated : true,
-//                      x : (Dimensions.get('window').width)*selectedIndex,
-//                      y : 0
-//                  })
-//              }
-//              )
-//          }, 1000);
-//     },[]);
+//   const scrollRef = React.createRef();
+//   const [selectedIndex, setSelectedIndex] = React.useState(0);
+//   function fun() {
+//     scrollRef.current.scrollTo({
+//       animated: true,
+//       x: (Dimensions.get('window').width) * selectedIndex,
+//       y: 0
+//     })
+//   }
+//   // React.useEffect(() => {
+//   //   setInterval(() => {
+//   //     setSelectedIndex(
+//   //       selectedIndex === secondBannerData.length - 1 ?
+//   //         0 : selectedIndex + 1),
+//   //         fun();
+//   //   }, 1000);
+//   // }, []);
+//   const selectedIndexFun = event => {
+//     const contentOffset = event.nativeEvent.contentOffset;
+//     const viewSize = event.nativeEvent.layoutMeasurement;
+//     const selectedIndex2 = Math.floor(contentOffset.x / viewSize.width);
+//     setSelectedIndex(selectedIndex2)
+//   }
+//   return (
+//     <View
+//       style={{ width: '100%', height: '100%' }}
+//     >
+//       <ScrollView
+//         horizontal
+//         pagingEnabled
+//         onMomentumScrollEnd={selectedIndexFun}
+//         ref={scrollRef}
+//       >
+//         {
+//           secondBannerData?.map((data, index) => (
+//             <View
+//               key={`pic-${index}`}
+//             >
+//               <Image
+//                 source={data}
+//                 resizeMode="cover"
+//                 style={{
+//                   width: Dimensions.get('window').width,
+//                   height: '100%'
+//                 }}
+//               />
+//             </View>
+//           ))
+//         }
+//       </ScrollView>
+//       {/* <View>
+//         {
+//           secondBannerData?.map((data, index) => (
+//             <View
+//               style={[
+//                 {
+//                   width: 6,
+//                   height: 6,
+//                   borderRadius: 3,
+//                   margin: 5,
+//                   backgroundColor: "#fff"
+//                 },
+//                 { opacity: index === selectedIndex ? 0.5 : 1 }
+//               ]}
+//               key={data}
+//               active={index === selectedIndex}
+//             >
 
-//     const selectedIndexFun = event => {
-//         const contentOffset = event.nativeEvent.contentOffset;
-//         const viewSize = event.nativeEvent.layoutMeasurement;
-//         const selectedIndex2 = Math.floor(contentOffset.x / viewSize.width);
-//         setSelectedIndex(selectedIndex2)
-//     }
-//     return(
-//         <View
-//         style = {{width:'100%',height:'100%'}}
-//         >
-//           <ScrollView
-//           horizontal
-//           pagingEnabled
-//           onMomentumScrollEnd = {selectedIndexFun}
-//           ref = {scrollRef}
-//           >
-//          {
-//              secondBannerData?.map((data,index) =>(
-//                  <View
-//                  key = {`pic-${index}`}
-//                  >
-//                      <Image 
-//                      source = {data}
-//                      resizeMode = "cover"
-//                      style = {{
-//                          width:Dimensions.get('window').width,
-//                          height:'100%'
-//                      }}
-//                      />
-//                  </View>
-//              ))
-//          }
-//           </ScrollView>
-//           <View>
-//               {
-//                   secondBannerData?.map((data,index) =>(
-//                       <View
-//                       style = {[
-//                           {
-//                         width: 6,
-//                         height: 6,
-//                         borderRadius: 3,
-//                         margin: 5,
-//                         backgroundColor: "#fff"  
-//                           },
-//                           {opacity:index === selectedIndex?0.5:1}
-//                       ]}
-//                       key = {data}
-//                       active = {index === selectedIndex}
-//                       >
-
-//                       </View>
-//                   ))
-//               }
-//           </View>
-//         </View>
-//     );
+//             </View>
+//           ))
+//         }
+//       </View> */}
+//     </View>
+//   );
 // };
 
 // export default BannerPaginationTwo
@@ -95,13 +94,12 @@ class BannerPaginationTwo extends React.Component {
   scrollRef = React.createRef();
   constructor(props) {
     super(props);
-
     this.state = {
       selectedIndex: 0
     };
     this.scrollRef = React.createRef();
   }
-
+  
   componentDidMount = () => {
     setInterval(() => {
       this.setState(
@@ -135,14 +133,13 @@ class BannerPaginationTwo extends React.Component {
     const { images } = this.props;
     const { selectedIndex } = this.state;
     return (
-      <TouchableOpacity 
-      style={{ 
-        height:500, 
+       <View
+      style={{
+        height:500,
         width: "100%",
         borderWidth:1,
         backgroundColor:'#1a1a1a'
         }}
-        // onPress = {()=>this.props.navigation.navigate('NEW ARRIVALS')}
         >
         <ScrollView
           horizontal
@@ -160,7 +157,7 @@ class BannerPaginationTwo extends React.Component {
             </View>
           ))}
         </ScrollView>
-         <Text
+         <Link
             style = {{
               position:'absolute',
               top:'50%',
@@ -172,7 +169,8 @@ class BannerPaginationTwo extends React.Component {
               borderTopRightRadius:40,
               borderBottomRightRadius:40
             }}
-            > NEW ARRIVALS</Text>
+            to={{screen:'NewArrivals'}}
+            > NEW ARRIVALS</Link>
         <View style={styles.circleDiv}>
           {secondBannerData?.map((image, i) => (
             <View
@@ -186,7 +184,7 @@ class BannerPaginationTwo extends React.Component {
             />
           ))}
         </View>
-      </TouchableOpacity>
+      </View>
     );
   }
 }

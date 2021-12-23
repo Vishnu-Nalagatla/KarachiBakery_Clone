@@ -10,10 +10,24 @@ import LoginPopUp from './src/components/LoginPopUp';
 import PlpOffers from './src/components/PlpOffers';
 import GetStarted from './src/components/GetStarted';
 import { ItemsList } from './src/screens/productListing';
+import StoreSelection from './src/components/deliveryComponents/StoreSelection';
+import BannerCarousel from './Practice/banners/BannerCarosel';
+import TabContainer from './Practice/navigation/DrawerContainer';
+import Banner from './Practice/banners/Banner';
+import {BannerPaginationTwo} from './src/screens/NavbarScreens/HomeScreeen/BannerPaginationTwo';
+import Resturant from './src/screens/NavbarScreens/HomeScreeen/BannerPaginationOne';
+import GetLayout from './Practice/layout/GetLayout';
+import ScrollToIndex from './Practice/layout/ScrollToIndex';
+import ScrollTo from './Practice/layout/ScrollTo';
+import ScrollPractice from './Practice/layout/ScrollPractice';
+import { Provider } from 'react-redux';
+import store from './src/Redux/store';
+import Carousel from './Practice/banners/Carousel';
 function App() {
   return (
     <>
-      {/* <NavigationContainers/> */}
+    <Provider store={store}>
+      <NavigationContainers/>
       {/* <MapsMoving/> */}
       {/* <FoodDeliveryMap/> */}
       {/* <SearchFilter/> */}
@@ -22,7 +36,19 @@ function App() {
       {/* <PlpOffers></PlpOffers> */}
       {/* <LoginPopUp></LoginPopUp> */}
       {/* <GetStarted></GetStarted> */}
-      <ItemsList/>
+      {/* <ItemsList/> */}
+      {/* <StoreSelection/> */}
+      {/* <BannerCarousel/> */}
+      {/* <TabContainer/> */}
+      {/* <Banner/> */}
+      {/* <BannerPaginationTwo/> */}
+      {/* <Resturant/> */}
+      {/* <GetLayout/> */}
+      {/* <ScrollToIndex/> */}
+      {/* <ScrollTo/> */}
+      {/* <ScrollPractice/> */}
+      {/* <Carousel/> */}
+      </Provider>
     </>
   );
 } 

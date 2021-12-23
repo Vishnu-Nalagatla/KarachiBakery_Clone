@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet,TouchableWithoutFeedback } from 'react-native'
 import Items from './Items'
 
-const MenuListContainer = ({item,data}) => {
+const MenuListContainer = ({item,data,addItemToCart,removeItemFromCart, totalAmount}) => {
+    const [itemsToShow, setItemsToShow] = React.useState(5);
     return (
         <View>
         <Text style={styles.itemDescription}>
@@ -19,7 +20,9 @@ const MenuListContainer = ({item,data}) => {
                         items={items}
                         key={items.id}
                         data={data}
-                        addItemToCart={addItemToCart}
+                        addItemToCart = {addItemToCart}
+                        removeItemFromCart = {removeItemFromCart}
+                        totalAmount = {totalAmount}
                     />
                 )
                 )}
@@ -28,7 +31,7 @@ const MenuListContainer = ({item,data}) => {
             itemsToShow <= item.itemData.length ? (
             <View style={styles.seeMoreBtn}>
                 <TouchableWithoutFeedback
-                    // onPress={() => showMoreFun(item)}
+                    onPress={() => setItemsToShow(itemsToShow+5)}
                     style={[styles.seeMoreBtn, { height: 0 }]}>
                     <Text style={{ textAlign: 'center', }}>
                         see More
@@ -37,7 +40,18 @@ const MenuListContainer = ({item,data}) => {
             </View>
         ) : null}
     </View>
-    )
-}
-
+    );
+};
+const styles = StyleSheet.create({
+    itemDescription: {
+        color: '#CD427D',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    seeMoreBtn: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})
 export default MenuListContainer

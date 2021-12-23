@@ -2,7 +2,8 @@ import React from 'react'
 import { View, Text, Modal, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import { productListPageData } from '../../assets/AppData/AppData';
 
-const MenuList = ({ modalOpen, setModalOpen }) => {
+const MenuList = ({ modalOpen, setModalOpen , scrollHandler }) => {
+
     return (
         <>
             <TouchableOpacity
@@ -33,12 +34,19 @@ const MenuList = ({ modalOpen, setModalOpen }) => {
                         <ScrollView
                             showsVerticalScrollIndicator={false}>
                             {
-                                productListPageData?.map(data => (
-                                    <Text
-                                        key={data.menuName}
-                                        style={styles.listNameTxt}>
-                                        {data.menuName}
-                                    </Text>
+                                productListPageData?.map((data,index) => (
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            setModalOpen(!modalOpen)
+                                            scrollHandler(index)
+                                        }}
+                                    >
+                                        <Text
+                                            key={data.menuName}
+                                            style={styles.listNameTxt}>
+                                            {data.menuName}
+                                        </Text>
+                                    </TouchableOpacity>
                                 ))
                             }
                         </ScrollView>
