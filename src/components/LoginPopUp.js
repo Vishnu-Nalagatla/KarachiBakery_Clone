@@ -13,7 +13,7 @@ import {
     View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { loginUserName } from '../redux/action';
+// import { loginUserName } from '../redux/action';
 import CustomButton from '../utils/CustomButton';
 
 import GlobalStyles from '../utils/GlobalStyles';
@@ -160,7 +160,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchtoProps = (dispatch) => {
     return {
-        loginUserName: (value) => dispatch(loginUserName(value))
+        // loginUserName: (value) => dispatch(loginUserName(value))
     }
 }
 

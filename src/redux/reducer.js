@@ -1,30 +1,39 @@
-import { LOGIN_PASSWORD, LOGIN_USERNAME, STORE_TITLE } from "./types";
+import { ADD_ITEM_TO_CART, ITEM_COUNT, ITEM_COUNT_INCREASE } from "./types";
+
+
+// const initialState = {
+//     itemCount : 0,
+// }
+
+// const reducer = (state = initialState , action) => {
+// switch (action.type) {
+//     case ITEM_COUNT:
+//         return {
+//             ...state,
+//             itemCount : action.payload
+//         }
+//         break;
+//         case ITEM_COUNT_INCREASE : 
+//         return {
+
+//         }
+
+//     default:
+//         break;
+// }
+// }
+// export default reducer;
 
 const initialState = {
-    userName: '',
-    password: '',
-    storeTitle: ''
-}
-
-const loginReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case LOGIN_USERNAME:
-            return {
-                ...state,
-                userName: action.payload
-            }
-        case LOGIN_PASSWORD:
-            return {
-                ...state,
-                password: action.payload
-            }
-            case STORE_TITLE: return {
-                ...state,
-                storeTitle: action.payload
-            }
-        default:
-            break;
-    };
+    cartItems: []
 };
-export default loginReducer;
 
+export const rootReducer = (state = initialState,action) =>{
+    switch(action.type){
+        case ADD_ITEM_TO_CART:return{
+            ...state, 
+            cartItems : 
+        }
+        default : return state
+    }
+};

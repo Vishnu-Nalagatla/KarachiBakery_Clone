@@ -14,9 +14,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { StoreData } from '../../assets/AppData/AppData';
-import { storeTitle } from '../../redux/action';
 import GlobalStyles from '../../utils/GlobalStyles';
-
+import {storeTitle} from '../../Redux/action';
 const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigation, storeSelectedTitle }) => {
     // const [storeData, setStoreData] = useState([]);
     const storeHandler = (itemTitle) => {

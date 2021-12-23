@@ -1,18 +1,19 @@
 import React from 'react'
-import { View, Text, Image, ImageBackground, ScrollView, Modal, Alert, Button, Pressable, TouchableOpacity } from 'react-native'
+import { View, Text, Image, ImageBackground, ScrollView, Modal, Alert, Button, Pressable,TouchableOpacity } from 'react-native'
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { newArrivalsData } from '../../assets/AppData/AppData';
 import FooterOrderNav from '../../common/FooterOrderNav';
 import images from '../../constants/images';
-const NewArrivals = ({ navigation }) => {
+const NewArrivals = ({navigation}) => {
     const [visible, setVisible] = React.useState(false);
-    const [previewImage, setPreviewImage] = React.useState(null);
-    const [updating, setUpdating] = React.useState('');
+    const [previewImage,setPreviewImage] = React.useState(null);
+    const [updating,setUpdating] = React.useState('');
     const imagePreview = (item) => {
         setVisible(!visible)
         let imagePreview = [];
         imagePreview.push(item);
         imagePreview.map(data => {
-            if (data.id === item.id) {
+            if(data.id === item.id) {
                 setPreviewImage(data.image)
             }
         })
@@ -109,32 +110,32 @@ const NewArrivals = ({ navigation }) => {
                                     }}
                                 >
                                     <TouchableOpacity
-                                        onPress={() => imagePreview(data)}
+                                    onPress = {() => imagePreview(data)}
                                     // onPress = {()=>a = data}
                                     >
-                                        <View
-                                            // onStartShouldSetResponder={
-                                            //     () => {
-                                            //         setVisible(true)
-                                            //     }
-                                            // }
+                                    <View
+                                        // onStartShouldSetResponder={
+                                        //     () => {
+                                        //         setVisible(true)
+                                        //     }
+                                        // }
+                                        style={{
+                                            borderWidth: 4,
+                                            borderColor: '#444',
+                                            backgroundColor: '#fff',
+                                            alignItems: 'center',
+                                            height: 175
+                                        }}
+                                    >
+                                        <Image
+                                            source={data.image}
+                                            resizeMode="contain"
                                             style={{
-                                                borderWidth: 4,
-                                                borderColor: '#444',
-                                                backgroundColor: '#fff',
-                                                alignItems: 'center',
-                                                height: 175
+                                                width: '100%',
+                                                height: '100%',
                                             }}
-                                        >
-                                            <Image
-                                                source={data.image}
-                                                resizeMode="contain"
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                }}
-                                            />
-                                        </View>
+                                        />
+                                    </View>
                                     </TouchableOpacity>
                                     <View
                                         style={{
@@ -170,52 +171,79 @@ const NewArrivals = ({ navigation }) => {
                 <FooterOrderNav />
             </View>
             <Modal
-                visible={visible}
-                onRequestClose={() => setVisible(false)}
-                transparent
-                animationType="slide"
-                hardwareAccelerated
-                style={{
+        visible={visible}
+        onRequestClose={() => setVisible(false)}
+        transparent
+        animationType="slide"
+        hardwareAccelerated
+        style={{
 
+        }}
+    >
+        <View
+            style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
+            <View
+                style={{
+                    backgroundColor: '#fff',
+                    width: '90%',
+                    height: 300,
+                    padding: 15,
+                    borderRadius:7
                 }}
             >
                 <View
-                    style={{
-                        flex: 1,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
+                style = {{
+                    position:'absolute',
+                    right:-12,
+                    top:-12,
+                    zIndex:1,
+                    width:30,
+                    height:30,
+                    borderRadius:50,
+                    backgroundColor:'#FFF',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderWidth: 1,
+                    borderColor: '#e7eced',
+                }}
                 >
                     <View
-                        style={{
-                            backgroundColor: '#fff',
-                            width: '90%',
-                            height: 300,
-                            padding: 10
-                        }}
+                    style = {{
+                        width:25,
+                        height:25,
+                        borderRadius:50,
+                        backgroundColor:'#000',
+                        justifyContent:'center',
+                        alignItems:'center'
+                    }}
                     >
-                        <Text
-                            style={{
-                                position: 'absolute',
-                                right: 0,
-                                zIndex: 1,
-                                fontSize: 25
-                            }}
-                            onPress={onModalCloseButton}
-                        >close</Text>
-                        <Image
-                            resizeMode="cover"
-                            source={previewImage}
-                            style={{
-                                width: '100%',
-                                height: '100%'
-                            }}
-                        />
+                    <FontAwesome
+                    name='close'
+                    color= "#fff"
+                    size={15}
+                    onPress = {onModalCloseButton}
+                    />
                     </View>
-                </View>
-            </Modal>
-
-            {console.log(a, 'a')}
+                    </View>
+                <Image
+                    resizeMode="cover"
+                    source={previewImage}
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius:7
+                    }}
+                />
+            </View>
+        </View>
+    </Modal>
+    
+    {console.log(a,'a')}
         </ScrollView>
     );
 };
@@ -223,7 +251,7 @@ export default NewArrivals
 
 
 
-{/* <View
+            {/* <View
 
                 onStartShouldSetResponder={() => {
                     // alert('you clicked')

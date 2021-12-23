@@ -129,35 +129,35 @@
 
 
 
-import React from 'react';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { StyleSheet, Dimensions, View, Button, Text, ScrollView } from 'react-native';
+// import React from 'react';
+// import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+// import { StyleSheet, Dimensions, View, Button, Text, ScrollView } from 'react-native';
 
-const Login = () => {
-    return (
-      <>
-      <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.textWrapper}>
-          <Text style={styles.myText}>Login</Text>
-        </View>
-      </View>
-      </ScrollView>
-      </>
-    );
-  }
+// const Login = () => {
+//     return (
+//       <>
+//       <ScrollView>
+//       <View style={styles.container}>
+//         <View style={styles.textWrapper}>
+//           <Text style={styles.myText}>Login</Text>
+//         </View>
+//       </View>
+//       </ScrollView>
+//       </>
+//     );
+//   }
 
 
-const styles = StyleSheet.create({
-  // container: { flex: 1 },
-  textWrapper: {
-    // height: hp('70%'), // 70% of height device screen
-    width: wp('100%')   // 80% of width device screen
-  },
-  myText: {
-    fontSize: hp('5%'), // End result looks like the provided UI mockup
-    marginTop: hp('90%')
-  }
-});
+// const styles = StyleSheet.create({
+//   // container: { flex: 1 },
+//   textWrapper: {
+//     // height: hp('70%'), // 70% of height device screen
+//     width: wp('100%')   // 80% of width device screen
+//   },
+//   myText: {
+//     fontSize: hp('5%'), // End result looks like the provided UI mockup
+//     marginTop: hp('90%')
+//   }
+// });
 
-export default Login;
+// export default Login;
