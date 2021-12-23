@@ -17,6 +17,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MenuList from './MenuList';
 import Items from './Items';
 import VegOnly from './VegOnly';
+import MenuListContainer from './MenuListContainer';
 import PlpOffers from '../../components/PlpOffers';
 import GlobalStyles from '../../utils/GlobalStyles';
 import CurrentLocationPlp from '../../components/deliveryComponents/CurrentLocationPlp';
@@ -103,74 +104,39 @@ const ItemsList = ({ navigation }) => {
                     </View>
                     <View style={styles.menuDataContainer}>
                         {productListPageData?.
-                            filter(filteredData => {
-                                if (vegOnly) {
-                                    return filteredData.category === 'veg'
-                                } else {
-                                    return filteredData
-                                }
-                            })
-                            .map(data => {
-                                return (
-                                    <View key={data.id}>
-                                        <View
-                                            style={{
-                                                width: '100%',
-                                                height: 160,
-                                            }}>
-                                            <Image
-                                                source={data.menuImage}
-                                                resizeMode="cover"
-                                                style={styles.menuDataImg}
-                                            />
-                                            <Text style={styles.menuText}>
-                                                {data.menuName}
-                                            </Text>
-                                        </View>
-                                        <View style={styles.itemsContainer}>
-                                            {data.menuData?.map(item => {
-                                                return (
-                                                    <View key={item.id}>
-                                                        <Text style={styles.itemDescription}>
-                                                            {item.itemDescp}
-                                                        </Text>
-                                                        <View
-                                                            style={{
-                                                                marginTop: 50,
-                                                            }}>
-                                                            {item.itemData && item.itemData
-                                                                .filter((items, index) => index < itemsToShow)
-                                                                .map(items => (
-                                                                    <Items
-                                                                        items={items}
-                                                                        key={items.id}
-                                                                        data={data}
-                                                                        addItemToCart={addItemToCart}
-                                                                    />
-                                                                )
-                                                                )}
-                                                        </View>
-                                                        {item.itemData.length > 5 &&
-                                                            itemsToShow <= item.itemData.length ? (
-                                                            <View style={styles.seeMoreBtn}>
-                                                                <TouchableWithoutFeedback
-                                                                    // onPress={() => showMoreFun(item)}
-                                                                    style={[styles.seeMoreBtn, { height: 0 }]}>
-                                                                    <Text style={{ textAlign: 'center', }}>
-                                                                        see More
-                                                                    </Text>
-                                                                </TouchableWithoutFeedback>
-                                                            </View>
-                                                        ) : null}
-                                                    </View>
-                                                );
-                                            })}
-                                        </View>
+                        filter(filteredData =>{
+                            if(vegOnly){
+                              return  filteredData.category === 'veg'
+                            } else{
+                               return filteredData
+                            }
+                        })
+                        .map(data => {
+                            return (
+                                <View key={data.id}>
+                                    <View
+                                        style={{
+                                            width: '100%',
+                                            height: 160,
+                                        }}>
+                                        <Image
+                                            source={data.menuImage}
+                                            resizeMode="cover"
+                                            style={styles.menuDataImg}
+                                        />
+                                        <Text style={styles.menuText}>
+                                            {data.menuName}
+                                        </Text>
                                     </View>
+                                    <View style={styles.itemsContainer}>
+                                        {data.menuData?.map(item => (
+                                                <MenuListContainer key={item.id} data = {data} item={item}/>
+                                        ))}
+                                    </View>
+                    </View>
                                 )
                             })
                         }
-                    </View>
                 </View>
             </ScrollView>
             <View>
