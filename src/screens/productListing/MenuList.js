@@ -38,6 +38,7 @@ const MenuList = ({ modalOpen, setModalOpen , scrollHandler }) => {
                             {
                                 productListPageData?.map((data,index) => (
                                     <TouchableOpacity
+                                    key={index}
                                         onPress={() => {
                                             setModalOpen(!modalOpen)
                                             scrollHandler(index)
