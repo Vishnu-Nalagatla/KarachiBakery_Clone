@@ -6,12 +6,13 @@ import StoreSelection from '../../components/deliveryComponents/StoreSelection';
 import GlobalStyles from '../../utils/GlobalStyles';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const ProductListingHeader = ({ headerModal, setHeaderModal, storeTitle }) => {
+const ProductListingHeader = ({ headerModal, setHeaderModal,storeTitle }) => {
     const [delivery, setDelivery] = useState(true);
     const [storeSelectionPlp, setStoreSelectionPlp] = useState(false);
     const onModalOpenHandler = () => {
         setHeaderModal(!headerModal);
     }
+    console.log(storeTitle)
     return (
         <View style={styles.plpHeaderContainer}>
             <View style={GlobalStyles.flexDirection}>
@@ -25,7 +26,7 @@ const ProductListingHeader = ({ headerModal, setHeaderModal, storeTitle }) => {
                 <TouchableOpacity style={styles.plpHeaderTitle}
                     onPress={() => setStoreSelectionPlp(true)}>
                     <Text style={styles.productListingHeading}>Karachi Bakery</Text>
-                    <Text style={styles.selectedStore}>{storeTitle.storeTitle}
+                    <Text style={styles.selectedStore}>{storeTitle.title}
                     <Entypo name='chevron-small-down' />
                      </Text>
                 </TouchableOpacity>
@@ -77,7 +78,7 @@ const ProductListingHeader = ({ headerModal, setHeaderModal, storeTitle }) => {
 };
 
 const mapStateToProps = state => ({
-    storeTitle: state
+    storeTitle: state.storeTitleReducer
 });
 
 const styles = StyleSheet.create({

@@ -1,7 +1,9 @@
-import React,{ useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-const Cart = ({route}) => {
+import PlpOffers from '../../components/PlpOffers';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+const Cart = ({ route }) => {
     const [cartItems, setCartItems] = React.useState(route.params.cartItems);
     // useEffect(() => {
     // }, [cartItems])
@@ -71,116 +73,170 @@ const Cart = ({route}) => {
                         fontWeight: '800'
                     }}
                 >Items In Cart</Text>
-                { cartItems.length<1 ? 
-                <Text
-                style = {{
-                    flex:1,
-                    justifyContent:'center',
-                    alignItems:'center',
-                    fontSize:20
-                }}
-                >No Items In The Cart</Text> :
-                <View>
-                    {
-                        cartItems &&
-                         cartItems.map(item => (
-                            <View
-                                key={item.id}
-                                style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    marginTop: 20
-                                }}
-                            >
-                                <View>
-                                    <Text
-                                        style={{
-                                            color: '#000',
-                                            fontSize: 15,
-                                            letterSpacing: .8,
-                                            opacity: .8,
-                                            fontWeight: '500',
-                                            marginBottom: 10
-                                        }}
-                                    >{item.name}</Text>
-                                    <View
-                                    style = {{
-                                        flexDirection:'row',
-                                        alignItems:'center'
+                {cartItems.length < 1 ?
+                    <Text
+                        style={{
+                            flex: 1,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: 20
+                        }}
+                    >No Items In The Cart</Text> :
+                    <View>
+                        {
+                            cartItems &&
+                            cartItems.map(item => (
+                                <View
+                                    key={item.id}
+                                    style={{
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-between',
+                                        marginTop: 20
                                     }}
-                                    >
-                                    <FontAwesome5
-                                        name="rupee-sign"
-                                        color="#000"
-                                        size={12}
-                                    />
-                                    <Text
-                                        style={{
-                                            marginLeft: 6,
-                                            color: '#000',
-                                            fontWeight: '600',
-                                        }}
-                                    >{item.price}</Text>
+                                >
+                                    <View>
+                                        <Text
+                                            style={{
+                                                color: '#000',
+                                                fontSize: 15,
+                                                letterSpacing: .8,
+                                                opacity: .8,
+                                                fontWeight: '500',
+                                                marginBottom: 10
+                                            }}
+                                        >{item.name}</Text>
+                                        <View
+                                            style={{
+                                                flexDirection: 'row',
+                                                alignItems: 'center'
+                                            }}
+                                        >
+                                            <FontAwesome5
+                                                name="rupee-sign"
+                                                color="#000"
+                                                size={12}
+                                            />
+                                            <Text
+                                                style={{
+                                                    marginLeft: 6,
+                                                    color: '#000',
+                                                    fontWeight: '600',
+                                                }}
+                                            >{item.price}</Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: 'row',
+                                                alignItems: 'center',
+                                                marginTop: 20
+                                            }}
+                                        >
+                                            <FontAwesome5
+                                                name="newspaper"
+                                                size={16}
+                                                style={{
+                                                    marginRight: 8
+                                                }}
+                                            />
+                                            <Text>Preparation Instructions +</Text>
+                                        </View>
                                     </View>
                                     <View
                                         style={{
                                             flexDirection: 'row',
+                                            justifyContent: 'space-around',
                                             alignItems: 'center',
-                                            marginTop: 20
+                                            borderWidth: 1,
+                                            borderColor: '#eee',
+                                            width: 90,
+                                            height: 35,
+                                            borderRadius: 8,
                                         }}
                                     >
                                         <FontAwesome5
-                                            name="newspaper"
-                                            size={16}
+                                            name="minus"
+                                            color="#CD427D"
                                             style={{
-                                                marginRight: 8
+                                                fontWeight: 'bold'
                                             }}
+                                            onPress={() => route.params.removeItemFromCart(item)}
                                         />
-                                        <Text>Preparation Instructions +</Text>
+                                        <Text
+                                            style={{
+                                                color: '#CD427D',
+                                                fontWeight: 'bold'
+                                            }}
+                                        >{item.quantity}</Text>
+                                        <FontAwesome5
+                                            name="plus"
+                                            color="#CD427D"
+                                            style={{
+                                                fontWeight: 'bold'
+                                            }}
+                                            onPress={
+                                                () => route.params.addItemToCart(item)
+                                            }
+                                        />
                                     </View>
                                 </View>
-                                <View
-                                    style={{
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-around',
-                                        alignItems: 'center',
-                                        borderWidth: 1,
-                                        borderColor: '#eee',
-                                        width: 90,
-                                        height: 35,
-                                        borderRadius: 8,
-                                    }}
-                                >
-                                    <FontAwesome5
-                                        name="minus"
-                                        color="#CD427D"
-                                        style={{
-                                            fontWeight: 'bold'
-                                        }}
-                                        onPress={() => route.params.removeItemFromCart(item)}
-                                    />
-                                    <Text
-                                        style={{
-                                            color: '#CD427D',
-                                            fontWeight: 'bold'
-                                        }}
-                                    >{item.quantity}</Text>
-                                    <FontAwesome5
-                                        name="plus"
-                                        color="#CD427D"
-                                        style={{
-                                            fontWeight: 'bold'
-                                        }}
-                                        onPress={
-                                            () => route.params.addItemToCart(item)
-                                        }
-                                    />
-                                </View>
-                            </View>
-                        ))
-                    }
+                            ))
+                        }
+                    </View>
+                }
+                <View
+                    style={{
+                        marginTop: 40
+                    }}
+                >
+                    <View
+                    style = {{
+                        flexDirection:'row',
+                        justifyContent:'space-between',
+                        alignItems:'center',
+                        marginLeft:7
+                    }}
+                    >
+                        <View
+                          style = {{
+                            flexDirection:'row',
+                            justifyContent:'space-between',
+                            alignItems:'center'
+                        }}
+                        >
+                            <MaterialCommunityIcons
+                                name='brightness-percent'
+                                color='green'
+                                size={26}
+                                style = {{
+                                    opacity:.8
+                                }}
+                            />
+                            <Text
+                            style = {{
+                                color:'green',
+                                fontSize:14.8,
+                                fontWeight:'bold',
+                                marginLeft:8,
+                                opacity:.7
+                            }}
+                            >
+                                Apply Bank/Wallet offer
+                            </Text>
+                        </View>
+                        <View>
+                            <MaterialCommunityIcons
+                            name='greater-than'
+                            color='green'
+                            size={22}
+                            />
+                        </View>
+                    </View>
+                     <View style = {{
+                         marginTop:20
+                     }}>
+                    <PlpOffers />
+                    </View>
                 </View>
-}
             </ScrollView>
             <View
                 style={{

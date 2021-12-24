@@ -1,5 +1,6 @@
 import { Link } from '@react-navigation/native';
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import {
     Dimensions,
     FlatList,
@@ -12,15 +13,15 @@ import {
     TouchableWithoutFeedback,
     View,
 } from 'react-native';
-import { connect } from 'react-redux';
 import { StoreData } from '../../assets/AppData/AppData';
 import GlobalStyles from '../../utils/GlobalStyles';
-import {storeTitle} from '../../Redux/action';
-const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigation, storeSelectedTitle }) => {
+import { storeTitle } from '../../redux/actions';
+const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigation ,storeTitle}) => {
     // const [storeData, setStoreData] = useState([]);
     const storeHandler = (itemTitle) => {
         setStoreSelectionModal(false);
-        storeSelectedTitle(itemTitle);
+        // storeSelectedTitle(itemTitle);
+        storeTitle(itemTitle);
     }
     console.log('storeSelectionModal', storeSelectionModal);
     return (
@@ -28,7 +29,7 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
             <Modal
                 visible={storeSelectionModal}
                 transparent
-                onBackdropPress={()=> console.log('Close')}
+                onBackdropPress={() => console.log('Close')}
                 onRequestClose={() => { setStoreSelectionModal(!storeSelectionModal) }}
                 animationType="slide"
                 hardwareAccelerated
@@ -81,6 +82,11 @@ const StoreSelection = ({ storeSelectionModal, setStoreSelectionModal, navigatio
         </>
     )
 };
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        storeTitle : (value) => dispatch(storeTitle(value))
+    }
+}
 const styles = StyleSheet.create({
     selectStoreText: {
         margin: 20,
@@ -116,10 +122,10 @@ const styles = StyleSheet.create({
         elevation: 3,
         shadowOpacity: 0.8,
         shadowColor: 'black',
-        width: Dimensions.get('window').width-50,
+        width: Dimensions.get('window').width - 50,
     },
     linkStyles: {
-        padding:20,
+        padding: 20,
     },
     storeName: {
         fontWeight: 'bold',
@@ -143,9 +149,5 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
 });
-const mapDispatchtoProps = (dispatch) => {
-    return {
-        storeSelectedTitle: (title) => dispatch(storeTitle(title))
-    }
-}
-export default connect(null, mapDispatchtoProps)(StoreSelection);
+
+export default connect(null, mapDispatchToProps)(StoreSelection);

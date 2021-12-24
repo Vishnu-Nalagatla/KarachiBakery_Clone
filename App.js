@@ -21,17 +21,17 @@ import ScrollToIndex from './Practice/layout/ScrollToIndex';
 import ScrollTo from './Practice/layout/ScrollTo';
 import ScrollPractice from './Practice/layout/ScrollPractice';
 import { Provider } from 'react-redux';
-import store from './src/Redux/store';
 import Carousel from './Practice/banners/Carousel';
 import Test from './src/utils/Test';
 import DeliverySelection from './src/components/deliveryComponents/DeliverySelection';
 import Responsive from './src/utils/Test'
 import Login from './src/utils/Test';
 import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocationPlp';
+import store from './src/redux/store';
 function App() {
   return (
     <>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
       <NavigationContainers/>
       {/* <MapsMoving/> */}
       {/* <FoodDeliveryMap/> */}
@@ -58,7 +58,7 @@ function App() {
       {/* <Responsive></Responsive> */}
       {/* <Login/> */}
       {/* <CurrentLocationPlp/> */}
-      {/* </Provider> */}
+      </Provider>
     </>
   );
   
