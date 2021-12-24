@@ -9,6 +9,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 const ProductListingHeader = ({ headerModal, setHeaderModal,storeTitle }) => {
     const [delivery, setDelivery] = useState(true);
     const [storeSelectionPlp, setStoreSelectionPlp] = useState(false);
+    console.log(storeTitle.storeTitle, 'storeTitle.title')
     const onModalOpenHandler = () => {
         setHeaderModal(!headerModal);
     }
@@ -26,7 +27,7 @@ const ProductListingHeader = ({ headerModal, setHeaderModal,storeTitle }) => {
                 <TouchableOpacity style={styles.plpHeaderTitle}
                     onPress={() => setStoreSelectionPlp(true)}>
                     <Text style={styles.productListingHeading}>Karachi Bakery</Text>
-                    <Text style={styles.selectedStore}>{storeTitle.title}
+                    <Text style={styles.selectedStore}>{storeTitle.storeTitle}
                     <Entypo name='chevron-small-down' />
                      </Text>
                 </TouchableOpacity>
@@ -78,7 +79,7 @@ const ProductListingHeader = ({ headerModal, setHeaderModal,storeTitle }) => {
 };
 
 const mapStateToProps = state => ({
-    storeTitle: state.storeTitleReducer
+    storeTitle: state.deliveryReducer
 });
 
 const styles = StyleSheet.create({
