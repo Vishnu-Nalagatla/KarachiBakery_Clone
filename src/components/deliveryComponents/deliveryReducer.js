@@ -22,7 +22,7 @@ const deliveryReducer = (state = initialState, action) => {
                 ...state,
                 storeTitle: action.payload
             }
-        default:
+            default : return state
             break;
     };
 };

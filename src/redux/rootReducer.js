@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import deliveryReducer from '../components/deliveryComponents/deliveryReducer';
 import { STORE_TITLE } from './types';
+import deliveryReducer from '../components/deliveryComponents/deliveryReducer'
 
 export const cartReducer = (
   state = { cartItems: JSON.parse(localStorage.getItem("cartItems") || '[]') },
@@ -25,17 +25,11 @@ const storeTitleReducer = (state = titleInitialState, action) => {
     default : return state
   }
 }
-// const rootReducer = () => {
-//   return (
-//     combineReducers({
-//       deliveryReducer,
-//       cartReducer,
-//       storeTitleReducer
-//     })
-//   );
-// }
+
 const rootReducer = combineReducers({
-  storeTitleReducer
+  deliveryReducer
+  // storeTitleReducer
+  //       cartReducer,
 })
 
 export default rootReducer;
