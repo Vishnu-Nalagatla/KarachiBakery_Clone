@@ -28,6 +28,7 @@ import Responsive from './src/utils/Test'
 import Login from './src/utils/Test';
 import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocationPlp';
 import store from './src/redux/store';
+import RazorpayTest from './src/components/RazorpayPayment/RazorpayTest';
 function App() {
   return (
     <>
@@ -58,6 +59,7 @@ function App() {
       {/* <Responsive></Responsive> */}
       {/* <Login/> */}
       {/* <CurrentLocationPlp/> */}
+      {/* <RazorpayTest></RazorpayTest> */}
       </Provider>
     </>
   );

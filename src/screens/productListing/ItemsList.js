@@ -99,7 +99,11 @@ const ItemsList = ({ navigation,cartData}) => {
                     </View>
                     <View style={styles.headerContainer}>
                         <View style={[styles.exploreMenu, GlobalStyles.flexDirection]}>
-                            <Image style={[styles.exploreMenuImg]} source={require('../../assets/itemsList/menu-icon.png')} />
+                            <Image
+                             style={[styles.exploreMenuImg]} 
+                            //  source={require('../../assets/itemsList/menu-icon.png')}
+                             source = {{ uri : 'https://i.ibb.co/3kdC6rB/menu-icon.png'}}
+                              />
                             <Text style={styles.exploreMenuTxt}>
                                 Explore Menu
                             </Text>

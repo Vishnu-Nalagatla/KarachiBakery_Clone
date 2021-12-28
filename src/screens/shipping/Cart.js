@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import CartRedux from './CartRedux';
 import { addItemToCartPractice, removeEntireItem, removeItemFromCart } from '../../redux/actions';
 import CartManipulation from '../productListing/CartManipulation';
+import RazorpayTest from '../../components/RazorpayPayment/RazorpayTest';
 const Cart = ({ route,cartData,addItemToCartPra,removeItemFromCartPage,completeRemove}) => {
     // const [cartItems, setCartItems] = React.useState(route.params.cartItems);
     // const [cartItems,setCartItems] = React.useState(cartData.cartItems);
@@ -297,6 +298,7 @@ const Cart = ({ route,cartData,addItemToCartPra,removeItemFromCartPage,completeR
                 </View>
             </View>
 }
+            <RazorpayTest totalAmount = {route.params.totalAmount}  />
         </>
     );
 };
