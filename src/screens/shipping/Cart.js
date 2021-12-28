@@ -2,9 +2,14 @@ import React, { useEffect } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import PlpOffers from '../../components/PlpOffers';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-const Cart = ({ route }) => {
-    const [cartItems, setCartItems] = React.useState(route.params.cartItems);
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {connect} from 'react-redux';
+import CartRedux from './CartRedux';
+import { addItemToCartPractice, removeEntireItem, removeItemFromCart } from '../../redux/actions';
+import CartManipulation from '../productListing/CartManipulation';
+const Cart = ({ route,cartData,addItemToCartPra,removeItemFromCartPage,completeRemove}) => {
+    // const [cartItems, setCartItems] = React.useState(route.params.cartItems);
+    // const [cartItems,setCartItems] = React.useState(cartData.cartItems);
     // useEffect(() => {
     // }, [cartItems])
     // const removeItemFromCart = product => {
@@ -73,7 +78,7 @@ const Cart = ({ route }) => {
                         fontWeight: '800'
                     }}
                 >Items In Cart</Text>
-                {cartItems.length < 1 ?
+                {cartData.cartItems.length < 1 ?
                     <Text
                         style={{
                             flex: 1,
@@ -81,11 +86,11 @@ const Cart = ({ route }) => {
                             alignItems: 'center',
                             fontSize: 20
                         }}
-                    >No Items In The Cart</Text> :
+                    >No Items In The Cart</Text> : 
                     <View>
                         {
-                            cartItems &&
-                            cartItems.map(item => (
+                            cartData.cartItems &&
+                            cartData.cartItems.map(item => (
                                 <View
                                     key={item.id}
                                     style={{
@@ -141,7 +146,7 @@ const Cart = ({ route }) => {
                                             <Text>Preparation Instructions +</Text>
                                         </View>
                                     </View>
-                                    <View
+                                    {/* <View
                                         style={{
                                             flexDirection: 'row',
                                             justifyContent: 'space-around',
@@ -159,7 +164,7 @@ const Cart = ({ route }) => {
                                             style={{
                                                 fontWeight: 'bold'
                                             }}
-                                            onPress={() => route.params.removeItemFromCart(item)}
+                                            onPress={() => removeItemFromCartPage(item)}
                                         />
                                         <Text
                                             style={{
@@ -174,15 +179,19 @@ const Cart = ({ route }) => {
                                                 fontWeight: 'bold'
                                             }}
                                             onPress={
-                                                () => route.params.addItemToCart(item)
+                                                () => addItemToCartPra(item)
                                             }
                                         />
-                                    </View>
+                                    </View> */}
+                                    <CartManipulation items = {item}/>
+                                    <Text onPress={()=>completeRemove(item)}>Remove</Text>
                                 </View>
                             ))
                         }
                     </View>
-                }
+                 } 
+                <View>
+                </View>
                 <View
                     style={{
                         marginTop: 40
@@ -238,12 +247,14 @@ const Cart = ({ route }) => {
                     </View>
                 </View>
             </ScrollView>
+            {
+                cartData.cartItems.length>0&&
             <View
                 style={{
                     position: 'absolute',
                     bottom: 0,
                     padding: 15,
-                    backgroundColor: '#fff',
+                    backgroundColor: '#fff', 
                     width: '100%'
                 }}
             >
@@ -272,7 +283,7 @@ const Cart = ({ route }) => {
                                 marginRight: 2
                             }}
                         />
-                        {route.params.totalAmount}
+                        {cartData.cartItems.reduce((a,v) =>a + v.quantity * v.price,0)}
                     </Text>
                     <Text
                         style={{
@@ -285,7 +296,20 @@ const Cart = ({ route }) => {
                     >make payment</Text>
                 </View>
             </View>
+}
         </>
     );
 };
-export default Cart
+const mapStateToProps = state =>{
+    return{
+        cartData:state.cartReducerPractice
+    }
+}
+const mapDispatchToProps = dispatch =>{
+    return{
+        addItemToCartPra : (item) =>dispatch(addItemToCartPractice(item)),
+        removeItemFromCartPage : (item) =>dispatch(removeItemFromCart(item)),
+        completeRemove : (item) => dispatch(removeEntireItem(item))
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Cart)

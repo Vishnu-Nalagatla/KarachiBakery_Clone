@@ -4,7 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { productListPageData } from '../../assets/AppData/AppData';
 import Items from './Items';
-const SearchFilter = ({ navigation }) => {
+const SearchFilter = ({ navigation,route }) => {
     const [searchValue, setSearchValue] = React.useState('');
     const onInputChange = value => {
         if (value === " ") {
@@ -62,6 +62,7 @@ const SearchFilter = ({ navigation }) => {
                                                 {
                                                     item.itemData
                                                         .filter(product =>
+                                                            // route.params.vegOnly ? product.category === 'veg' : product &&
                                                             (product.name.toLocaleLowerCase()
                                                                 .includes(searchValue.toLocaleLowerCase()))
                                                             && searchValue.length > 0)

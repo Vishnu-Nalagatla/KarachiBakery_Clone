@@ -3,7 +3,10 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Cart from '../shipping/Cart';
-const PLPFooterCart = ({totalAmount,itemsInCart,cartItems, addItemToCart,removeItemFromCart,totalCount}) => {
+import {connect} from 'react-redux';
+const PLPFooterCart = ({totalAmount,itemsInCart,cartItems, addItemToCart,removeItemFromCart,totalCount,cartData}) => {
+    const cartCount = cartData.cartItems.reduce((a,v) =>a + v.quantity,0);
+    const cartTotalAmount = cartData.cartItems.reduce((a,v) => a + v.price * v.quantity,0);
     return (
         <>
                     <View style={styles.itemsListCartContainer}>
@@ -16,12 +19,12 @@ const PLPFooterCart = ({totalAmount,itemsInCart,cartItems, addItemToCart,removeI
                                 />
                                 <View style={styles.countContainer}>
                                     <Text style={styles.countText}>
-                                        {totalCount}
+                                        {cartCount}
                                     </Text>
                                 </View>
                             </View>
                             <Text style={styles.totalPrice}>
-                                Rs--{totalAmount}.00
+                                Rs--{cartTotalAmount}.00
                             </Text>
                         </View>
                         <View
@@ -49,6 +52,11 @@ const PLPFooterCart = ({totalAmount,itemsInCart,cartItems, addItemToCart,removeI
                     </>
     );
 };
+const mapStateToProps =  state =>{
+    return{
+        cartData:state.cartReducerPractice
+    }
+}
 const styles = StyleSheet.create({
     itemsListCartContainer: {
         backgroundColor: '#CD427D',
@@ -88,4 +96,4 @@ const styles = StyleSheet.create({
         marginRight: 10,
     }
 })
-export default PLPFooterCart
+export default connect(mapStateToProps) (PLPFooterCart)

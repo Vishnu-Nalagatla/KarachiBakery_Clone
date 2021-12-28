@@ -1,58 +1,86 @@
 import React from 'react'
-import { View, Text, StyleSheet,Image,TouchableOpacity, ScrollView } from 'react-native'
-import CartManipulation from './CartManipulation'
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import PLPFooterCart from './PLPFooterCart';
-
-const Items = ({items,data,addItemToCart}) => {
+import { connect } from 'react-redux';
+import { addItemToCartPractice } from '../../redux/actions';
+import CartManipulation from './CartManipulation';
+const Items = ({ items, data, addItemToCart, addItemToCartPra, cartData }) => {
+    const [cartActionVisible, setCartActionVisible] = React.useState(false);
+    const onPressHandler = items => {
+        addItemToCartPra(items);
+        setCartActionVisible(true);
+    }
     return (
         <>
-                <View
-                    style={styles.itemContainer}
-                >
-                    <Image
-                        source={data.category == 'veg' ?
-                            require('../../assets/images/veg-icon.jpg') :
-                            require('../../assets/images/non-veg.jpg')
-                        }
-                        style={{
-                            width: 20,
-                            height: 20,
-                        }}
-                        resizeMode="contain"
-                    />
-                    <View
-                    style = {{
-                        flexDirection:'row',
-                        justifyContent:'space-between',
+            <View
+                style={styles.itemContainer}
+            >
+                <Image
+                    source={data.category == 'veg' ?
+                        require('../../assets/images/veg-icon.jpg') :
+                        require('../../assets/images/non-veg.jpg')
+                    }
+                    style={{
+                        width: 20,
+                        height: 20,
                     }}
-                    >
-                        <View>
-                            <Text style={styles.itemName}>
-                                {items.name}
-                            </Text>
-                            <Text style={styles.itemPrice}>
-                                {`Rs ${items.price}`}
-                            </Text>
-                        </View>
-                        <TouchableOpacity
-                            onPress={() => addItemToCart(items)}
-                            style={styles.addToCartBtn}
-                        >
-                            <Text
-                                style={styles.addToCartBtnText}>
-                                add
-                            </Text> 
-
-                        </TouchableOpacity>
-                        {/* <View>
-                        <CartManipulation/>
-                        </View> */}
+                    resizeMode="contain"
+                />
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <View>
+                        <Text style={styles.itemName}>
+                            {items.name}
+                        </Text>
+                        <Text style={styles.itemPrice}>
+                            {`Rs ${items.price}`}
+                        </Text>
                     </View>
-                </View>
-              
-                </>
-    )
+                    {
+                        // cartActionVisible ?
+                            cartData
+                                .filter(itemData => itemData.id === items.id)
+                                .map(item => {
+                                    if (item.length > 0) {
+                                        setCartActionVisible(true)
+                                    }
+                                    return (
+                                        <CartManipulation items={item} key={item.id} />
+                                    )
+                                })
+                            // :
+                            
+                            }
+                            {
+                                <TouchableOpacity
+                                    onPress={() => onPressHandler(items)}
+                                    style={styles.addToCartBtn}
+                                >
+                                    <Text
+                                        style={styles.addToCartBtnText}>
+                                        add
+                                    </Text>
+                                </TouchableOpacity>
 }
+                </View>
+            </View>
+        </>
+    )
+};
+const mapStateToProps = state => {
+    return {
+        cartData: state.cartReducerPractice.cartItems
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        addItemToCartPra: (item) => dispatch(addItemToCartPractice(item))
+    }
+};
 const styles = StyleSheet.create({
     itemContainer: {
         borderBottomWidth: 0.8,
@@ -96,4 +124,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 })
-export default Items;
+export default connect(mapStateToProps, mapDispatchToProps)(Items);

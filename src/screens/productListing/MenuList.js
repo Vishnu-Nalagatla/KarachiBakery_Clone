@@ -3,7 +3,7 @@ import { View, Text, Modal, ScrollView, Image, TouchableOpacity, StyleSheet } fr
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import { productListPageData } from '../../assets/AppData/AppData';
 
-const MenuList = ({ modalOpen, setModalOpen , scrollHandler }) => {
+const MenuList = ({ modalOpen, setModalOpen , scrollHandler,vegOnly }) => {
 
     return (
         <>
@@ -36,7 +36,15 @@ const MenuList = ({ modalOpen, setModalOpen , scrollHandler }) => {
                         <ScrollView
                             showsVerticalScrollIndicator={false}>
                             {
-                                productListPageData?.map((data,index) => (
+                                productListPageData?.
+                                filter(filteredData => {
+                                    if (vegOnly) {
+                                        return filteredData.category === 'veg'
+                                    } else {
+                                        return filteredData
+                                    }
+                                })
+                                .map((data,index) => (
                                     <TouchableOpacity
                                     key={index}
                                         onPress={() => {

@@ -10,7 +10,7 @@ const Modals = () => {
         animationType="slide"
         hardwareAccelerated
         style={{
-
+         
         }}
     >
         <View

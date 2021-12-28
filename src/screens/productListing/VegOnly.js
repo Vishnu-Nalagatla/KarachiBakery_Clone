@@ -22,11 +22,11 @@ const VegOnly = ({vegOnly,setVegOnly, navigation}) => {
             </View>
             </View>
         </View>
-        <FontAwesome5 
+        <FontAwesome5
         name= "search"
         color = "#CD427D"
         size = {20}
-        onPress = {() => navigation.push('SearchFilter') }
+        onPress = {() => navigation.navigate('SearchFilter',vegOnly = {vegOnly}) }
         />
         </View>
     );

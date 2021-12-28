@@ -1,5 +1,5 @@
 
-import {ADD_ITEM_TO_CART, STORE_TITLE} from './types';
+import {ADD_ITEM_PRACTICE, ADD_ITEM_TO_CART, CART_TOTAL_COUNT, COMPLETE_ITEM_REMOVE, REMOVE_ITEM_FROM_CART_PRACTICE, STORE_TITLE} from './types';
 export const storeTitle = name =>{
     return{
         type:STORE_TITLE,
@@ -23,4 +23,24 @@ export const addItemToCart = (items,product) => dispatch =>{
         payload : {cartItems},
     })
     localStorage.setItem("cartItems",JSON.stringify(cartItems));
+}
+
+
+export const addItemToCartPractice = item =>{
+    return{
+        type:ADD_ITEM_PRACTICE,
+        payload:item
+    }
+};
+export const removeItemFromCart = item =>{
+    return{
+        type:REMOVE_ITEM_FROM_CART_PRACTICE,
+        payload:item
+    }
+}
+export const removeEntireItem = item =>{
+    return{
+        type:COMPLETE_ITEM_REMOVE,
+        payload:item
+    }
 }

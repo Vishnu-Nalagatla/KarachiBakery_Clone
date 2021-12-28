@@ -18,7 +18,8 @@ import PLPFooterCart from './PLPFooterCart';
 import Cart from '../shipping/Cart';
 import GlobalStyles from '../../utils/GlobalStyles';
 import CurrentLocationPlp from '../../components/deliveryComponents/CurrentLocationPlp';
-const ItemsList = ({ navigation }) => {
+import {connect} from 'react-redux';
+const ItemsList = ({ navigation,cartData}) => {
     let listViewRef;
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
@@ -28,13 +29,8 @@ const ItemsList = ({ navigation }) => {
     const [flatList, setFlatList] = React.useState(null);
     const [dataCords, setDataCords] = useState([]);
     const [yValue, setYValue] = React.useState(null);
-
-
-
-
     const addItemToCart = (product) => {
         let itemsInCart = cartItems.slice();
-        console.log(`cartItems`, cartItems)
         let isExist = false;
         itemsInCart.forEach(item => {
             if (item.id === product.id) {
@@ -71,7 +67,6 @@ const ItemsList = ({ navigation }) => {
     //   setItemsInCart(cartItems.reduce((a,v) => a+v.quantity,0))
 
     const scrollHandler = (index) => {
-        console.log(index, 'handindex')
         if (dataCords.length > index) {
             flatList.scrollTo({
                 x: 0,
@@ -110,7 +105,15 @@ const ItemsList = ({ navigation }) => {
                             </Text>
                         </View>
                         <View style={styles.productsContainer}>
-                            {productListPageData?.map((data, index) => (
+                            {productListPageData?.
+                              filter(filteredData => {
+                                if (vegOnly) {
+                                    return filteredData.category === 'veg'
+                                } else {
+                                    return filteredData
+                                }
+                            })
+                            .map((data, index) => (
                                 <TouchableOpacity
                                     key={data.id}
                                     style={{
@@ -198,10 +201,11 @@ const ItemsList = ({ navigation }) => {
                 <MenuList
                     modalOpen={modalOpen}
                     setModalOpen={setModalOpen}
-                    scrollHandler={scrollHandler} />
+                    scrollHandler={scrollHandler}
+                    vegOnly={vegOnly} />
             </View>
             {
-                cartItems.length > 0 && (
+                cartData.length > 0 && (
                     <PLPFooterCart
                         totalAmount={totalAmount}
                         totalCount={totalCount}
@@ -215,6 +219,11 @@ const ItemsList = ({ navigation }) => {
         </>
     );
 };
+const mapStateToProps = state =>{
+    return{
+        cartData : state.cartReducerPractice.cartItems
+    }
+}
 const styles = StyleSheet.create({
     headerContainer: {
         backgroundColor: '#fff',
@@ -294,4 +303,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 })
-export default ItemsList
+export default connect(mapStateToProps) (ItemsList)

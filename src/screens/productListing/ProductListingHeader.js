@@ -7,13 +7,20 @@ import GlobalStyles from '../../utils/GlobalStyles';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const ProductListingHeader = ({ headerModal, setHeaderModal,storeTitle }) => {
+    console.log(headerModal,'header modal')
     const [delivery, setDelivery] = useState(true);
     const [storeSelectionPlp, setStoreSelectionPlp] = useState(false);
-    console.log(storeTitle.storeTitle, 'storeTitle.title')
     const onModalOpenHandler = () => {
         setHeaderModal(!headerModal);
+    };
+    const deliveryHandler = () =>{
+        setDelivery(true);
+        setHeaderModal(false);
     }
-    console.log(storeTitle)
+    const pickupBtnHandler = () =>{
+        setDelivery(false);
+        setHeaderModal(false);
+    }
     return (
         <View style={styles.plpHeaderContainer}>
             <View style={GlobalStyles.flexDirection}>
@@ -54,7 +61,7 @@ const ProductListingHeader = ({ headerModal, setHeaderModal,storeTitle }) => {
                     >
                         <CustomButton
                             textName="Delivery"
-                            onPress={() => setDelivery(true), setHeaderModal(false)}
+                            onPress={deliveryHandler}
                             // delivery = {delivery}
                             style={{ backgroundColor: delivery ? '#Cd427D' : 'transparent' }}
                             color={delivery ? '#fff' : '#000'}
@@ -62,7 +69,7 @@ const ProductListingHeader = ({ headerModal, setHeaderModal,storeTitle }) => {
                         />
                         <CustomButton
                             textName="Pickup"
-                            onPress={() => { setDelivery(false), setHeaderModal(false) }}
+                            onPress={pickupBtnHandler}
                             style={{ backgroundColor: !delivery ? '#Cd427D' : 'transparent', }}
                             color={!delivery ? '#fff' : '#000'}
                             radius={!delivery ? 7 : 0}
@@ -112,7 +119,7 @@ const styles = StyleSheet.create({
     },
     orderOption: {
         backgroundColor: '#fff',
-        padding: 20,
+        padding: 48,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
     },
