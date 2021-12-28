@@ -23,7 +23,8 @@ const GetStarted = ({ navigation }) => {
                 <Animatable.Image
                     animation="bounceIn"
                     duraton="1500"
-                    source={require('../assets/karachi-bakery-logo.png')}
+                    // source={require('../assets/karachi-bakery-logo.png')}
+                    source={{ uri : 'https://i.ibb.co/L6bQ52s/karachi-bakery-logo.png'}}
                     style={styles.logo}
                     resizeMode="stretch"
                 />

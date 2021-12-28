@@ -78,7 +78,6 @@ const DeliverySelection = ({ navigation }) => {
             backgroundColor: '#fff',
           }}
         >
-
           <View style={styles.selectLocation}>
             <TouchableOpacity
               onPress={() => navigation.push('DeliveryAddressStack')}>

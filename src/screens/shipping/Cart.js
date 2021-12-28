@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import PlpOffers from '../../components/PlpOffers';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import RazorpayTest from '../../components/RazorpayPayment/RazorpayTest';
 const Cart = ({ route }) => {
     const [cartItems, setCartItems] = React.useState(route.params.cartItems);
     // useEffect(() => {
@@ -238,53 +239,7 @@ const Cart = ({ route }) => {
                     </View>
                 </View>
             </ScrollView>
-            <View
-                style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    padding: 15,
-                    backgroundColor: '#fff',
-                    width: '100%'
-                }}
-            >
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        backgroundColor: '#CD427D',
-                        padding: 15,
-                        borderRadius: 8
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontSize: 18,
-                            color: '#fff',
-                            fontWeight: 'bold',
-                            letterSpacing: 1
-                        }}
-                    >
-                        <FontAwesome5
-                            name="rupee-sign"
-                            // color = "#fff"
-                            size={16}
-                            style={{
-                                marginRight: 2
-                            }}
-                        />
-                        {route.params.totalAmount}
-                    </Text>
-                    <Text
-                        style={{
-                            fontSize: 19,
-                            color: '#fff',
-                            fontWeight: 'bold',
-                            // letterSpacing:1,
-                            textTransform: 'uppercase'
-                        }}
-                    >make payment</Text>
-                </View>
-            </View>
+            <RazorpayTest totalAmount = {route.params.totalAmount}  />
         </>
     );
 };
