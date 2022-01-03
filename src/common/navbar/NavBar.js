@@ -34,13 +34,13 @@ import Specialities from '../../screens/NavbarScreens/Specialities';
 import SugarFree from '../../screens/NavbarScreens/SugarFree';
 import VeganBiscuits from '../../screens/NavbarScreens/VeganBiscuits';
 import CustomDrawer from './CustomDrawer';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreenContainer from '../../screens/NavbarScreens/HomeScreeen/HomeScreenContainer';
 import DeliveryStackNavigation from '../../../Practice/DeliveryNavigation/DeliveryStackNavigation';
 import NewArrivals from '../../screens/NavbarScreens/NewArrivals';
 
+const Drawer = createDrawerNavigator();
 const NavBar = () => {
-  const Drawer = createDrawerNavigator();
   return (
     <>
       {/* <View style={styles.navbarContainer}>
@@ -74,6 +74,17 @@ const NavBar = () => {
             drawerLabelStyle: {
               fontSize: 15,
               fontFamily: 'Roboto-Medium',
+              // borderWidth: 2,
+              // borderColor: "#f2f2f2",
+              // backgroundColor: 'white',
+              // borderRadius: 12,
+              // elevation: 3,
+              // shadowOpacity: 0.8,
+              // shadowColor: 'black',
+              // height:40,
+              // color: 'black',
+              // alignItems: 'center',
+
             },
             drawerActiveBackgroundColor: '#aa18ea', // This attribute is to add the background color to Screen Name
             drawerActiveTintColor: '#fff',
@@ -84,19 +95,34 @@ const NavBar = () => {
             name="Home"
             component={HomeScreenContainer}
 
+            // options={{
+            //   headerTitle: 'Karachi Bakery',
+            //   headerTitleStyle: {
+            //     fontSize: 28,
+            //   },
+            //   drawerIcon: ({ color }) => (
+            //     <Ionicons name="home-outline" size={25} color={color} />
+            //   ),
+            // }}
             options={{
+              drawerItemStyle: { height: 0 },
               headerTitle: 'Karachi Bakery',
               headerTitleStyle: {
                 fontSize: 28,
               },
-              drawerIcon: ({ color }) => (
-                <Ionicons name="home-outline" size={25} color={color} />
-              ),
             }}
           />
-          <Drawer.Screen name="AboutUs" component={AboutUs} />
-          <Drawer.Screen name="NewArrivals" component={NewArrivals} />
-          <Drawer.Screen name="Services" component={Services} />
+          <Drawer.Screen name="AboutUs" component={AboutUs}
+          options={{
+            drawerItemStyle: { height: 0 }
+          }}
+          />
+          <Drawer.Screen name="NewArrivals" component={NewArrivals}
+          options={{
+            drawerItemStyle: { height: 0 }
+          }}
+             />
+          {/* <Drawer.Screen name="Services" component={Services} />
           <Drawer.Screen name="Specialities" component={Specialities} />
           <Drawer.Screen name="Careers" component={Careers} />
           <Drawer.Screen name="Enquiry" component={Enquiry} />
@@ -114,7 +140,7 @@ const NavBar = () => {
           <Drawer.Screen name="ArtisanBreads" component={ArtisanBreads} />
           <Drawer.Screen name="Rusks" component={Rusks} />
           <Drawer.Screen name="Mithai" component={Mithai} />
-          <Drawer.Screen name="GiftPacks" component={GiftPacks} />
+          <Drawer.Screen name="GiftPacks" component={GiftPacks} /> */}
         </Drawer.Navigator>
     </>
   );

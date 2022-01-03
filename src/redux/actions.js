@@ -1,9 +1,21 @@
 
-import {ADD_ITEM_PRACTICE, ADD_ITEM_TO_CART, CART_TOTAL_COUNT, COMPLETE_ITEM_REMOVE, REMOVE_ITEM_FROM_CART_PRACTICE, STORE_TITLE} from './types';
+import {ADD_ITEM_PRACTICE, ADD_ITEM_TO_CART, CART_TOTAL_COUNT, COMPLETE_ITEM_REMOVE, LOGIN_PASSWORD, LOGIN_USERNAME, REMOVE_ITEM_FROM_CART_PRACTICE, STORE_TITLE} from './types';
 export const storeTitle = name =>{
     return{
         type:STORE_TITLE,
         payload:name
+    }
+}
+export const loginUserName = userName =>{
+    return{
+        type:LOGIN_USERNAME,
+        payload:userName
+    }
+}
+export const loginPassword = password =>{
+    return{
+        type:LOGIN_PASSWORD,
+        payload:password
     }
 }
 export const addItemToCart = (items,product) => dispatch =>{

@@ -10,7 +10,7 @@ const NavigationContainers = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions = {{headerShown:false}}>
-            <Stack.Screen name="GetStared" component={GetStarted} />
+            {/* <Stack.Screen name="GetStared" component={GetStarted} /> */}
                 <Stack.Screen  name="drawerNav" component = {NavBar}/>
                 <Stack.Screen name = "stackNav" component = {StackNavigatorContainer}/>
             </Stack.Navigator>

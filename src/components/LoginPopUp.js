@@ -13,13 +13,13 @@ import {
     View,
 } from 'react-native';
 import { connect } from 'react-redux';
-// import { loginUserName } from '../redux/action';
+import { loginUserName } from '../redux/actions';
 import CustomButton from '../utils/CustomButton';
 
 import GlobalStyles from '../utils/GlobalStyles';
 const LoginPopUp = ({ loginUserName, userName }) => {
     console.log(userName)
-    const [modalLoginPopUp, setModalLoginPopUp] = useState(false);
+    const [modalLoginPopUp, setModalLoginPopUp] = useState(true);
     const [userData, setUserData] = useState({
         email: '',
         password: '',
@@ -71,7 +71,7 @@ const LoginPopUp = ({ loginUserName, userName }) => {
     }
 
     const LoginValidate = () => {
-        if (userData.email == db) {
+        if (loginUserName == db) {
             setUserData({
                 ...userData,
                 isValidUser: true,
@@ -88,9 +88,9 @@ const LoginPopUp = ({ loginUserName, userName }) => {
         <>
 
             <Modal
-                visible={true}
+                visible={modalLoginPopUp}
                 transparent
-                // onRequestClose={() => { setModalOpen(!modalOpen) }}
+                onRequestClose={() => { setModalLoginPopUp(!modalLoginPopUp) }}
                 animationType="slide"
                 hardwareAccelerated>
                 <View style={styles.modalPopUp}>
@@ -98,7 +98,7 @@ const LoginPopUp = ({ loginUserName, userName }) => {
                         <View style={[GlobalStyles.flexDirection, { justifyContent: 'space-between' }]}>
                             <Text style={styles.modalLoginTitle}>Confirm Your Login</Text>
                             <TouchableOpacity style={styles.modalLoginCloseTouchable}
-                                onPress={() => setModalLoginPopUp(true)}>
+                                onPress={() => setModalLoginPopUp(false)}>
                                 <Image style={styles.modalLoginClose} source={require('../assets/ModalLogin/ic-close.png')} />
                             </TouchableOpacity>
                         </View>
@@ -109,7 +109,7 @@ const LoginPopUp = ({ loginUserName, userName }) => {
                         <TextInput
                             placeholder='Enter your Email'
                             onChangeText={(value) => loginUserName(value)}
-                            onEndEditing={(e) => handleValidUser(e.nativeEvent.text)}
+                            // onEndEditing={(e) => handleValidUser(e.nativeEvent.text)}
                             style={styles.modalLoginInput}></TextInput>
                         {
                             userData.isValidUser ? null :
@@ -136,7 +136,7 @@ const LoginPopUp = ({ loginUserName, userName }) => {
                         <CustomButton
                             title="Login"
                             color="green"
-                            onPress={() => LoginValidate()}
+                            onPress={() => LoginValidate}
                         >
                         </CustomButton>
                     </View>
@@ -144,8 +144,8 @@ const LoginPopUp = ({ loginUserName, userName }) => {
             </Modal>
             <TouchableOpacity
             >
-                <View style={styles.modalPopUpContainer}>
-                </View>
+                {/* <View style={styles.modalPopUpContainer}>
+                </View> */}
             </TouchableOpacity>
         </>
     )
@@ -160,17 +160,17 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchtoProps = (dispatch) => {
     return {
-        // loginUserName: (value) => dispatch(loginUserName(value))
+        loginUserName: (value) => dispatch(loginUserName(value))
     }
 }
 
 
 const styles = StyleSheet.create({
-    modalPopUpContainer: {
-        backgroundColor: '#000',
-        opacity: 0.5,
-        height: '100%',
-    },
+    // modalPopUpContainer: {
+    //     backgroundColor: '#000',
+    //     opacity: 0.5,
+    //     height: '100%',
+    // },
     modalPopUp: {
         width: '100%',
         height: 380,
