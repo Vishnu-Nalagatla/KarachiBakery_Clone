@@ -13,12 +13,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import DeliveryAddressSearch from '../../src/components/deliveryComponents/DeliveryAddressSearch';
 import HomePage from './HomePage';
-
-
-
 const DeliveryStack = createStackNavigator();
-
-
 const DeliveryStackNavigation = () => {
     return (
         <DeliveryStack.Navigator

@@ -29,6 +29,7 @@ import Login from './src/utils/Test';
 import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocationPlp';
 import store from './src/redux/store';
 import RazorpayTest from './src/components/RazorpayPayment/RazorpayTest';
+import MoreOptions from './src/screens/More/MoreOptions';
 import GeoFencingTest from './src/components/GeoFencingTest';
 import Maps from './src/screens/NavbarScreens/Maps';
 import Map from './src/screens/NavbarScreens/Maps';
@@ -70,6 +71,7 @@ function App() {
       {/* <CurrentLocationPlp/> */}
       {/* <RazorpayTest></RazorpayTest> */}
       <NumberLogin />
+      {/* <MoreOptions/> */}
       </Provider>
     </>
   );

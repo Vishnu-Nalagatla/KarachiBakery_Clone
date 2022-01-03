@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_ITEM_PRACTICE, COMPLETE_ITEM_REMOVE, REMOVE_ITEM_FROM_CART_PRACTICE, STORE_TITLE } from './types';
+import { ADD_BTN_VISIBLE, ADD_ITEM_PRACTICE, COMPLETE_ITEM_REMOVE, REMOVE_ITEM_FROM_CART_PRACTICE, STORE_TITLE } from './types';
 import deliveryReducer from '../components/deliveryComponents/deliveryReducer'
 
 export const cartReducer = (state = { cartItems: JSON.parse(localStorage.getItem("cartItems") || '[]') }, action) => {
@@ -7,7 +7,7 @@ export const cartReducer = (state = { cartItems: JSON.parse(localStorage.getItem
     case ADD_ITEM_TO_CART:
       return { cartItems: action.payload.cartItems }
     default: return state
-  } 
+  }
 }
 const cartDataPractice = {
   cartItems: [],
@@ -15,25 +15,25 @@ const cartDataPractice = {
 }
 const cartReducerPractice = (state = cartDataPractice, action) => {
   switch (action.type) {
-    case REMOVE_ITEM_FROM_CART_PRACTICE : 
-    console.log('minus')
-    const isItemExist = state.cartItems.find(item => item.id === action.payload.id);
-    if (isItemExist.quantity === 1) {
+    case REMOVE_ITEM_FROM_CART_PRACTICE:
+      console.log('minus')
+      const isItemExist = state.cartItems.find(item => item.id === action.payload.id);
+      if (isItemExist.quantity === 1) {
         let filteredCart = state.cartItems.filter(data => data.id !== action.payload.id);
-       return{
-         ...state, 
-         cartItems : filteredCart
-       }
-    } else {
-      const decreaseItem  = state.cartItems.map(data =>
-            data.id === action.payload.id ?
-                { ...data, quantity: data.quantity - 1 } : data
-        )
-        return{
+        return {
           ...state,
-          cartItems : decreaseItem,
+          cartItems: filteredCart
         }
-    }
+      } else {
+        const decreaseItem = state.cartItems.map(data =>
+          data.id === action.payload.id ?
+            { ...data, quantity: data.quantity - 1 } : data
+        )
+        return {
+          ...state,
+          cartItems: decreaseItem,
+        }
+      }
     case ADD_ITEM_PRACTICE:
       let itemsInCart = state.cartItems.slice();
       let isExist = false;
@@ -50,19 +50,33 @@ const cartReducerPractice = (state = cartDataPractice, action) => {
         ...state,
         cartItems: itemsInCart,
       }
-      case COMPLETE_ITEM_REMOVE : 
+    case COMPLETE_ITEM_REMOVE:
       const removeItem = state.cartItems.filter(data => data.id !== action.payload.id);
-      console.log(action.payload,'remove')
-      return{
+      console.log(action.payload, 'remove')
+      return {
         ...state,
-         cartItems: removeItem
+        cartItems: removeItem
       }
+    default: return state
+  }
+};
+const initialBtnVisible = {
+  btnVisible: true
+};
+const btnVisibleReducer = (state = initialBtnVisible, action) => {
+
+  switch (action.type) {
+    case ADD_BTN_VISIBLE: return {
+      ...state,
+      btnVisible: action.payload
+    }
     default: return state
   }
 }
 const rootReducer = combineReducers({
   deliveryReducer,
   cartReducerPractice,
+  btnVisibleReducer
   // storeTitleReducer
   //       cartReducer,
 })

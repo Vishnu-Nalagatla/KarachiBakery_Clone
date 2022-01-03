@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { addItemToCartPractice, removeEntireItem, removeItemFromCart } from '../../redux/actions';
 import { transform } from '@babel/core';
-const CartManipulation = ({ addItemToCart, removeItemFromCart, items, cartData }) => {
+const CartManipulation = ({ addItemToCart, removeItemFromCart, items, cartData,getIndividualItemQuantity}) => {
+    // React.useEffect(()=>{
+    //     getIndividualItemQuantity(items.quantity)
+    // },[items])
     return (
         <View
             style={{
