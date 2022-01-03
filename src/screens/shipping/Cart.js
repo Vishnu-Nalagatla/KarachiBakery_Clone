@@ -298,7 +298,7 @@ const Cart = ({ route,cartData,addItemToCartPra,removeItemFromCartPage,completeR
                 </View>
             </View>
 }
-            <RazorpayTest totalAmount = {route.params.totalAmount}  />
+            {/* <RazorpayTest totalAmount = {route.params.totalAmount}  /> */}
         </>
     );
 };

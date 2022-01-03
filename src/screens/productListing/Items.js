@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 import { addItemToCartPractice } from '../../redux/actions';
 import CartManipulation from './CartManipulation';
 const Items = ({ items, data, addItemToCart, addItemToCartPra, cartData }) => {
-    const [cartActionVisible, setCartActionVisible] = React.useState(false);
+    const [addBtnVisible, setAddBtnVisible] = React.useState(0);
     const onPressHandler = items => {
         addItemToCartPra(items);
-        setCartActionVisible(true);
-    }
+    };
+    const getIndividualItemQuantity = (quantity) =>{
+        setAddBtnVisible(quantity)
+    };
     return (
         <>
             <View
@@ -41,31 +43,30 @@ const Items = ({ items, data, addItemToCart, addItemToCartPra, cartData }) => {
                         </Text>
                     </View>
                     {
-                        // cartActionVisible ?
-                            cartData
-                                .filter(itemData => itemData.id === items.id)
-                                .map(item => {
-                                    if (item.length > 0) {
-                                        setCartActionVisible(true)
-                                    }
-                                    return (
-                                        <CartManipulation items={item} key={item.id} />
-                                    )
-                                })
-                            // :
-                            
-                            }
-                            {
-                                <TouchableOpacity
-                                    onPress={() => onPressHandler(items)}
-                                    style={styles.addToCartBtn}
-                                >
-                                    <Text
-                                        style={styles.addToCartBtnText}>
-                                        add
-                                    </Text>
-                                </TouchableOpacity>
-}
+                        addBtnVisible ===0 &&
+                        <TouchableOpacity
+                            onPress={() => onPressHandler(items)}
+                            style={styles.addToCartBtn}
+                        >
+                            <Text
+                                style={styles.addToCartBtnText}>
+                                add
+                            </Text>
+                        </TouchableOpacity>
+                    }
+                    {
+                        cartData
+                            .filter(itemData => itemData.id === items.id)
+                            .map(item => {
+                                return (
+                                    <CartManipulation 
+                                    items={item} 
+                                    key={item.id}
+                                    getIndividualItemQuantity={getIndividualItemQuantity}
+                                    />
+                                )
+                            })
+                    }
                 </View>
             </View>
         </>
@@ -123,5 +124,5 @@ const styles = StyleSheet.create({
         color: '#CD427D',
         fontWeight: 'bold',
     },
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Items);

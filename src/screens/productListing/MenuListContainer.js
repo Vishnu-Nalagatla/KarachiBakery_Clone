@@ -31,7 +31,7 @@ const MenuListContainer = ({item,data,addItemToCart,removeItemFromCart, totalAmo
             itemsToShow <= item.itemData.length ? (
             <View style={styles.seeMoreBtn}>
                 <TouchableWithoutFeedback
-                    onPress={() => setItemsToShow(itemsToShow+5)}
+                    onPress={() => setItemsToShow(item.itemData.length)}
                     style={[styles.seeMoreBtn, { height: 0 }]}>
                     <Text style={{ textAlign: 'center', }}>
                         see More

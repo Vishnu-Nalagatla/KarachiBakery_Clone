@@ -53,7 +53,6 @@ const Resturant = () => {
                         
                     ], { useNativeDriver: false })
                 }
-                style={{ marginTop: 20 }}
             >
                 {
                     paginationOneDataObj?.map((item, index) => {

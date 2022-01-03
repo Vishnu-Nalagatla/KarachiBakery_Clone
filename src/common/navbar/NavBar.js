@@ -57,10 +57,12 @@ const NavBar = () => {
         <Drawer.Navigator
           initialRouteName="Home"
           drawerContent={props => <CustomDrawer {...props} />}
-          drawerPosition="right"
-          overlayColor="#000000"
           screenOptions={{
             headerTitleAlign: 'center',
+            drawerPosition :'right',
+            headerShown : false,
+            swipeEnabled : false,
+            // overlayColor:"#999",
             headerStyle: {
               backgroundColor: 'white',
               shadowColor: 'black',
@@ -78,7 +80,6 @@ const NavBar = () => {
             drawerActiveBackgroundColor: '#aa18ea', // This attribute is to add the background color to Screen Name
             drawerActiveTintColor: '#fff',
             drawerInactiveTintColor: '#333',
-
           }}>
           <Drawer.Screen
             name="Home"

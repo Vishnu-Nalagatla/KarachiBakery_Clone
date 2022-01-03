@@ -29,11 +29,12 @@ import Login from './src/utils/Test';
 import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocationPlp';
 import store from './src/redux/store';
 import RazorpayTest from './src/components/RazorpayPayment/RazorpayTest';
+import MoreOptions from './src/screens/More/MoreOptions';
 function App() {
   return (
     <>
     <Provider store={store}>
-      <NavigationContainers/>
+      {/* <NavigationContainers/> */}
       {/* <MapsMoving/> */}
       {/* <FoodDeliveryMap/> */}
       {/* <SearchFilter/> */}
@@ -60,6 +61,7 @@ function App() {
       {/* <Login/> */}
       {/* <CurrentLocationPlp/> */}
       {/* <RazorpayTest></RazorpayTest> */}
+      <MoreOptions/>
       </Provider>
     </>
   );

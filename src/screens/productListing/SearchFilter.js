@@ -4,14 +4,15 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { productListPageData } from '../../assets/AppData/AppData';
 import Items from './Items';
-const SearchFilter = ({ navigation,route }) => {
+const SearchFilter = ({ navigation, route }) => {
     const [searchValue, setSearchValue] = React.useState('');
     const onInputChange = value => {
         if (value === " ") {
             setSearchValue(value)
         }
         setSearchValue(value)
-    }
+    };
+    console.log(route.params.vegOnly)
     return (
         <View style={styles.searchFilterContainer}>
             <View style={styles.searchBar}>
@@ -62,10 +63,16 @@ const SearchFilter = ({ navigation,route }) => {
                                                 {
                                                     item.itemData
                                                         .filter(product =>
-                                                            // route.params.vegOnly ? product.category === 'veg' : product &&
                                                             (product.name.toLocaleLowerCase()
                                                                 .includes(searchValue.toLocaleLowerCase()))
                                                             && searchValue.length > 0)
+                                                        // .filter(filteredData => {
+                                                        //     if (route.params.vegOnly) {
+                                                        //         return filteredData.category === 'veg'
+                                                        //     } else {
+                                                        //         return filteredData
+                                                        //     }
+                                                        // })
                                                         .map(items => (
                                                             <Items items={items} data={data} key={items.id} />
                                                         ))

@@ -18,8 +18,8 @@ import PLPFooterCart from './PLPFooterCart';
 import Cart from '../shipping/Cart';
 import GlobalStyles from '../../utils/GlobalStyles';
 import CurrentLocationPlp from '../../components/deliveryComponents/CurrentLocationPlp';
-import {connect} from 'react-redux';
-const ItemsList = ({ navigation,cartData}) => {
+import { connect } from 'react-redux';
+const ItemsList = ({ navigation, cartData }) => {
     let listViewRef;
     const [modalOpen, setModalOpen] = React.useState(false);
     const [headerModal, setHeaderModal] = React.useState(false);
@@ -43,7 +43,6 @@ const ItemsList = ({ navigation,cartData}) => {
         }
         setCartItems(itemsInCart)
     };
-    
     const removeItemFromCart = product => {
         const isExist = cartItems.find(item => item.id === product.id);
         if (isExist.quantity === 1) {
@@ -56,12 +55,6 @@ const ItemsList = ({ navigation,cartData}) => {
             ))
         }
     };
-
-
-
-
-
-
     const totalAmount = cartItems.reduce((a, v) => a + v.quantity * v.price, 0);
     const totalCount = cartItems.reduce((a, v) => a + v.quantity, 0)
     //   setItemsInCart(cartItems.reduce((a,v) => a+v.quantity,0))
@@ -74,7 +67,6 @@ const ItemsList = ({ navigation,cartData}) => {
                 animated: true
             })
         }
-
     };
     return (
         <>
@@ -100,50 +92,53 @@ const ItemsList = ({ navigation,cartData}) => {
                     <View style={styles.headerContainer}>
                         <View style={[styles.exploreMenu, GlobalStyles.flexDirection]}>
                             <Image
-                             style={[styles.exploreMenuImg]} 
-                            //  source={require('../../assets/itemsList/menu-icon.png')}
-                             source = {{ uri : 'https://i.ibb.co/3kdC6rB/menu-icon.png'}}
-                              />
+                                style={[styles.exploreMenuImg]}
+                                //  source={require('../../assets/itemsList/menu-icon.png')}
+                                source={{ uri: 'https://i.ibb.co/3kdC6rB/menu-icon.png' }}
+                            />
                             <Text style={styles.exploreMenuTxt}>
                                 Explore Menu
                             </Text>
                         </View>
                         <View style={styles.productsContainer}>
                             {productListPageData?.
-                              filter(filteredData => {
-                                if (vegOnly) {
-                                    return filteredData.category === 'veg'
-                                } else {
-                                    return filteredData
-                                }
-                            })
-                            .map((data, index) => (
-                                <TouchableOpacity
-                                    key={data.id}
-                                    style={{
-                                        width: '23%',
-                                        height: 90,
-                                        marginTop: 10,
-                                    }}
-                                    activeOpacity={0.3}
-                                    onPress={() => scrollHandler(index)}
-                                >
-                                    <ImageBackground
-                                        source={data.menuImage}
-                                        resizeMode="cover"
-                                        imageStyle={{
-                                            borderRadius: 7,
-                                        }}
+                                filter(filteredData => {
+                                    if (vegOnly) {
+                                        return filteredData.category === 'veg'
+                                    } else {
+                                        return filteredData
+                                    }
+                                })
+                                .map((data, index) => (
+                                    <TouchableOpacity
+                                        key={data.id}
                                         style={{
-                                            width: '100%',
-                                            height: '100%',
-                                        }}>
-                                        <Text style={styles.menuNameTxt}>
-                                            {data.menuName}
-                                        </Text>
-                                    </ImageBackground>
-                                </TouchableOpacity>
-                            ))}
+                                            width: '23%',
+                                            height: 90,
+                                            marginTop: 10,
+                                            marginRight: 6,
+                                            borderRadius: 7
+
+                                        }}
+                                        activeOpacity={0.3}
+                                        onPress={() => scrollHandler(index)}
+                                    >
+                                        <ImageBackground
+                                            source={data.menuImage}
+                                            resizeMode="cover"
+                                            imageStyle={{
+                                                borderRadius: 7,
+                                            }}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                            }}>
+                                            <Text style={styles.menuNameTxt}>
+                                                {data.menuName}
+                                            </Text>
+                                        </ImageBackground>
+                                    </TouchableOpacity>
+                                ))}
                         </View>
                     </View>
                     <View
@@ -223,9 +218,9 @@ const ItemsList = ({ navigation,cartData}) => {
         </>
     );
 };
-const mapStateToProps = state =>{
-    return{
-        cartData : state.cartReducerPractice.cartItems
+const mapStateToProps = state => {
+    return {
+        cartData: state.cartReducerPractice.cartItems
     }
 }
 const styles = StyleSheet.create({
@@ -251,7 +246,7 @@ const styles = StyleSheet.create({
     productsContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
         paddingTop: 10,
@@ -307,4 +302,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 })
-export default connect(mapStateToProps) (ItemsList)
+export default connect(mapStateToProps)(ItemsList)

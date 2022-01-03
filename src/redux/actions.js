@@ -1,5 +1,5 @@
 
-import {ADD_ITEM_PRACTICE, ADD_ITEM_TO_CART, CART_TOTAL_COUNT, COMPLETE_ITEM_REMOVE, REMOVE_ITEM_FROM_CART_PRACTICE, STORE_TITLE} from './types';
+import {ADD_BTN_VISIBLE, ADD_ITEM_PRACTICE, ADD_ITEM_TO_CART, CART_TOTAL_COUNT, COMPLETE_ITEM_REMOVE, REMOVE_ITEM_FROM_CART_PRACTICE, STORE_TITLE} from './types';
 export const storeTitle = name =>{
     return{
         type:STORE_TITLE,
@@ -42,5 +42,12 @@ export const removeEntireItem = item =>{
     return{
         type:COMPLETE_ITEM_REMOVE,
         payload:item
+    }
+};
+
+export const addBtnVisible = (visible) =>{
+    return{
+        type : ADD_BTN_VISIBLE,
+        payload:visible
     }
 }

@@ -1,13 +1,13 @@
 import React from 'react'
-import { View, Text, Image, ImageBackground, ScrollView, Modal, Alert, Button, Pressable,TouchableOpacity } from 'react-native'
-import { newArrivalsData } from '../assets/AppData/AppData'
+import { View, Text, Image, ImageBackground, ScrollView, Modal, Alert, Button, Pressable, TouchableOpacity } from 'react-native'
+import { newArrivalsData } from '../assets/AppData/AppData';
 import FooterOrderNav from '../common/FooterOrderNav';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import images from '../constants/images'
-const NewArrivals = ({navigation}) => {
+import images from '../constants/images';
+const NewArrivals = ({ navigation }) => {
     const [visible, setVisible] = React.useState(false);
-    const [previewImage,setPreviewImage] = React.useState(null);
-    const [updating,setUpdating] = React.useState('');
+    const [previewImage, setPreviewImage] = React.useState(null);
+    const [updating, setUpdating] = React.useState('');
     const imagePreview = (item) => {
         setVisible(!visible)
         let imagePreview = [];
@@ -58,13 +58,11 @@ const NewArrivals = ({navigation}) => {
                             }}
                         >Home  /  New Arrivals</Text>
                         <Text
-
                             style={{
                                 color: '#fff',
                                 fontSize: 42,
                                 // scaleY: 1.4,
                                 lineHeight: 62
-
                             }}
                         >NEW ARRIVALS</Text>
                         <Text
@@ -91,7 +89,7 @@ const NewArrivals = ({navigation}) => {
                         fontWeight: 'bold',
                         // fontStyle:'italic',
                         paddingBottom: 5,
-                        borderBottomWidth: 1,
+                        borderBottomWidth:1,
                     }}
                 >Diwali Collections!!! </Text>
                 <View
@@ -110,32 +108,32 @@ const NewArrivals = ({navigation}) => {
                                     }}
                                 >
                                     <TouchableOpacity
-                                    onPress = {() => imagePreview(data)}
+                                        onPress={() => imagePreview(data)}
                                     // onPress = {()=>a = data}
                                     >
-                                    <View
-                                        // onStartShouldSetResponder={
-                                        //     () => {
-                                        //         setVisible(true)
-                                        //     }
-                                        // }
-                                        style={{
-                                            borderWidth: 4,
-                                            borderColor: '#444',
-                                            backgroundColor: '#fff',
-                                            alignItems: 'center',
-                                            height: 175
-                                        }}
-                                    >
-                                        <Image
-                                            source={data.image}
-                                            resizeMode="contain"
+                                        <View
+                                            // onStartShouldSetResponder={
+                                            //     () => {
+                                            //         setVisible(true)
+                                            //     }
+                                            // }
                                             style={{
-                                                width: '100%',
-                                                height: '100%',
+                                                borderWidth: 4,
+                                                borderColor: '#444',
+                                                backgroundColor: '#fff',
+                                                alignItems: 'center',
+                                                height: 175
                                             }}
-                                        />
-                                    </View>
+                                        >
+                                            <Image
+                                                source={data.image}
+                                                resizeMode="contain"
+                                                style={{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                }}
+                                            />
+                                        </View>
                                     </TouchableOpacity>
                                     <View
                                         style={{
@@ -171,92 +169,84 @@ const NewArrivals = ({navigation}) => {
                 <FooterOrderNav />
             </View>
             <Modal
-        visible={visible}
-        onRequestClose={() => setVisible(false)}
-        transparent
-        animationType="slide"
-        hardwareAccelerated
-        style={{
-
-        }}
-    >
-        <View
-            style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}
-        >
-            <View
+                visible={visible}
+                onRequestClose={() => setVisible(false)}
+                transparent
+                animationType="slide"
+                hardwareAccelerated
                 style={{
-                    backgroundColor: '#fff',
-                    width: '90%',
-                    height: 300,
-                    padding: 15,
-                    borderRadius:7
                 }}
             >
                 <View
-                style = {{
-                    position:'absolute',
-                    right:-12,
-                    top:-12,
-                    zIndex:1,
-                    width:30,
-                    height:30,
-                    borderRadius:50,
-                    backgroundColor:'#FFF',
-                    justifyContent:'center',
-                    alignItems:'center',
-                    borderWidth: 1,
-                    borderColor: '#e7eced',
-                }}
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
                 >
                     <View
-                    style = {{
-                        width:25,
-                        height:25,
-                        borderRadius:50,
-                        backgroundColor:'#000',
-                        justifyContent:'center',
-                        alignItems:'center'
-                    }}
+                        style={{
+                            backgroundColor: '#fff',
+                            width: '90%',
+                            height: 300,
+                            padding: 15,
+                            borderRadius: 7
+                        }}
                     >
-                    <FontAwesome
-                    name='close'
-                    color= "#fff"
-                    size={15}
-                    onPress = {onModalCloseButton}
-                    />
+                        <View
+                            style={{
+                                position: 'absolute',
+                                right: -12,
+                                top: -12,
+                                zIndex: 1,
+                                width: 30,
+                                height: 30,
+                                borderRadius: 50,
+                                backgroundColor: '#FFF',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 1,
+                                borderColor: '#e7eced',
+                            }}
+                        >
+                            <View
+                                style={{
+                                    width: 25,
+                                    height: 25,
+                                    borderRadius: 50,
+                                    backgroundColor: '#000',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <FontAwesome
+                                    name='close'
+                                    color="#fff"
+                                    size={15}
+                                    onPress={onModalCloseButton}
+                                />
+                            </View>
+                        </View>
+                        <Image
+                            resizeMode="cover"
+                            source={previewImage}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: 7
+                            }}
+                        />
                     </View>
-                    </View>
-                <Image
-                    resizeMode="cover"
-                    source={previewImage}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        borderRadius:7
-                    }}
-                />
-            </View>
-        </View>
-    </Modal>
-    
-    {console.log(a,'a')}
+                </View>
+            </Modal>
         </ScrollView>
     );
 };
 export default NewArrivals
-
-
-
-            {/* <View
-
+{/* <View
                 onStartShouldSetResponder={() => {
                     // alert('you clicked')
                     setVisible(true)
-
                 }}>
                 <Text>click  here</Text>
                 <Modal

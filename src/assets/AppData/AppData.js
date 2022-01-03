@@ -756,7 +756,28 @@ export const OffersData = [
         companyImage: require('../Offers/payzapp.png'),
         companyOffered: 'Get 10% CashBack'
     },
+];
 
-
+export const moreScreenData = [
+    {
+        iconName:'account',
+        textName:'Account Settings',
+    },
+    {
+        iconName:'notebook',
+        textName:'Order History',
+    },    {
+        iconName:'credit-card-check',
+        textName:'Payment Method',
+    },    {
+        iconName:'earth',
+        textName:'Shipping Address',
+    },    {
+        iconName:'account',
+        textName:'Billing Address',
+    },    {
+        iconName:'information-variant',
+        textName:'Terms and conditions',
+    },
 ];
 
