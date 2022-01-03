@@ -2,26 +2,26 @@ import React from 'react';
 import {View, Text, Dimensions, StyleSheet, Image, Button} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-// const Map = () => {
-//   const [coo, setCoords] = React.useState({
-//     lat: 17.4366894,
-//     long: 78.3668212,
-//     latDelta : 0.0122,
-//     longDelta:0.0122
-//   });
-//   const [region,setRegion] = React.useState({
-//     latitude: null,
-//     longitude: null,
-//     latitudeDelta: null,
-//     longitudeDelta: null,
-//   });
-const Maps = () => {
+const Map = () => {
   const [coo, setCoords] = React.useState({
-    lat: null,
-    long: null,
+    lat: 17.4366894,
+    long: 78.3668212,
     latDelta : 0.0122,
     longDelta:0.0122
   });
+  // const [region,setRegion] = React.useState({
+  //   latitude: null,
+  //   longitude: null,
+  //   latitudeDelta: null,
+  //   longitudeDelta: null,
+  // });
+// const Maps = () => {
+//   const [coo, setCoords] = React.useState({
+//     lat: null,
+//     long: null,
+//     latDelta : 0.0122,
+//     longDelta:0.0122
+//   });
   // const [region,setRegion] = React.useState({
   //   latitude: null,
   //   longitude: null,

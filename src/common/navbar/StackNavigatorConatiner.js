@@ -6,6 +6,7 @@ import CurrentLocationMap from '../../screens/maps/GoogleMaps';
 import SearchFilter from '../../screens/productListing/SearchFilter';
 import DeliverySelection from '../../components/deliveryComponents/DeliverySelection';
 import Cart from '../../screens/shipping/Cart';
+import LoginPopUp from '../../components/LoginPopUp';
 const Stack = createStackNavigator();
 const StackNavigatorContainer = () => {
     return (
@@ -24,6 +25,13 @@ const StackNavigatorContainer = () => {
                 options={{
                     headerShown: true,
                     headerTitle: 'Your Order'
+                }}
+            />
+            <Stack.Screen
+                name="LoginPopUp"
+                component={LoginPopUp}
+                options={{
+                    headerShown: false,
                 }}
             />
             <Stack.Screen name='DeliveryAddressStack' component={DeliveryAddressSearch}

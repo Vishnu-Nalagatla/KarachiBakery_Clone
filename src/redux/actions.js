@@ -6,6 +6,18 @@ export const storeTitle = name =>{
         payload:name
     }
 }
+export const loginUserName = userName =>{
+    return{
+        type:LOGIN_USERNAME,
+        payload:userName
+    }
+}
+export const loginPassword = password =>{
+    return{
+        type:LOGIN_PASSWORD,
+        payload:password
+    }
+}
 export const addItemToCart = (items,product) => dispatch =>{
     const cartItems = items.slice();
     let isExist = false;

@@ -30,11 +30,19 @@ import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocat
 import store from './src/redux/store';
 import RazorpayTest from './src/components/RazorpayPayment/RazorpayTest';
 import MoreOptions from './src/screens/More/MoreOptions';
+import GeoFencingTest from './src/components/GeoFencingTest';
+import Maps from './src/screens/NavbarScreens/Maps';
+import Map from './src/screens/NavbarScreens/Maps';
+import MovingMap from './src/utils/MovingMap';
 function App() {
   return (
     <>
     <Provider store={store}>
-      {/* <NavigationContainers/> */}
+      <NavigationContainers/>
+      {/* <GeoFencingTest></GeoFencingTest> */}
+      {/* <MovingMap></MovingMap> */}
+      {/* <Maps></Maps> */}
+      {/* <Map></Map> */}
       {/* <MapsMoving/> */}
       {/* <FoodDeliveryMap/> */}
       {/* <SearchFilter/> */}
@@ -61,7 +69,7 @@ function App() {
       {/* <Login/> */}
       {/* <CurrentLocationPlp/> */}
       {/* <RazorpayTest></RazorpayTest> */}
-      <MoreOptions/>
+      {/* <MoreOptions/> */}
       </Provider>
     </>
   );

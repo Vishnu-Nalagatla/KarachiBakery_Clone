@@ -1,6 +1,8 @@
 package com.karchi_clone;
 
 import com.facebook.react.ReactActivity;
+import com.karchi_clone.rn.geofencing.GeoFencingPackage;
+
 public class MainActivity extends ReactActivity {
 
   /**

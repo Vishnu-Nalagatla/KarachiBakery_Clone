@@ -3,7 +3,8 @@ import { LOGIN_PASSWORD, LOGIN_USERNAME, STORE_TITLE } from "../../redux/types";
 const initialState = {
     userName: '',
     password: '',
-    storeTitle: ''
+    storeTitle: '',
+    userLogin: false
 }
 
 const deliveryReducer = (state = initialState, action) => {
