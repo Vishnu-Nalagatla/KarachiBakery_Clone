@@ -1,13 +1,21 @@
 import { Link } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Cart from '../shipping/Cart';
 import { connect } from 'react-redux';
+import LoginPopUp from '../../components/LoginPopUp';
 const PLPFooterCart = ({ totalAmount, itemsInCart, cartItems, addItemToCart, removeItemFromCart, totalCount, cartData }) => {
     const cartCount = cartData.cartItems.reduce((a, v) => a + v.quantity, 0);
     const cartTotalAmount = cartData.cartItems.reduce((a, v) => a + v.price * v.quantity, 0);
-    const [userLogin, setUserLogin] = useState(true);
+    const [userLogin, setUserLogin] = useState(false);
+    console.log(cartData.userName);
+
+    const viewCartHandler = () => {
+    console.log("cartData.userName");
+        setUserLogin(cartData.userName ? false : true)
+    }
+
     return (
         <>
             <View style={styles.itemsListCartContainer}>
@@ -30,15 +38,16 @@ const PLPFooterCart = ({ totalAmount, itemsInCart, cartItems, addItemToCart, rem
                 </View>
 
 
-                <View
+                <TouchableOpacity
                     style={{
                         flexDirection: 'row',
                         alignItems: 'center'
                     }}
+                    onPress={() => viewCartHandler}
                 >
                     <Link
                         to={{
-                            screen: userLogin ? 'cart' : 'LoginPopUp',
+                            screen: 'cart',
                             params: {
                                 cartItems: cartItems, totalAmount: totalAmount, addItemToCart: addItemToCart,
                                 removeItemFromCart: removeItemFromCart
@@ -51,7 +60,8 @@ const PLPFooterCart = ({ totalAmount, itemsInCart, cartItems, addItemToCart, rem
                         size={15}
                         color='#fff'
                     />
-                </View>
+            {userLogin && <LoginPopUp />}
+                </TouchableOpacity>
             </View>
         </>
     );
@@ -62,10 +72,10 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//     }
+// }
 const styles = StyleSheet.create({
     itemsListCartContainer: {
         backgroundColor: '#CD427D',

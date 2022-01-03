@@ -6,6 +6,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import NewArrivals from '../../screens/NavbarScreens/NewArrivals'
 import GlobalStyles from '../../utils/GlobalStyles'
 
@@ -184,10 +185,10 @@ const CustomDrawer = (props) => {
                     <TouchableOpacity
                     style={[styles.testingScreen, GlobalStyles.flexDirection]}>
                     <View style={GlobalStyles.flexDirection}>
-                        <FontAwesome5
+                        <AntDesign
                             style={styles.accountIcon}
                             size={25}
-                            name='user'
+                            name='infocirlce'
                         />
                         <Text style={[styles.testingText]}>Terms & Conditions</Text>
                         </View>

@@ -10,7 +10,8 @@ export const cartReducer = (state = { cartItems: JSON.parse(localStorage.getItem
   } 
 }
 const cartDataPractice = {
-  cartItems: []
+  cartItems: [],
+  userName: '',
 }
 const cartReducerPractice = (state = cartDataPractice, action) => {
   switch (action.type) {

@@ -4,7 +4,6 @@ const initialState = {
     userName: '',
     password: '',
     storeTitle: '',
-    userLogin: false
 }
 
 const deliveryReducer = (state = initialState, action) => {

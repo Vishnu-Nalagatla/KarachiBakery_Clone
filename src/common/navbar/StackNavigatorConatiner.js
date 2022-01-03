@@ -27,13 +27,6 @@ const StackNavigatorContainer = () => {
                     headerTitle: 'Your Order'
                 }}
             />
-            <Stack.Screen
-                name="LoginPopUp"
-                component={LoginPopUp}
-                options={{
-                    headerShown: false,
-                }}
-            />
             <Stack.Screen name='DeliveryAddressStack' component={DeliveryAddressSearch}
                 options={{ title: 'Delivery To' ,headerShown: true }}
             />
