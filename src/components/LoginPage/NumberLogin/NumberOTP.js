@@ -36,7 +36,7 @@ const NumberOTP = ({navigation}) => {
           <Text style={styles.otpSubHeading}>
             We have sent the Verification Code to your Mobile Number
           </Text>
-          <Text style={styles.otpNumber}>+91 9848012345</Text>
+          <Text style={styles.otpNumber}>+91 - 9848012345</Text>
           <View
             style={[
               styles.otpConfirmationContainer,
@@ -78,10 +78,10 @@ const styles = StyleSheet.create({
     paddingLeft: 120,
   },
   otpImage: {
-    height: 250,
-    width: 250,
+    height: 220,
+    width: 220,
     marginVertical: 15,
-    marginHorizontal: 45,
+    marginHorizontal: 65,
   },
   otpVCodeHeading: {
     textAlign: 'center',
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   otpConfirmationContainer: {
-    paddingVertical: 20,
+    paddingVertical: 15,
     justifyContent: 'space-around',
   },
   otpNum: {
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
   },
   otpSubmitContainer: {
     backgroundColor: '#87A5A6',
+    marginTop:20,
     marginHorizontal: 40,
     paddingVertical: 15,
     borderColor: '#e7eced',
