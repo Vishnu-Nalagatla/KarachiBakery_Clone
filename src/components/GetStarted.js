@@ -41,7 +41,8 @@ const GetStarted = ({ navigation }) => {
                 <Text style={styles.text}>Sign in with account</Text>
                 <View style={styles.button}>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('drawerNav')}>
+                        // onPress={() => navigation.navigate('LoginContainer')}>
+                        onPress={() => navigation.navigate('UserLogin')}>
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}
                             style={styles.signIn}

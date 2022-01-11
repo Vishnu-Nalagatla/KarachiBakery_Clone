@@ -34,12 +34,13 @@ import GeoFencingTest from './src/components/GeoFencingTest';
 import Maps from './src/screens/NavbarScreens/Maps';
 import Map from './src/screens/NavbarScreens/Maps';
 import MovingMap from './src/utils/MovingMap';
-import NumberLogin from './src/components/NumberLogin';
+import UserLogin from './src/components/LoginPage/UserLogin';
+import NumberOTP from './src/components/LoginPage/NumberLogin/NumberOTP';
 function App() {
   return (
     <>
     <Provider store={store}>
-      {/* <NavigationContainers/> */}
+      <NavigationContainers/>
       {/* <GeoFencingTest></GeoFencingTest> */}
       {/* <MovingMap></MovingMap> */}
       {/* <Maps></Maps> */}
@@ -70,8 +71,9 @@ function App() {
       {/* <Login/> */}
       {/* <CurrentLocationPlp/> */}
       {/* <RazorpayTest></RazorpayTest> */}
-      <NumberLogin />
       {/* <MoreOptions/> */}
+      {/* <UserLogin /> */}
+      {/* <NumberOTP /> */}
       </Provider>
     </>
   );
