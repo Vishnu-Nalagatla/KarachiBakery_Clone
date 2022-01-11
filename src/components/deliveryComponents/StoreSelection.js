@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         elevation: 3,
         shadowOpacity: 0.8,
         shadowColor: 'black',
-        width: Dimensions.get('window').width - 50,
+        width: Dimensions.get('window').width - 35,
     },
     linkStyles: {
         padding: 20,
