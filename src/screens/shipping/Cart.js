@@ -12,6 +12,7 @@ import {
 } from '../../redux/actions';
 import CartManipulation from '../productListing/CartManipulation';
 import RazorpayTest from '../../components/RazorpayPayment/RazorpayTest';
+import Razorpay from './Razorpay';
 
 const Cart = ({
   route,
@@ -51,8 +52,10 @@ const Cart = ({
   //     setCartItems(itemsInCart)
   // };
 
-
-  const totalAmount = cartData.cartItems.reduce((a, v) => a + v.quantity * v.price, 0);
+  const totalAmount = cartData.cartItems.reduce(
+    (a, v) => a + v.quantity * v.price,
+    0,
+  );
   console.log(totalAmount, 'totalAmount');
   return (
     <>
@@ -272,45 +275,6 @@ const Cart = ({ route,cartData,addItemToCartPra,removeItemFromCartPage,completeR
                 }}>
                 Apply Bank/Wallet offer
               </Text>
-            
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        backgroundColor: '#CD427D',
-                        padding: 15,
-                        borderRadius: 8
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontSize: 18,
-                            color: '#fff',
-                            fontWeight: 'bold',
-                            letterSpacing: 1
-                        }}
-                    >
-                        <FontAwesome5
-                            name="rupee-sign"
-                            // color = "#fff"
-                            size={16}
-                            style={{
-                                marginRight: 2
-                            }}
-                        />
-                        {cartData.cartItems.reduce((a,v) =>a + v.quantity * v.price,0)}
-                    </Text>
-                    {/* <Text
-                        style={{
-                            fontSize: 19,
-                            color: '#fff',
-                            fontWeight: 'bold',
-                            // letterSpacing:1,
-                            textTransform: 'uppercase'
-                        }}
-                    >make payment</Text> */}
-                    <Razorpay/>
-                </View>
             </View>
             <View>
               <MaterialCommunityIcons
@@ -374,7 +338,7 @@ const Cart = ({ route,cartData,addItemToCartPra,removeItemFromCartPage,completeR
         //     </Text>
         //   </View>
         // </View>
-      <RazorpayTest totalAmount = {totalAmount}  />
+        <RazorpayTest totalAmount={totalAmount} />
       )}
     </>
   );

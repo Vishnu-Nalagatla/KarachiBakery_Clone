@@ -33,7 +33,6 @@ import GeoFencingTest from './src/components/GeoFencingTest';
 import Maps from './src/screens/NavbarScreens/Maps';
 import Map from './src/screens/NavbarScreens/Maps';
 import MovingMap from './src/utils/MovingMap';
-import NumberLogin from './src/components/NumberLogin';
 import ApolloClientProvider from './Practice/apolloClient/ApolloClientProvider';
 import Razorpay from './src/screens/shipping/Razorpay';
 import InitialPage from './src/haldirams/InitialPage';
@@ -48,7 +47,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {/* <NavigationContainers/> */}
+        <NavigationContainers/>
         {/* <GeoFencingTest></GeoFencingTest> */}
         {/* <MovingMap></MovingMap> */}
         {/* <Maps></Maps> */}
@@ -87,7 +86,7 @@ function App() {
         {/* <IntroScreen/> */}
         {/* <LoginScreen/> */}
         {/* <ApolloClientContainer/> */}
-        <Navigation/>
+        {/* <Navigation/> */}
         {/* <IntroScreenContainer/> */}
         {/* <CarouselOne/> */}
         {/* <DrawerNavigatorContainer/> */}
