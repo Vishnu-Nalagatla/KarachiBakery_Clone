@@ -27,8 +27,8 @@ const MenuListContainer = ({item,data,addItemToCart,removeItemFromCart, totalAmo
                 )
                 )}
         </View>
-        {item.itemData.length > 5 &&
-            itemsToShow <= item.itemData.length ? (
+        {item.itemData.length > 5 && 
+            itemsToShow < item.itemData.length ? (
             <View style={styles.seeMoreBtn}>
                 <TouchableWithoutFeedback
                     onPress={() => setItemsToShow(item.itemData.length)}

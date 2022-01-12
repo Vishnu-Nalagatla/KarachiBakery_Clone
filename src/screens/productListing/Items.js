@@ -4,14 +4,27 @@ import PLPFooterCart from './PLPFooterCart';
 import { connect } from 'react-redux';
 import { addItemToCartPractice } from '../../redux/actions';
 import CartManipulation from './CartManipulation';
+import WishList from './WishList';
 const Items = ({ items, data, addItemToCart, addItemToCartPra, cartData }) => {
     const [addBtnVisible, setAddBtnVisible] = React.useState(0);
     const onPressHandler = items => {
         addItemToCartPra(items);
     };
     const getIndividualItemQuantity = (quantity) =>{
-        setAddBtnVisible(quantity)
+        console.log(quantity,'quan')
+        if(quantity>=1){
+            setAddBtnVisible(quantity)
+        }else{
+            setAddBtnVisible(0);
+        }
     };
+    var exists=false;
+    cartData.map(item => {
+        if(item.id==items.id){
+            exists=true
+        }
+    })
+    console.log(exists,items.id,":::::::::::::::::exists");
     return (
         <>
             <View
@@ -38,12 +51,20 @@ const Items = ({ items, data, addItemToCart, addItemToCartPra, cartData }) => {
                         <Text style={styles.itemName}>
                             {items.name}
                         </Text>
+                        <View
+                        style={{
+                            flexDirection:'row',
+                            alignItems:'center'
+                        }}
+                        >
                         <Text style={styles.itemPrice}>
                             {`Rs ${items.price}`}
                         </Text>
+                        <WishList items = {items}/>
+                        </View>
                     </View>
                     {
-                        addBtnVisible ===0 &&
+                        !exists &&
                         <TouchableOpacity
                             onPress={() => onPressHandler(items)}
                             style={styles.addToCartBtn}
@@ -53,6 +74,9 @@ const Items = ({ items, data, addItemToCart, addItemToCartPra, cartData }) => {
                                 add
                             </Text>
                         </TouchableOpacity>
+                    }
+                    {
+                        console.log(cartData,"itemData::::::::::")
                     }
                     {
                         cartData
@@ -105,6 +129,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '700',
         marginVertical: 10,
+        flex:2
     },
     addToCartBtn: {
         width: 90,

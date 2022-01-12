@@ -6,8 +6,13 @@ import NewArrivals from '../../src/screens/NewArrivals';
 import NavBar from '../../src/common/navbar/NavBar';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Cart from '../../src/screens/shipping/Cart';
+import MoreOptions from '../../src/screens/More/MoreOptions';
+import WishListContainer from '../../src/screens/wishlist/WishListContainer';
 const Tab = createBottomTabNavigator();
-const TabContainer = () => {
+const TabContainer = ({navigation}) => {
+    // const openDrawer = () =>{
+    //     alert('bfhudsfb')
+    // }
     return (
         // <NavigationContainer>
             <Tab.Navigator
@@ -61,9 +66,9 @@ const TabContainer = () => {
             >
                 <Tab.Screen name='home' component={NavBar} />
                 <Tab.Screen name="categories" component={NewArrivals} />
-                <Tab.Screen name="wishlist" component={NewArrivals} />
+                <Tab.Screen name="wishlist" component={WishListContainer} />
                 <Tab.Screen name='my cart' component={Cart} />
-                <Tab.Screen name='more' component={NavBar} />
+                <Tab.Screen name='more' component={MoreOptions} />
             </Tab.Navigator>
         // </NavigationContainer>
     );

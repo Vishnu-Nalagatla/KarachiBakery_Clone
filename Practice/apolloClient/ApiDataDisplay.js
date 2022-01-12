@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, FlatList } from 'react-native'
 import { useQuery,gql } from '@apollo/client';
-import CustomQuery from '../../src/quries/CustomQuery';
+import CustomQuery from '../quries/CustomQuery';
 
 
 
@@ -53,8 +53,16 @@ console.log({error,loading,data})
             data= {data.users}
             renderItem = {({item}) => {
                 return(
-                    <View>
+                    <View
+                    style={{
+                        flexDirection:'row',
+                        justifyContent:'space-between'
+                    }}
+                    >
                         <Text>{item.name}</Text>
+                        <Text>{item.userName}</Text>
+                        <Text>{item.age}</Text>
+                        <Text>{item.nationality}</Text>
                     </View>
                 )
             }}

@@ -19,6 +19,7 @@ import Cart from '../shipping/Cart';
 import GlobalStyles from '../../utils/GlobalStyles';
 import CurrentLocationPlp from '../../components/deliveryComponents/CurrentLocationPlp';
 import { connect } from 'react-redux';
+import WishListContainer from '../wishlist/WishListContainer';
 const ItemsList = ({ navigation, cartData }) => {
     let listViewRef;
     const [modalOpen, setModalOpen] = React.useState(false);

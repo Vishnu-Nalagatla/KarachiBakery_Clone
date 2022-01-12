@@ -1,4 +1,3 @@
-
 import React from 'react';
 import FoodDeliveryMap from './Practice/mapsByFoodDelivery/FoodDeliveryMap';
 import CurrentLocationContainer from './src/screens/maps/CurrentLocationContainer';
@@ -9,7 +8,7 @@ import VegOnly from './src/screens/productListing/VegOnly';
 import LoginPopUp from './src/components/LoginPopUp';
 import PlpOffers from './src/components/PlpOffers';
 import GetStarted from './src/components/GetStarted';
-import { ItemsList } from './src/screens/productListing';
+import {ItemsList} from './src/screens/productListing';
 import StoreSelection from './src/components/deliveryComponents/StoreSelection';
 import BannerCarousel from './Practice/banners/BannerCarosel';
 import TabContainer from './Practice/navigation/DrawerContainer';
@@ -20,11 +19,11 @@ import GetLayout from './Practice/layout/GetLayout';
 import ScrollToIndex from './Practice/layout/ScrollToIndex';
 import ScrollTo from './Practice/layout/ScrollTo';
 import ScrollPractice from './Practice/layout/ScrollPractice';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import Carousel from './Practice/banners/Carousel';
 import Test from './src/utils/Test';
 import DeliverySelection from './src/components/deliveryComponents/DeliverySelection';
-import Responsive from './src/utils/Test'
+import Responsive from './src/utils/Test';
 import Login from './src/utils/Test';
 import CurrentLocationPlp from './src/components/deliveryComponents/CurrentLocationPlp';
 import store from './src/redux/store';
@@ -34,51 +33,68 @@ import GeoFencingTest from './src/components/GeoFencingTest';
 import Maps from './src/screens/NavbarScreens/Maps';
 import Map from './src/screens/NavbarScreens/Maps';
 import MovingMap from './src/utils/MovingMap';
-import UserLogin from './src/components/LoginPage/UserLogin';
-import NumberOTP from './src/components/LoginPage/NumberLogin/NumberOTP';
+import NumberLogin from './src/components/NumberLogin';
+import ApolloClientProvider from './Practice/apolloClient/ApolloClientProvider';
+import Razorpay from './src/screens/shipping/Razorpay';
+import InitialPage from './src/haldirams/InitialPage';
+import IntroScreen from './src/haldirams/IntroScreen';
+import LoginScreen from './src/haldirams/LoginScreen';
+import ApolloClientContainer from './Practice/apolloClient/apolloclientContainer/ApolloClientContainer';
+import Navigation from './src/haldirams/Navigation';
+import IntroScreenContainer from './src/haldirams/IntroScreenContainer';
+import CarouselOne from './src/haldirams/CarouselOne';
+import DrawerNavigatorContainer from './Practice/drawerNavigator/DrawerNavigatorContainer';
 function App() {
   return (
     <>
-    <Provider store={store}>
-      <NavigationContainers/>
-      {/* <GeoFencingTest></GeoFencingTest> */}
-      {/* <MovingMap></MovingMap> */}
-      {/* <Maps></Maps> */}
-      {/* <Map></Map> */}
-      {/* <MapsMoving/> */}
-      {/* <FoodDeliveryMap/> */}
-      {/* <SearchFilter/> */}
-      {/* <VegOnly/> */}
-      {/* <CurrentLocationContainer/> */}
-      {/* <PlpOffers></PlpOffers> */}
-      {/* <LoginPopUp></LoginPopUp> */}
-      {/* <GetStarted></GetStarted> */}
-      {/* <ItemsList/> */}
-      {/* <StoreSelection/> */}
-      {/* <BannerCarousel/> */}
-      {/* <TabContainer/> */}
-      {/* <Banner/> */}
-      {/* <BannerPaginationTwo/> */}
-      {/* <Resturant/> */}
-      {/* <GetLayout/> */}
-      {/* <ScrollToIndex/> */}
-      {/* <ScrollTo/> */}
-      {/* <ScrollPractice/> */}
-      {/* <Carousel/> */}
-      {/* <Test></Test> */}
-      {/* <DeliverySelection></DeliverySelection> */}
-      {/* <Responsive></Responsive> */}
-      {/* <Login/> */}
-      {/* <CurrentLocationPlp/> */}
-      {/* <RazorpayTest></RazorpayTest> */}
-      {/* <MoreOptions/> */}
-      {/* <UserLogin /> */}
-      {/* <NumberOTP /> */}
+      <Provider store={store}>
+        {/* <NavigationContainers/> */}
+        {/* <GeoFencingTest></GeoFencingTest> */}
+        {/* <MovingMap></MovingMap> */}
+        {/* <Maps></Maps> */}
+        {/* <Map></Map> */}
+        {/* <MapsMoving/> */}
+        {/* <FoodDeliveryMap/> */}
+        {/* <SearchFilter/> */}
+        {/* <VegOnly/> */}
+        {/* <CurrentLocationContainer/> */}
+        {/* <PlpOffers></PlpOffers> */}
+        {/* <LoginPopUp></LoginPopUp> */}
+        {/* <GetStarted></GetStarted> */}
+        {/* <ItemsList/> */}
+        {/* <StoreSelection/> */}
+        {/* <BannerCarousel/> */}
+        {/* <TabContainer/> */}
+        {/* <Banner/> */}
+        {/* <BannerPaginationTwo/> */}
+        {/* <Resturant/> */}
+        {/* <GetLayout/> */}
+        {/* <ScrollToIndex/> */}
+        {/* <ScrollTo/> */}
+        {/* <ScrollPractice/> */}
+        {/* <Carousel/> */}
+        {/* <Test></Test> */}
+        {/* <DeliverySelection></DeliverySelection> */}
+        {/* <Responsive></Responsive> */}
+        {/* <Login/> */}
+        {/* <CurrentLocationPlp/> */}
+        {/* <RazorpayTest></RazorpayTest> */}
+        {/* <NumberLogin /> */}
+        {/* <MoreOptions/> */}
+        {/* <Razorpay/> */}
+        {/* <ApolloClientProvider/> */}
+        {/* <InitialPage/> */}
+        {/* <IntroScreen/> */}
+        {/* <LoginScreen/> */}
+        {/* <ApolloClientContainer/> */}
+        <Navigation/>
+        {/* <IntroScreenContainer/> */}
+        {/* <CarouselOne/> */}
+        {/* <DrawerNavigatorContainer/> */}
       </Provider>
     </>
   );
-  
-} 
+}
 export default App;
 
 // import React, {Component} from 'react';
@@ -162,7 +178,7 @@ export default App;
 //         {loading ? <ActivityIndicator /> : null}
 //         {location ? (
 
-//           // <Text style={styles.location}>{JSON.stringify(location, 0, 2)}</Text> 
+//           // <Text style={styles.location}>{JSON.stringify(location, 0, 2)}</Text>
 //           <MapView
 //           style={{flex:1}}
 //           initialRegion = {{
@@ -180,8 +196,8 @@ export default App;
 //                  title = "just checking"
 //                  description = "just checking i sya"
 //                  >
-//                      <Image 
-//                      source = {require('./src/assets/NavbarImages/user-profile.jpg')} 
+//                      <Image
+//                      source = {require('./src/assets/NavbarImages/user-profile.jpg')}
 //                      style = {{
 //                          width:45,
 //                          height:45

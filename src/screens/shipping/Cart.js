@@ -57,6 +57,41 @@ const Cart = ({
   return (
     <>
       {/* <View
+import Razorpay from './Razorpay';
+const Cart = ({ route,cartData,addItemToCartPra,removeItemFromCartPage,completeRemove}) => {
+    // const [cartItems, setCartItems] = React.useState(route.params.cartItems);
+    // const [cartItems,setCartItems] = React.useState(cartData.cartItems);
+    // useEffect(() => {
+    // }, [cartItems])
+    // const removeItemFromCart = product => {
+    //     const isExist = cartItems.find(item => item.id === product.id);
+    //     if (isExist.quantity === 1) {
+    //         let filteredCart = cartItems.filter(data => data.id !== product.id);
+    //         setCartItems(filteredCart);
+    //     } else {
+    //         setCartItems(cartItems.map(data =>
+    //             data.id === product.id ?
+    //                 { ...data, quantity: data.quantity - 1 } : data
+    //         ))
+    //     }
+    // };
+    // const addItemInCart = (product) => {
+    //     let itemsInCart = cartItems.slice();
+    //     let isExist = false;
+    //     itemsInCart.forEach(item => {
+    //         if (item.id === product.id) {
+    //             item.quantity++;
+    //             isExist = true;
+    //         }
+    //     });
+    //     if (!isExist) {
+    //         itemsInCart.push({ ...product, quantity: 1 })
+    //     }
+    //     setCartItems(itemsInCart)
+    // };
+    return (
+        <>
+            {/* <View
                 style={{
                     flexDirection: 'row',
                     backgroundColor: '#fff',
@@ -237,6 +272,45 @@ const Cart = ({
                 }}>
                 Apply Bank/Wallet offer
               </Text>
+            
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        backgroundColor: '#CD427D',
+                        padding: 15,
+                        borderRadius: 8
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontSize: 18,
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            letterSpacing: 1
+                        }}
+                    >
+                        <FontAwesome5
+                            name="rupee-sign"
+                            // color = "#fff"
+                            size={16}
+                            style={{
+                                marginRight: 2
+                            }}
+                        />
+                        {cartData.cartItems.reduce((a,v) =>a + v.quantity * v.price,0)}
+                    </Text>
+                    {/* <Text
+                        style={{
+                            fontSize: 19,
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            // letterSpacing:1,
+                            textTransform: 'uppercase'
+                        }}
+                    >make payment</Text> */}
+                    <Razorpay/>
+                </View>
             </View>
             <View>
               <MaterialCommunityIcons

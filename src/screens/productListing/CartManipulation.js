@@ -7,7 +7,7 @@ import { transform } from '@babel/core';
 const CartManipulation = ({ addItemToCart, removeItemFromCart, items, cartData,getIndividualItemQuantity}) => {
     // React.useEffect(()=>{
     //     getIndividualItemQuantity(items.quantity)
-    // },[items])
+    // },[items.quantity])
     return (
         <View
             style={{

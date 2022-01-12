@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 const HomeScreenHeader = ({navigation,openDrawer}) => {
@@ -29,7 +29,7 @@ const HomeScreenHeader = ({navigation,openDrawer}) => {
                  style = {{marginTop:5,marginLeft:3}}
                 />
             </View>
-            <View style = {styles.barIcon}>
+            <View hitSlop={{bottom:7,top:7,left:7,right:7}} style = {styles.barIcon} onStartShouldSetResponder={()=>alert('something')}>
             <FontAwesome5Icon 
             name='bars' 
             color={'#b79760'}
