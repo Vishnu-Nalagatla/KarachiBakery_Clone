@@ -11,7 +11,7 @@ const RazorpayTest = ({totalAmount}) => {
       description: 'Credits towards consultation',
       image: 'https://i.ibb.co/Y2723qJ/Google-Icon.png',
       currency: 'INR',
-      key: 'rzp_test_sg5ao70ggBtSFq', // Your api key
+      key: 'rzp_test_trLBReEdsVK1TB', // Your api key
       amount: `${finalAmount}`,
       name: 'Vishnu',
       prefill: {

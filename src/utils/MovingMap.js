@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
 import MapView, { Marker } from 'react-native-maps';
-const latitudeDelta = 0.0122
-const longitudeDelta = 0.0122
+const latitudeDelta = 0.0122;
+const longitudeDelta = 0.0122;
 function MovingMap() {
     const [region, setRegion] = React.useState({
         latitudeDelta,
@@ -21,22 +21,22 @@ function MovingMap() {
                 style={{ flex: 1 }}
                 initialRegion={region}
                 onRegionChangeComplete={onRegionChangeValue}
-                // loadingEnabled={true}
+                loadingEnabled={true}
             >
-                <Marker
+                {/* <Marker
                     coordinate={{
                         latitude: region.latitude,
                         longitude: region.longitude
                     }}
                     title='Test Title'>
                         <Image style={{width:50,height:50}} source={require('../assets/Location/Location.png')}/>
-                </Marker>
+                </Marker> */}
 
 
             </MapView>
-            {/* <View style = {{top:'50%',left:'50%',marginLeft:-24,marginTop:-48,position:'absolute'}}>
+            <View style = {{top:'50%',left:'50%',marginLeft:-24,marginTop:-48,position:'absolute'}}>
         <Image source ={require('../assets/Location/Location.png')} style = {{height:48,width:48}}/>
-         </View> */}
+         </View>
         </View>
     )
 };

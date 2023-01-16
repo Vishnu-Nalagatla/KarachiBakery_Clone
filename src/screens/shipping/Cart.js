@@ -12,7 +12,6 @@ import {
 } from '../../redux/actions';
 import CartManipulation from '../productListing/CartManipulation';
 import RazorpayTest from '../../components/RazorpayPayment/RazorpayTest';
-import Razorpay from './Razorpay';
 
 const Cart = ({
   route,

@@ -42,6 +42,12 @@ const GET_MOVIE_BY_NAME = gql`
     }
   }
 `;
+
+
+
+
+
+
 const CREATE_USER_MUTATION = gql`
     mutation CreateUser($input:CreateUserInput!){
       CreateUser(input:$input){
@@ -49,6 +55,10 @@ const CREATE_USER_MUTATION = gql`
       }
     }
 `
+
+
+
+
 const GraphqlDataGetting = () => {
   const [searchedValue, setSearchedValue] = React.useState('');
   const [name,setName] = React.useState('');

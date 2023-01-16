@@ -71,7 +71,7 @@ const LoginPopUp = ({ loginUserName, userName }) => {
     }
 
     const LoginValidate = () => {
-        if (loginUserName == db) {
+        if (userName == db) {
             setUserData({
                 ...userData,
                 isValidUser: true,
